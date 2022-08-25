@@ -21,5 +21,6 @@ router.post('/login' , petOwnerController.login);
 //route middleware eka mama ain kra eka dnna one passe
 router.post("/add-pet/:id"  , petOwnerController.addNewPet);
 
+router.delete("/delete-pet/:id" , petOwnerController.deletePet);
 
 module.exports = router;
