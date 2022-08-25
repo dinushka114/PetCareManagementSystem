@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const petOwnerSchama = require("../models/pet-owner");
+const petSchema = require("../models/pet");
 
 exports.register = async (req, res) => {
     const url = "http://localhost:3000/uploads/"
@@ -93,6 +94,42 @@ exports.login = async (req, res) => {
 
 }
 
-exports.addNewPet = (req,res)=>{
-    res.send("Add pet")
+exports.addNewPet = async(req,res)=>{
+    
+    //get pet owner id from url parameters /:id
+    const id = req.params.id;
+
+    //get pet details
+    const {petName , breed , age} = req.body;
+
+    //validate inputs
+    if (!(petName && breed && age)) {
+        res.status(400).send({ message: "All inputs are required" });
+    }
+
+    //create new pet
+    const newPet = new petSchema({
+        petName:petName,
+        breed:breed,
+        age:age,
+        owner:id
+    })
+
+    //save new pet
+    await newPet.save()
+    
+
+    const ownerRelated = await petOwnerSchama.findById(id);
+
+    ownerRelated.pets.push(newPet);
+
+    await ownerRelated.save()
+
+    .then(result=>{
+        res.status(201).json({message:"New pet added successfully!!"})
+    })
+    .catch(err=>{
+        res.status(400).json({message:err})
+    })
+
 }

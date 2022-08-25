@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const petOwner = new mongoose.Schema({
+const petOwnerSchema = new mongoose.Schema({
     fullName:{
         type:String,
         required:true
@@ -29,8 +29,12 @@ const petOwner = new mongoose.Schema({
     token:{
         type:String
     },
+    pets :[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Pet',
+        default:null
+    }]
 } , {timestamps:true})
 
 
-const petOwnerSchama  = new mongoose.model('PetOwnerSchema' , petOwner)
-module.exports = petOwnerSchama;
+module.exports = new mongoose.model('PetOwner' , petOwnerSchema)

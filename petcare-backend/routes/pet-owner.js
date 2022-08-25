@@ -18,7 +18,7 @@ const upload = multer({ storage: storage });
 
 router.post('/register' , upload.single('image') , petOwnerController.register);
 router.post('/login' , petOwnerController.login);
-router.post("/add-pet" , verifyToken , petOwnerController.addNewPet);
+router.post("/add-pet/:id"  , petOwnerController.addNewPet);
 
 
 module.exports = router;
