@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const petOwnerSchama = require("../models/pet-owner");
 
 exports.register = async (req, res) => {
-    const url = "http://localhost:3000/public/images/"
+    const url = "http://localhost:3000/public/uploads/"
 
     //check files of request
     if (!req.file) {
@@ -60,8 +60,8 @@ exports.register = async (req, res) => {
     }
 
 
+}
 
-
-
-
+exports.login = async(req,res)=>{
+    
 }
