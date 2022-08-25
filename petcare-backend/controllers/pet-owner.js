@@ -118,11 +118,13 @@ exports.addNewPet = async(req,res)=>{
     //save new pet
     await newPet.save()
     
-
+    //get current pet owner
     const ownerRelated = await petOwnerSchama.findById(id);
 
+    //push pets to current pet owner pets array
     ownerRelated.pets.push(newPet);
 
+    //save pushed pets
     await ownerRelated.save()
 
     .then(result=>{
