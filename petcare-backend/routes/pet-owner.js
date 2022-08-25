@@ -18,6 +18,7 @@ const upload = multer({ storage: storage });
 
 router.post('/register' , upload.single('image') , petOwnerController.register);
 router.post('/login' , petOwnerController.login);
+//route middleware eka mama ain kra eka dnna one passe
 router.post("/add-pet/:id"  , petOwnerController.addNewPet);
 
 

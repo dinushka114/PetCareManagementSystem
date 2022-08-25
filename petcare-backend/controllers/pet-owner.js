@@ -127,6 +127,7 @@ exports.addNewPet = async(req,res)=>{
     //save pushed pets
     await ownerRelated.save()
 
+    //handle http responses
     .then(result=>{
         res.status(201).json({message:"New pet added successfully!!"})
     })
@@ -134,4 +135,13 @@ exports.addNewPet = async(req,res)=>{
         res.status(400).json({message:err})
     })
 
+}
+
+exports.deletePet = (req,res)=>{
+
+    //get pet id
+    const id = req.params.id;
+
+
+    
 }
