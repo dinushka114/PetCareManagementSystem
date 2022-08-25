@@ -52,7 +52,7 @@ exports.register = async (req, res) => {
         )
 
         newPetOwner.token = token;
-        res.json({message:"user registered successfully!!"})
+        res.json({ message: "user registered successfully!!" })
 
 
     } else {
@@ -62,6 +62,37 @@ exports.register = async (req, res) => {
 
 }
 
-exports.login = async(req,res)=>{
-    
+exports.login = async (req, res) => {
+    //get email and password from req.body
+    const { email, password } = req.body;
+
+    //validate email and password
+    if (!(email && password)) {
+        res.status(400).send({ message: "All inputs are required" });
+    }
+
+    //chec pet owner exists in database
+    const petOwner = await petOwnerSchama.findOne({ email });
+
+    if (petOwner && (await bcrypt.compare(password, petOwner.password))) {
+
+        //create token
+        const token = jwt.sign(
+            { user_id: petOwner._id, email },
+            process.env.JWT_KEY, {
+            expiresIn: "2h",
+        }
+        )
+
+        petOwner.token = token;
+        res.status(200).json({message:"authenticated" , token:token})
+
+    }else{
+        res.status(400).send({message:"Invalid Credentials"});
+    }
+
+}
+
+exports.addNewPet = (req,res)=>{
+    res.send("Add pet")
 }
