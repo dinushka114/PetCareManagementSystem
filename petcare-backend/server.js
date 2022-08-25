@@ -10,12 +10,12 @@ const indexRoutes = require("./routes/index");
 const petOwnerRoutes = require("./routes/pet-owner")
 
 const app = express();
-db_connection()
 
 app.use(express.static(path.join(__dirname, 'public')));    
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+db_connection()
 
 app.use("/" , indexRoutes)
 app.use("/pet-owner"  ,petOwnerRoutes)

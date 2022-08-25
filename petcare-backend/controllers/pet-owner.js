@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const petOwnerSchama = require("../models/pet-owner");
 
 exports.register = async (req, res) => {
-    const url = "http://localhost:3000/public/uploads/"
+    const url = "http://localhost:3000/uploads/"
 
     //check files of request
     if (!req.file) {

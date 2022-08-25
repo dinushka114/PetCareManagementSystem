@@ -1,10 +1,7 @@
 var express = require('express');
+const multer = require("multer")
 var router = express.Router();
 const petOwnerController = require("../controllers/pet-owner")
-
-const multer = require("multer")
-
-
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
