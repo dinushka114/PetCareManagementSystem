@@ -1,0 +1,17 @@
+.home {
+    display: flex;
+}
+
+.homeContainer{
+    width:80%;
+    margin-left: 18%;
+    margin-right: 15px;
+}
+
+h1{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-family: 'lucida grande';
+    font-size: '40px';
+}
