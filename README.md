@@ -6,7 +6,7 @@ By offering a variety of services, the Pet Care Management System aids in taking
 * Pet Details 
 * Pet Accessories 
 * Veterinary Service 
-* Pet Boarding Places : my function
+* Pet Boarding Places
 
 ## Language 
 * ![JavaScript](https://img.shields.io/badge/Language-JavaScript-orange)
