@@ -2,6 +2,8 @@ var express = require('express');
 const multer = require("multer")
 var router = express.Router();
 const verifyToken = require('../middlewares/auth');
+const serviceController = require("../controllers/pet-service");
+
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -15,7 +17,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/add-service/:id"  , addNewService);
-router.delete("/delete-delete/:id" , deleteService);
+router.post("/add-service/:id",serviceController.addNewService);
+router.delete("/delete-service/:id",serviceController.deleteService);
+router.get("/get-service/",serviceController.getService);
+router.get("/get-service/:id",serviceController.getOneService);
 
 module.exports = router;

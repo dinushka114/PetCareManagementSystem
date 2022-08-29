@@ -4,10 +4,12 @@ const bodyParser = require("body-parser");
 const db_connection = require("./database/index");
 require('dotenv').config();
 
+
+
 const PORT = process.env.PORT || 3001
 
 const indexRoutes = require("./routes/index");
-const petOwnerRoutes = require("./routes/pet-owner")
+const serviceRoutes = require("./routes/pet-service")
 
 const app = express();
 
@@ -18,7 +20,8 @@ app.use(bodyParser.json());
 db_connection()
 
 app.use("/" , indexRoutes)
-app.use("/pet-service"  ,petServiceRoutes)
+app.use("/pet-service" ,serviceRoutes)
+
 
 app.listen(PORT , ()=>{
     console.log(`Server is running on port ${PORT}`)

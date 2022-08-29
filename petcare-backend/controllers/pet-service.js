@@ -1,10 +1,10 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const petOwnerSchama = require("../models/pet-owner");
-const petSchema = require("../models/pet");
 const serviceSchema = require("../models/service");
 
-exports.addNewPet = async(req,res)=>{
+
+
+exports.addNewService = async(req,res)=>{
    //get service details
    const {serviceName , serviceImage , description, serviceContactNo, openHoursStart, openHoursEnd} = req.body;
 
@@ -27,7 +27,7 @@ exports.addNewPet = async(req,res)=>{
    await newService.save()
 
    //save pushed services
-   await serviceRelated.save()
+   //await serviceRelated.save()
 
    //handle http responses
    .then(result=>{
@@ -41,6 +41,46 @@ exports.addNewPet = async(req,res)=>{
 
 exports.deleteService = (req,res)=>{
 
-   //get pet id
-   const id = req.params.id;
+   //get service id
+   const service_id = req.params.id;
+
+   serviceSchema.findOneAndDelete(service_id)
+   .then(()=>{
+       res.status(200).send({
+           status:"service deleted"
+       });
+   }).catch((err)=>{
+       console.log(err.message);
+       res.status(500).send({status:"Error with delete service",error :err.message});
+   })
+
 }
+
+exports.getService = (req,res)=>{
+
+    let services = serviceSchema.find({} , function(err , result){
+        if(err){
+            res.json({msg:err})
+        }else{
+            res.json({result})
+        }
+    
+    })
+}
+
+exports.getOneService = (req,res)=>{
+
+    //get service id
+   const service_id = req.params.id;
+
+   const services = serviceSchema.findOne({service_id} , function(err , services){
+    if(err){
+        res.json({"err":err})
+    }else{
+        res.json({"result":services})
+    }
+})
+}
+
+
+

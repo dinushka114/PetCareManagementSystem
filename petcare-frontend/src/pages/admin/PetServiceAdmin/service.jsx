@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../../components/Sidebar/sidebar'
+import Sidebar from '../../../components/admin/Sidebar/sidebar'
 import Addservice from './add-service'
 
 

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const petSchema = new mongoose.Schema({
+const serviceSchema = new mongoose.Schema({
     serviceName:{
         type:String,
         required:true,
@@ -14,14 +14,14 @@ const petSchema = new mongoose.Schema({
     },
     contactNo:{
         type:Number,
-        required:true
+       
     },
     openHoursStart:{
-        type:Date,
+        type:String,
         required:true
     },
     openHoursEnd:{
-        type:Date,
+        type:String,
         required:true
     },
 }, {timestamps:true})
