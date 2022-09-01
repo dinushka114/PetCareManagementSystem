@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/add-service/:id",serviceController.addNewService);
+router.post("/add-service/",serviceController.addNewService);
 router.delete("/delete-service/:id",serviceController.deleteService);
 router.get("/get-service/",serviceController.getService);
 router.get("/get-service/:id",serviceController.getOneService);

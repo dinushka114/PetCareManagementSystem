@@ -6,10 +6,10 @@ const serviceSchema = require("../models/service");
 
 exports.addNewService = async(req,res)=>{
    //get service details
-   const {serviceName , serviceImage , description, serviceContactNo, openHoursStart, openHoursEnd} = req.body;
+   const {serviceName , serviceImage , description, contactNo, openHoursStart, openHoursEnd} = req.body;
 
    //validate inputs
-   if (!(serviceName && serviceImage && description && serviceContactNo && openHoursStart && openHoursEnd)) {
+   if (!(serviceName && serviceImage && description && contactNo && openHoursStart && openHoursEnd)) {
        res.status(400).send({ message: "All inputs are required" });
    }
 
@@ -18,7 +18,7 @@ exports.addNewService = async(req,res)=>{
        serviceName:serviceName,
        serviceImage:serviceImage,
        description:description,
-       serviceContactNo:serviceContactNo,
+       contactNo:contactNo,
        openHoursStart:openHoursStart,
        openHoursEnd:openHoursEnd
    })

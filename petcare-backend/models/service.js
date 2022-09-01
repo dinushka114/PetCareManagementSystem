@@ -7,14 +7,15 @@ const serviceSchema = new mongoose.Schema({
     },
     serviceImage:{
         type:String,
+        required:true
     },
     description:{
         type:String,
         required:true,
     },
     contactNo:{
-        type:Number,
-       
+        type:String,
+        required:true
     },
     openHoursStart:{
         type:String,

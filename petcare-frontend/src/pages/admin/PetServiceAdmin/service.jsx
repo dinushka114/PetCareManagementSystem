@@ -1,14 +1,16 @@
 import React from 'react'
 import Sidebar from '../../../components/admin/Sidebar/sidebar'
 import Addservice from './add-service'
+import Viewservice from './view-service'
 
 
 const Service = () => {
   return (
     <div className='home'>
-        <Sidebar/>
+          <Sidebar/>
         <div className='homeContainer'>
-        <Addservice/>
+        <h1>Services</h1>
+          <Viewservice/>
         </div>
 
     </div>
