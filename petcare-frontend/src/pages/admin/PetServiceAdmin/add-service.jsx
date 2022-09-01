@@ -5,6 +5,7 @@ import {useFormik} from "formik";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {useState} from 'react';
+import Swal from 'sweetalert2';
 
 export default function AddService(){
     const [serviceName,setserviceName] = useState("");
@@ -29,7 +30,7 @@ export default function AddService(){
 
 
         axios.post("http://localhost:3000/pet-service/add-service",newService).then(()=>{
-            alert("Service added")
+            Swal.fire("Service added")
         }).catch((err)=>{
             alert(err)
         })

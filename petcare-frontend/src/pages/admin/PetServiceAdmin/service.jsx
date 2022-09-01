@@ -11,6 +11,7 @@ const Service = () => {
         <div className='homeContainer'>
         <h1>Services</h1>
           <Viewservice/>
+          <Addservice/>
         </div>
 
     </div>

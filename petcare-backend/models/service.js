@@ -7,7 +7,7 @@ const serviceSchema = new mongoose.Schema({
     },
     serviceImage:{
         type:String,
-        required:true
+        required:true,      
     },
     description:{
         type:String,

@@ -5,12 +5,23 @@ const serviceSchema = require("../models/service");
 
 
 exports.addNewService = async(req,res)=>{
+
+    //const url = "http://localhost:3000/uploads/"
+
+   //check files of request
+   //if(!req.file){
+   //     return res.status(400).send({message:'Please upload a file'});
+   //} 
+
+   //create profile image url
+   //const imageUrl = url + req.file.originalname;
+
    //get service details
    const {serviceName , serviceImage , description, contactNo, openHoursStart, openHoursEnd} = req.body;
 
    //validate inputs
    if (!(serviceName && serviceImage && description && contactNo && openHoursStart && openHoursEnd)) {
-       res.status(400).send({ message: "All inputs are required" });
+    res.status(400).send({ message: "All inputs are required" });
    }
 
    //create new pet
