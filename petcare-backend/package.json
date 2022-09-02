@@ -1,7 +1,7 @@
 {
   "name": "petcare-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pet Care Management System",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
+    "mongoose": "^6.5.4",
     "nodemon": "^2.0.19"
   }
 }
