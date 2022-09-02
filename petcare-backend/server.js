@@ -1,42 +1,30 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const app = express();
-require("dotenv").config();
-
 const path = require("path")
+const bodyParser = require("body-parser");
+const multer = require("multer");
+const db_connection = require("./database/index");
+require('dotenv').config();
+var cors = require('cors');
+var router = express.Router();
+
+
+const PORT = process.env.PORT || 3001
+
 const indexRoutes = require("./routes/index");
+const serviceRoutes = require("./routes/pet-service")
 
-const PORT = process.env.PORT || 8070;
+const app = express();
 
-app.use(cors());
+app.use(cors()) // Use this after the variable declaration
+app.use(express.static(path.join(__dirname, 'public')));    
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-app.use(express.static(path.join(__dirname, 'public')));
+db_connection()
 
 app.use("/" , indexRoutes)
+app.use("/pet-accessaries" ,serviceRoutes)
 
-app.listen(3000 , ()=>{
-    console.log("Server is running on port 3000")
-})
-
-const URL = process.env.MONGODB_URL;
-
-mongoose.connect(URL, {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopologyL: true,
-    useFindAndModify: false
-});
-
-const connection = mongoose.connection;
-connection.once("open", ()=> {
-    console.log("Mongodb Connection Success!");
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is up and running on port number: ${PORT}`)
+app.listen(PORT , ()=>{
+    console.log(`Server is running on port ${PORT}`)
 })
