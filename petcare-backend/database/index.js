@@ -12,5 +12,6 @@ const db_connection = async()=>{
         console.log("Database connection error")
     })
 }
-//data tynwada
+
+
 module.exports = db_connection;
