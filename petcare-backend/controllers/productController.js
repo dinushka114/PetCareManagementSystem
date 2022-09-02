@@ -20,7 +20,7 @@ exports.addNewProduct = async(req,res)=>{
    const {productName , productImage , stocks , price , description} = req.body;
 
    //validate inputs
-   if (!(productImage && productImage && stocks && price && description)) {
+   if (!(productName && productImage && stocks && price && description)) {
     res.status(400).send({ message: "All inputs are required" });
    }
 
