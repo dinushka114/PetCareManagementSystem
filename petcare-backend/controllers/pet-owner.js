@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const petOwnerSchama = require("../models/pet-owner");
 const petSchema = require("../models/pet");
+const { default: mongoose } = require("mongoose");
 
 exports.register = async (req, res) => {
     const url = "http://localhost:3000/uploads/"
@@ -86,21 +87,42 @@ exports.login = async (req, res) => {
         )
 
         petOwner.token = token;
-        res.status(200).json({message:"authenticated" , token:token})
+        res.status(200).json({ message: "authenticated", token: token })
 
-    }else{
-        res.status(400).send({message:"Invalid Credentials"});
+    } else {
+        res.status(400).send({ message: "Invalid Credentials" });
     }
 
 }
 
-exports.addNewPet = async(req,res)=>{
+
+exports.getPetsByOwner = async (req, res) => {
+
+    //get owner id
+    const ownerId = req.params.owner_id;
+
+    //get pets data by owner id
+    await petSchema.find({owner:ownerId})
+
+    //handle response
+    .then(result=>{
+        res.status(200).json({pets:result})
+    })
+
+    .catch(err=>{
+        res.status(400).json({message:"Error"})
+    })
     
+
+}
+
+exports.addNewPet = async (req, res) => {
+
     //get pet owner id from url parameters /:id
     const id = req.params.id;
 
     //get pet details
-    const {petName , breed , age} = req.body;
+    const { petName, breed, age } = req.body;
 
     //validate inputs
     if (!(petName && breed && age)) {
@@ -109,15 +131,15 @@ exports.addNewPet = async(req,res)=>{
 
     //create new pet
     const newPet = new petSchema({
-        petName:petName,
-        breed:breed,
-        age:age,
-        owner:id
+        petName: petName,
+        breed: breed,
+        age: age,
+        owner: id
     })
 
     //save new pet
     await newPet.save()
-    
+
     //get current pet owner
     const ownerRelated = await petOwnerSchama.findById(id);
 
@@ -127,21 +149,46 @@ exports.addNewPet = async(req,res)=>{
     //save pushed pets
     await ownerRelated.save()
 
-    //handle http responses
-    .then(result=>{
-        res.status(201).json({message:"New pet added successfully!!"})
-    })
-    .catch(err=>{
-        res.status(400).json({message:err})
-    })
+        //handle http responses
+        .then(result => {
+            res.status(201).json({ message: "New pet added successfully!!" })
+        })
+        .catch(err => {
+            res.status(400).json({ message: err })
+        })
 
 }
 
-exports.deletePet = (req,res)=>{
+exports.deletePet = async (req, res) => {
 
     //get pet id
     const id = req.params.id;
 
+    //get pet owner id
+    const ownerId = req.params.owner_id;
 
-    
+    //check pet exists or not
+    const toDelete = await petSchema.findById(id)
+
+    //convert pet id to object id
+    var petObjectId = mongoose.Types.ObjectId(id);
+
+    //get owner from pet chema
+    await petOwnerSchama.updateOne({ _id: ownerId }, { $pull: { pets: { _id: ownerId } } }, { safe: true, multi: false });
+    // console.log(petOwnerSchama.pets)
+
+
+    // console.log(ownerRelated)
+
+    //remove pet from pet owner array
+    // ownerRelated.pets.pull({ _id: id })
+
+    //handle http responces
+    if (toDelete) {
+        await petSchema.deleteOne({ _id: id });
+        res.status(200).json({ message: "Pet deleted sucessfully!" })
+    } else {
+        res.status(400).json({ message: "Pet does not exsists" })
+    }
+
 }
