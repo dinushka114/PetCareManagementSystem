@@ -7,6 +7,16 @@ import { SidebarData } from './CnavbarData';
 import './Cnavbar.css';
 import { IconContext } from 'react-icons';
 
+const styles={
+  navbar:{
+    backgroundColor: '#3a3a3a',
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  }
+}
+
 function Navbar() {
 
     const [sidebar, setSidebar] = useState(false);
@@ -16,15 +26,15 @@ function Navbar() {
   return (
     <>
         <IconContext.Provider value={{ color: '#fff' }}>
-      <div className='navbar'>
+      <div style={styles.navbar}>
         <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar}/>
         </Link>
       </div>
 
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{backgroundColor:'#3a3a3a'}}>
       <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
+            <li className='navbar-toggle' style={{backgroundColor:'#3a3a3a'}}>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>

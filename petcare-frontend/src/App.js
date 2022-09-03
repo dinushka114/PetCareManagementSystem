@@ -15,8 +15,8 @@ function App() {
             <Route exact path='/' element={<Dashboard/>} />
             <Route exact path='/add' element={<AddNewBoarding/>} />
             <Route exact path='/report' element={<Reports/>} />
-            <Route exact path='/update' element={<Update/>} />
-            <Route exact path='/client' element={<Client/>} />
+            <Route exact path='/update/:id' element={<Update/>} />
+            <Route exact path='/boarding' element={<Client/>} />
           </Routes>
         </Router>
       </>
