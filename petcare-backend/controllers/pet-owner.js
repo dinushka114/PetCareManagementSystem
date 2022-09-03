@@ -3,13 +3,14 @@ const jwt = require("jsonwebtoken");
 const petOwnerSchama = require("../models/pet-owner");
 const petSchema = require("../models/pet");
 const { default: mongoose } = require("mongoose");
+const e = require("express");
 
 exports.register = async (req, res) => {
     const url = "http://localhost:3000/uploads/"
 
     //check files of request
     if (!req.file) {
-        return res.status(400).send({ message: 'Please upload a file.' });
+        return res.status(400).send({ message: 'Please upload a profile image.' });
     }
 
     //create profile image url 
@@ -95,6 +96,52 @@ exports.login = async (req, res) => {
 
 }
 
+exports.updateProfile = async (req, res) => {
+    const url = "http://localhost:3000/uploads/"
+
+    const ownerId = req.params.id;
+
+    //check files of request
+    if (!req.file) {
+        return res.status(400).send({ message: 'Please upload a profile image.' });
+    }
+
+    //create profile image url 
+    const imageUrl = url + req.file.originalname;
+
+    //get req.body data to variables
+    const { fullName, email, contact, address } = req.body;
+
+    //simple validations of user inputs
+    if (!(fullName && email && contact && address)) {
+        return res.status(400).json({ message: "All input is required" });
+    }
+
+    //chec pet owner exists in database
+    const petOwner = await petOwnerSchama.findOne({ _id:ownerId });
+
+    //handle http requests
+    if(petOwner){
+        petOwnerSchama.updateOne({ _id: ownerId }, {
+            fullName: fullName,
+            email: email.toLowerCase(),
+            contact: contact,
+            address: address,
+            image: imageUrl,
+        }, function (err, result) {
+            if (result) {
+                return res.status(200).json({ message: "user updated successfully!!" })
+            } else {
+                return res.status(400).json({ message: "something went wrong" })
+            }
+        })
+    }else{
+        return res.status(400).json({ message: "Pet owner does not exsists!!" })
+    }
+
+
+}
+
 
 exports.getPetsByOwner = async (req, res) => {
 
@@ -102,17 +149,17 @@ exports.getPetsByOwner = async (req, res) => {
     const ownerId = req.params.owner_id;
 
     //get pets data by owner id
-    await petSchema.find({owner:ownerId})
+    await petSchema.find({ owner: ownerId })
 
-    //handle response
-    .then(result=>{
-        res.status(200).json({pets:result})
-    })
+        //handle response
+        .then(result => {
+            res.status(200).json({ pets: result })
+        })
 
-    .catch(err=>{
-        res.status(400).json({message:"Error"})
-    })
-    
+        .catch(err => {
+            res.status(400).json({ message: "Error" })
+        })
+
 
 }
 
@@ -186,9 +233,9 @@ exports.deletePet = async (req, res) => {
     //handle http responces
     if (toDelete) {
         await petSchema.deleteOne({ _id: id });
-        res.status(200).json({ message: "Pet deleted sucessfully!" })
+        return res.status(200).json({ message: "Pet deleted sucessfully!" })
     } else {
-        res.status(400).json({ message: "Pet does not exsists" })
+        return res.status(400).json({ message: "Pet does not exsists" })
     }
 
 }
