@@ -26,11 +26,17 @@ exports.addNewProduct = async(req,res)=>{
 
    //create new product
    const newProduct = new productSchema({
-       productName:productName,
+       name:pname,
+       description:description,
        productImage:productImage,
-       stocks:stocks,
        price:price,
-       description:description
+       rating:rating,
+       images:images,
+       category:category,
+       stock:stock,
+       numOfReviews:numOfReviews,
+       reviews:reviews,
+       createAt:createAt
    })
 
    //save new product
