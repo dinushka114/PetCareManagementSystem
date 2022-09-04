@@ -23,4 +23,5 @@ router.get("/get-product/",productController.getProduct);
 router.get("/get-product/:id",productController.getOneProduct);
 
 
+
 module.exports = router;
