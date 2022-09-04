@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const serviceSchema = new mongoose.Schema({
     serviceName:{
         type:String,
@@ -7,7 +8,7 @@ const serviceSchema = new mongoose.Schema({
     },
     serviceImage:{
         type:String,
-        required:true,      
+        required:true,
     },
     description:{
         type:String,

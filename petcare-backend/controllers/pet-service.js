@@ -6,28 +6,29 @@ const serviceSchema = require("../models/service");
 
 exports.addNewService = async(req,res)=>{
 
-    //const url = "http://localhost:3000/uploads/"
+   const url = "http://localhost:3000/uploads/"
+
 
    //check files of request
-   //if(!req.file){
-   //     return res.status(400).send({message:'Please upload a file'});
-   //} 
+   if(!req.file){
+        return res.status(400).send({message:'Please upload a file'});
+   } 
 
    //create profile image url
-   //const imageUrl = url + req.file.originalname;
+   const imageUrl = url + req.file.originalname;
 
    //get service details
-   const {serviceName , serviceImage , description, contactNo, openHoursStart, openHoursEnd} = req.body;
+   const {serviceName ,serviceImage, description, contactNo, openHoursStart, openHoursEnd} = req.body;
 
    //validate inputs
-   if (!(serviceName && serviceImage && description && contactNo && openHoursStart && openHoursEnd)) {
+   if (!(serviceName  && description && contactNo && openHoursStart && openHoursEnd)) {
     res.status(400).send({ message: "All inputs are required" });
    }
 
    //create new pet
    const newService = new serviceSchema({
        serviceName:serviceName,
-       serviceImage:serviceImage,
+       serviceImage:imageUrl,
        description:description,
        contactNo:contactNo,
        openHoursStart:openHoursStart,
@@ -55,7 +56,7 @@ exports.deleteService = (req,res)=>{
    //get service id
    const service_id = req.params.id;
 
-   serviceSchema.findOneAndDelete(service_id)
+   serviceSchema.deleteOne({_id:service_id})
    .then(()=>{
        res.status(200).send({
            status:"service deleted"

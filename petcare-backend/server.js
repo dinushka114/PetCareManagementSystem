@@ -1,10 +1,11 @@
 const express = require("express");
 const path = require("path")
 const bodyParser = require("body-parser");
-//const multer = require("multer");
+const multer = require("multer");
 const db_connection = require("./database/index");
 require('dotenv').config();
-var cors = require('cors')
+var cors = require('cors');
+var router = express.Router();
 
 
 const PORT = process.env.PORT || 3001
@@ -24,16 +25,6 @@ db_connection()
 app.use("/" , indexRoutes)
 app.use("/pet-service" ,serviceRoutes)
 
-
 app.listen(PORT , ()=>{
     console.log(`Server is running on port ${PORT}`)
 })
-/*
-const storage = multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,file.originalname)
-    }
-})
-
-const uploads = multer({storage:storage})
-*/

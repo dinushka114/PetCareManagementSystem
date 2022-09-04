@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {useState} from 'react';
 import Swal from 'sweetalert2';
+import { Input } from '@mui/material';
 
 export default function AddService(){
     const [serviceName,setserviceName] = useState("");
@@ -14,6 +15,11 @@ export default function AddService(){
     const [contactNo,setcontactNo] = useState("");
     const [openHoursStart,setopenHoursStart] = useState("");
     const [openHoursEnd,setopenHoursEnd] = useState("");
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleFileSelect = (event) => {
+        setSelectedFile(event.target.files[0])
+      }
 
     function sendService(e){
         e.preventDefault();
@@ -28,11 +34,20 @@ export default function AddService(){
         }
     
 
+        const formData = new FormData();
+        formData.append('serviceName' , serviceName)
+        formData.append('serviceImage' , selectedFile)
+        formData.append('description' , description)
+        formData.append('contactNo' , contactNo)
+        formData.append('openHoursStart' , openHoursStart)
+        formData.append('openHoursEnd' , openHoursEnd)
 
-        axios.post("http://localhost:3000/pet-service/add-service",newService).then(()=>{
+        console.log(formData)
+
+        axios.post("http://localhost:3000/pet-service/add-service",formData).then(()=>{
             Swal.fire("Service added")
         }).catch((err)=>{
-            alert(err)
+            console.log(err)
         })
     }
 
@@ -40,7 +55,7 @@ export default function AddService(){
         <div className="home">
             <div className="homeContainer">
                 <h1>Add New Service</h1>
-                    <form onSubmit={sendService} className='border border-success rounded'>
+                    <form onSubmit={sendService} className='border border-success rounded' encType='multipart/form-data'>
                         <div className='p-4'>
                             <div className='col-sm-6'>
                                 <div className="form-group">
@@ -56,10 +71,9 @@ export default function AddService(){
                                 <div className="form-group">
                                     <div className="form-group">
                                         <label htmlFor="serviceImage">Service image</label>
-                                        <input type='file' accept="image/png, image/jpeg" name="serviceImage" id="serviceImage"  cols="10" rows="4" className='form-control'
-                                        onChange={(e)=>{
-                                        setserviceImage(e.target.value);
-                                    }} />
+                                        <input type='file'  name="serviceImage" id="serviceImage"  cols="10" rows="4" className='form-control'
+                                       onChange={handleFileSelect}
+                                       />
                                     </div>
                                     </div>
                                 </div>
@@ -112,9 +126,5 @@ export default function AddService(){
         </div>
       )
 }
-
-
-
- 
 
 

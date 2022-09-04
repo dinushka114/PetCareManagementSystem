@@ -5,6 +5,7 @@ const verifyToken = require('../middlewares/auth');
 const serviceController = require("../controllers/pet-service");
 
 
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "public/uploads");
@@ -17,9 +18,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/add-service/",serviceController.addNewService);
+
+
+
+router.post("/add-service/", upload.single("serviceImage"), serviceController.addNewService);
 router.delete("/delete-service/:id",serviceController.deleteService);
 router.get("/get-service/",serviceController.getService);
 router.get("/get-service/:id",serviceController.getOneService);
+
 
 module.exports = router;

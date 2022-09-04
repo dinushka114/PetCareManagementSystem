@@ -27,7 +27,8 @@
     "react-scripts": "5.0.1",
     "stream": "^0.0.2",
     "sweetalert2": "^11.4.29",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

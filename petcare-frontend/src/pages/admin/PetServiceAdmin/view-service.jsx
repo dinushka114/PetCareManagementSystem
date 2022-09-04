@@ -19,8 +19,8 @@ const Viewservice = () => {
     }
 
     const deleteService = (id)=>{
-      var answer = window.confirm("are you sure")
-        if(answer){
+      
+       
           axios.delete("http://localhost:3000/pet-service/delete-service/"+id)
           .then(res=>{
             if(res.status===200){
@@ -28,7 +28,6 @@ const Viewservice = () => {
               getServiceData()
             }
           })
-        }
       }
 
     useEffect(()=>{
@@ -56,7 +55,7 @@ const Viewservice = () => {
                 return (
                   <tr>
                     <td>{services.serviceName}</td>
-                    <td>{services.serviceImage}</td>
+                    <td> <img src={services.serviceImage} alt="" /> </td>
                     <td>{services.description}</td>
                     <td>{services.openHoursStart}</td>
                     <td>{services.openHoursEnd}</td>
