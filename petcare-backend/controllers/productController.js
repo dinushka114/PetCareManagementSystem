@@ -26,17 +26,11 @@ exports.addNewProduct = async(req,res)=>{
 
    //create new product
    const newProduct = new productSchema({
-       name:pname,
-       description:description,
+       productName:productName,
        productImage:productImage,
+       stocks:stocks,
        price:price,
-       rating:rating,
-       images:images,
-       category:category,
-       stock:stock,
-       numOfReviews:numOfReviews,
-       reviews:reviews,
-       createAt:createAt
+       description:description
    })
 
    //save new product
@@ -54,6 +48,8 @@ exports.addNewProduct = async(req,res)=>{
    })
 
 }
+
+
 
 exports.deleteProduct = (req,res)=>{
 
