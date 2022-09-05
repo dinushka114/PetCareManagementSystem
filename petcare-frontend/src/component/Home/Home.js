@@ -33,6 +33,13 @@ const Home = () => {
 
         <div className = "container" id = "container">
             <Product product = {product} />
+            <Product product = {product} />
+            <Product product = {product} />
+            <Product product = {product} />
+            <Product product = {product} />
+            <Product product = {product} />
+            <Product product = {product} />
+            <Product product = {product} />
         </div>
 
         </Fragment>
