@@ -88,10 +88,24 @@ exports.login = async (req, res) => {
         )
 
         petOwner.token = token;
-        res.status(200).json({ message: "authenticated", token: token  , user_id:petOwner._id})
+        res.status(200).json({ message: "authenticated", token: token, user_id: petOwner._id })
 
     } else {
         res.status(400).send({ message: "Invalid Credentials" });
+    }
+
+}
+
+
+exports.getPetOwner = async (req, res) => {
+    //get pet owner id
+    const ownerId = req.params.id;
+
+    const owner = await petOwnerSchama.findOne({ _id:ownerId })
+    if(owner){
+        return res.status(200).json({owner})
+    }else{
+        return res.status(400).json({err})
     }
 
 }
@@ -118,10 +132,10 @@ exports.updateProfile = async (req, res) => {
     }
 
     //chec pet owner exists in database
-    const petOwner = await petOwnerSchama.findOne({ _id:ownerId });
+    const petOwner = await petOwnerSchama.findOne({ _id: ownerId });
 
     //handle http requests
-    if(petOwner){
+    if (petOwner) {
         petOwnerSchama.updateOne({ _id: ownerId }, {
             fullName: fullName,
             email: email.toLowerCase(),
@@ -135,7 +149,7 @@ exports.updateProfile = async (req, res) => {
                 return res.status(400).json({ message: "something went wrong" })
             }
         })
-    }else{
+    } else {
         return res.status(400).json({ message: "Pet owner does not exsists!!" })
     }
 
