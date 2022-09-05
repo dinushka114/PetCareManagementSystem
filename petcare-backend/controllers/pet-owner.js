@@ -88,7 +88,7 @@ exports.login = async (req, res) => {
         )
 
         petOwner.token = token;
-        res.status(200).json({ message: "authenticated", token: token })
+        res.status(200).json({ message: "authenticated", token: token  , user_id:petOwner._id})
 
     } else {
         res.status(400).send({ message: "Invalid Credentials" });
