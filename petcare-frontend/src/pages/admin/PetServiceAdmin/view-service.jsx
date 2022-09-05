@@ -2,6 +2,7 @@ import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState, } from "react";
 import axios from 'axios';
+import './table.scss'
 import Sidebar from "../../../components/admin/Sidebar/sidebar";
 import { Link } from "react-router-dom"
 const Swal = require('sweetalert2')
@@ -55,7 +56,7 @@ const Viewservice = () => {
                 return (
                   <tr>
                     <td>{services.serviceName}</td>
-                    <td> <img src={services.serviceImage} alt="" /> </td>
+                    <td> <img src={services.serviceImage} alt="" className="imgwidth"/> </td>
                     <td>{services.description}</td>
                     <td>{services.openHoursStart}</td>
                     <td>{services.openHoursEnd}</td>

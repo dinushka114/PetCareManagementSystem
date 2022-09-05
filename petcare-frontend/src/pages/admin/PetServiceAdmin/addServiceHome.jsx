@@ -1,19 +1,17 @@
 import React from 'react'
+import Addservice from './add-service'
 import Sidebar from '../../../components/admin/Sidebar/sidebar'
-import Viewservice from './view-service'
 
-
-const Service = () => {
+const ServiceHome = () => {
   return (
     <div className='home'>
           <Sidebar/>
         <div className='homeContainer'>
-        <h1>Services</h1>
-          <Viewservice/>
+          <Addservice/>
         </div>
 
     </div>
   )
 }
 
-export default Service
+export default ServiceHome

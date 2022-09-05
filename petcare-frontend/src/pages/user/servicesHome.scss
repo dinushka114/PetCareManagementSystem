@@ -2,6 +2,13 @@ h1 {
     color: rgb(13, 202, 76);
 }
 
+.cards{
+    width: 20%;
+    display: inline;
+    float:right
+
+  }
+
 .heading-description{
     display: flex;
     flex-direction: row;
@@ -38,3 +45,4 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
