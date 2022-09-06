@@ -17,10 +17,10 @@ exports.register = async (req, res) => {
     const imageUrl = url + req.file.originalname;
 
     //get req.body data to variables
-    const { fullName, email, contact, address, password, passwordConfirm } = req.body;
+    const { fullName, email, contact, address, password } = req.body;
 
     //simple validations of user inputs
-    if (!(fullName && email && contact && address && password && passwordConfirm)) {
+    if (!(fullName && email && contact && address && password)) {
         return res.status(400).json({ message: "All input is required" });
     }
 
@@ -28,39 +28,36 @@ exports.register = async (req, res) => {
     const isPetOwnerExists = await petOwnerSchama.findOne({ email });
 
     if (isPetOwnerExists) {
-        return res.status(409).send({ message: "User Already Exist!!" });
+        return res.status(400).send({ message: "User Already Exist!!" });
     }
 
-    //check both passwords are same or not
-    if (password === passwordConfirm) {
-
-        //encrypt password before save to the database
-        encryptedPassword = await bcrypt.hash(password, 10);
-
-        const newPetOwner = await petOwnerSchama.create({
-            fullName: fullName,
-            email: email.toLowerCase(),
-            contact: contact,
-            address: address,
-            image: imageUrl,
-            password: encryptedPassword,
-        })
-
-        //generate jwt token
-        const token = jwt.sign(
-            { user_id: newPetOwner._id, email },
-            process.env.JWT_KEY, {
-            expiresIn: "2h",
-        }
-        )
-
-        newPetOwner.token = token;
-        res.json({ message: "user registered successfully!!" })
 
 
-    } else {
-        return res.status(400).send({ message: 'Passwords must be same' });
+    //encrypt password before save to the database
+    encryptedPassword = await bcrypt.hash(password, 10);
+
+    const newPetOwner = await petOwnerSchama.create({
+        fullName: fullName,
+        email: email.toLowerCase(),
+        contact: contact,
+        address: address,
+        image: imageUrl,
+        password: encryptedPassword,
+    })
+
+    //generate jwt token
+    const token = jwt.sign(
+        { user_id: newPetOwner._id, email },
+        process.env.JWT_KEY, {
+        expiresIn: "2h",
     }
+    )
+
+    newPetOwner.token = token;
+    res.json({ message: "user registered successfully!!" })
+
+
+
 
 
 }
@@ -88,10 +85,10 @@ exports.login = async (req, res) => {
         )
 
         petOwner.token = token;
-        res.status(200).json({ message: "authenticated", token: token, user_id: petOwner._id })
+        return res.status(200).json({ isAuth: true, user: petOwner })
 
     } else {
-        res.status(400).send({ message: "Invalid Credentials" });
+        return res.status(400).send({ isAuth: false, message: "Invalid Credentials" });
     }
 
 }
@@ -101,11 +98,11 @@ exports.getPetOwner = async (req, res) => {
     //get pet owner id
     const ownerId = req.params.id;
 
-    const owner = await petOwnerSchama.findOne({ _id:ownerId })
-    if(owner){
-        return res.status(200).json({owner})
-    }else{
-        return res.status(400).json({err})
+    const owner = await petOwnerSchama.findOne({ _id: ownerId })
+    if (owner) {
+        return res.status(200).json({ owner })
+    } else {
+        return res.status(400).json({ err })
     }
 
 }
@@ -124,10 +121,10 @@ exports.updateProfile = async (req, res) => {
     const imageUrl = url + req.file.originalname;
 
     //get req.body data to variables
-    const { fullName, email, contact, address } = req.body;
+    const { fullName, contact, address } = req.body;
 
     //simple validations of user inputs
-    if (!(fullName && email && contact && address)) {
+    if (!(fullName && contact && address)) {
         return res.status(400).json({ message: "All input is required" });
     }
 
@@ -138,7 +135,6 @@ exports.updateProfile = async (req, res) => {
     if (petOwner) {
         petOwnerSchama.updateOne({ _id: ownerId }, {
             fullName: fullName,
-            email: email.toLowerCase(),
             contact: contact,
             address: address,
             image: imageUrl,
@@ -185,10 +181,17 @@ exports.addNewPet = async (req, res) => {
     //get pet details
     const { petName, breed, age } = req.body;
 
+    //validate age
+    if (!isNaN(age)) {
+        return res.status(400).send({ message: "Age must be a number" });
+    }
+
     //validate inputs
     if (!(petName && breed && age)) {
-        res.status(400).send({ message: "All inputs are required" });
+        return res.status(400).send({ message: "All inputs are required" });
     }
+
+
 
     //create new pet
     const newPet = new petSchema({
@@ -218,6 +221,27 @@ exports.addNewPet = async (req, res) => {
             res.status(400).json({ message: err })
         })
 
+}
+
+
+exports.getPetById = async (req, res) => {
+
+    //get pet id
+
+    const id = req.params.id;
+    const pet = await petSchema.findOne({ _id: id })
+    if (pet) {
+        return res.status(200).json({ pet })
+    } else {
+        return res.status(400).json({ err })
+    }
+
+
+}
+
+
+exports.updatePet = async (req, res) => {
+    
 }
 
 exports.deletePet = async (req, res) => {

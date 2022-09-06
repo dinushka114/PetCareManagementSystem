@@ -29,6 +29,8 @@ router.delete("/delete-pet/:id/:owner_id" , petOwnerController.deletePet);
 
 router.get("/pets-by-owner/:owner_id" , petOwnerController.getPetsByOwner)
 
+router.get("/get-pet/:id" , petOwnerController.getPetById)
+
 router.put("/update-profile/:id" , upload.single('image') , petOwnerController.updateProfile);
 
 
