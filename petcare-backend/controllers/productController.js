@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 //const { default: Product } = require("../../petcare-frontend/src/component/Home/Product");
+//const { default: Product } = require("../../petcare-frontend/src/component/Home/Product");
 const productSchema = require("../models/productModel");
 
 
@@ -60,6 +61,7 @@ exports.deleteProduct = (req,res)=>{
 
 exports.getProduct = (req,res)=>{
 
+    //const productCount = await Product.countDocuments();
     let products = productSchema.find({} , function(err , result){
         if(err){
             res.json({msg:err})
