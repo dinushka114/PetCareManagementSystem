@@ -2,7 +2,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const petOwnerSchama = require("../models/pet-owner");
 const petSchema = require("../models/pet");
-const { default: mongoose } = require("mongoose");
+const appointmentSchema = require("../models/appointment")
+const mongoose = require("mongoose");
 const e = require("express");
 
 exports.register = async (req, res) => {
@@ -182,9 +183,9 @@ exports.addNewPet = async (req, res) => {
     const { petName, breed, age } = req.body;
 
     //validate age
-    if (!isNaN(age)) {
-        return res.status(400).send({ message: "Age must be a number" });
-    }
+    // if (!isNaN(age)) {
+    //     return res.status(400).send({ message: "Age must be a number" });
+    // }
 
     //validate inputs
     if (!(petName && breed && age)) {
@@ -241,7 +242,7 @@ exports.getPetById = async (req, res) => {
 
 
 exports.updatePet = async (req, res) => {
-    
+
 }
 
 exports.deletePet = async (req, res) => {
@@ -275,5 +276,57 @@ exports.deletePet = async (req, res) => {
     } else {
         return res.status(400).json({ message: "Pet does not exsists" })
     }
+
+}
+
+exports.makeAppointment = async (req, res) => {
+    //get owner id
+    const id = req.params.id;
+
+    //get data from request body
+    const { pet, service, date, time } = req.body;
+
+
+    //validate inputs
+    if (!(pet && service && date && time)) {
+        return res.status(400).json({ message: "all fields are required" })
+    }
+
+    const appointment = new appointmentSchema({
+        petOwner: mongoose.Types.ObjectId(id),
+        petName: mongoose.Types.ObjectId(pet),
+        service: mongoose.Types.ObjectId(service),
+        date: date,
+        time: time
+    })
+
+    await appointment.save()
+
+        .then(result => {
+            return res.status(200).json({ message: "Appointment succeded" })
+        })
+
+        .catch(err => {
+            console.log(err)
+            return res.status(400).json({ message: "somwthing went wrong", err: err })
+        })
+
+
+}
+
+exports.getMyAppointments = async (req, res) => {
+    //get owner id
+    const id = req.params.id;
+
+    await appointmentSchema.find({ petOwner: id }).populate('service').populate('petName')
+
+        //handle response
+        .then(result => {
+            res.status(200).json({ result: result })
+        })
+
+        .catch(err => {
+            res.status(400).json({ message: "Error" })
+        })
 
 }

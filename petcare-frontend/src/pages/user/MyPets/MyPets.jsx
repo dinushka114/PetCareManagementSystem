@@ -18,24 +18,24 @@ const MyPets = () => {
     }
 
     const deletePet = async (pet_id) => {
-        if(window.confirm("Are you sure?")){
+        if (window.confirm("Are you sure?")) {
             await axios.delete("http://localhost:3000/pet-owner/delete-pet/" + pet_id + "/" + id)
-            .then(res => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'done',
-                    text: `${res.data.message}`,
+                .then(res => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'done',
+                        text: `${res.data.message}`,
+                    })
+                    getPets(id);
                 })
-                getPets(id);
-            })
 
-            .catch(err=>{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'oops',
-                    text: `${err.response.data.message}`,
-                  })
-            })
+                .catch(err => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'oops',
+                        text: `${err.response.data.message}`,
+                    })
+                })
         }
     }
 
@@ -67,10 +67,10 @@ const MyPets = () => {
                 </thead>
                 <tbody>
                     {
-                        pets.map(pet => {
+                        pets.map((pet, index) => {
                             return (
                                 <tr key={pet._id}>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{index + 1}</th>
                                     <td>{pet.petName}</td>
                                     <td>{pet.breed}</td>
                                     <td>{pet.age}</td>

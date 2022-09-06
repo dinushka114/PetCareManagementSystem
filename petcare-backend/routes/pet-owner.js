@@ -33,6 +33,8 @@ router.get("/get-pet/:id" , petOwnerController.getPetById)
 
 router.put("/update-profile/:id" , upload.single('image') , petOwnerController.updateProfile);
 
+router.post("/new-appointment/:id" , petOwnerController.makeAppointment)
 
+router.get("/my-appointments/:id" , petOwnerController.getMyAppointments)
 
 module.exports = router;

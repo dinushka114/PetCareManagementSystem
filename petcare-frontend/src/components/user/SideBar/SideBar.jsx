@@ -10,11 +10,12 @@ const SideBar = () => {
 
 
 
-        <Link style={{ textDecoration: 'none' }} to={'/dashboard/profile'}><a className="list-group-item list-group-item-action list-group-item-light p-3">Profile</a></Link>
+        <Link style={{ textDecoration: 'none' }} to={'/dashboard/profile'}><a className="list-group-item list-group-item-action list-group-item-light p-3">My Profile</a></Link>
 
 
 
         <Link style={{ textDecoration: 'none' }} to={'/dashboard/new-appointment'}><a className="list-group-item list-group-item-action list-group-item-light p-3">Add New Appointment</a></Link>
+        <Link style={{ textDecoration: 'none' }} to={'/dashboard/my-appointments'}><a className="list-group-item list-group-item-action list-group-item-light p-3">My Appointments</a></Link>
         <Link style={{ textDecoration: 'none' }} to={'/dashboard/pets'}><a className="list-group-item list-group-item-action list-group-item-light p-3">My Pets</a></Link>
 
         {/* <a className="list-group-item list-group-item-action list-group-item-light p-3" href="/dashboard/my-appointments">My Appointments</a>
