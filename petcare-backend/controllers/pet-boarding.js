@@ -4,18 +4,29 @@ const boardingSchema = require("../models/boarding");
 
 exports.addNewBoarding = async(req,res)=>{
 
+    const url = "http://localhost:3000/uploads/"
+
+    //check if the file is there
+    if(!req.file){
+        return res.status(400).send({ message: 'Pleade upload a boarding image'});
+    }
+
+    //create boarding url
+    const imageUrl = url + req.file.originalname;
+
    //get boarding details
-   const {boardingName , boardingImage , boardingemail, boardingaddress, boardingphone, openHoursStart,openHoursEnd} = req.body;
+   const {boardingName,  boardingemail, boardingaddress, boardingphone, openHoursStart,openHoursEnd} = req.body;
 
    //validate inputs
-   if (!(boardingName && boardingImage && boardingemail && boardingaddress && boardingphone && openHoursStart && openHoursEnd)) {
-    res.status(400).send({ message: "All inputs are required" });
-   }
+    if (!(boardingName  && boardingemail && boardingaddress && boardingphone && openHoursStart && openHoursEnd)) {
+        console.log(req.body)
+     return res.status(400).send({ message: "All inputs are required" });
+    }
 
    //create new boarding
    const newBoarding = new boardingSchema({
        boardingName:boardingName,
-       boardingImage:boardingImage,
+       boardingImage:imageUrl,
        boardingemail:boardingemail,
        boardingaddress:boardingaddress,
        boardingphone:boardingphone,
@@ -28,10 +39,10 @@ exports.addNewBoarding = async(req,res)=>{
 
    //handle http responses
    .then(result=>{
-       res.status(201).json({message:"New boarding added successfully!!"})
+       return res.status(201).json({message:"New boarding added successfully!!"})
    })
    .catch(err=>{
-       res.status(400).json({message:err})
+       return res.status(400).json({message:err})
    })
 
 }
@@ -79,17 +90,41 @@ exports.getOneBoarding = (req,res)=>{
 })
 }
 
-exports.updateBoarding =(req,res) =>{
+/*exports.updateBoarding = async(req,res) =>{
 
     //get baording id
     const boarding_id = req.params.id;
-    try{
-        const boardings = boardingSchema.findOne({boarding_id});
-        Object.assign(boardings, req.body);
-        boardings.save();
-        res.send({data : boardings});
-    } catch{
-        res.status(404).send({error:"Boarding not found"});
-    } 
-}
+
+   //get boarding details
+   const {boardingName , boardingImage , boardingemail, boardingaddress, boardingphone, openHoursStart,openHoursEnd} = req.body;
+
+   //validate inputs
+   if (!(boardingName && boardingImage && boardingemail && boardingaddress && boardingphone && openHoursStart && openHoursEnd)) {
+    res.status(400).send({ message: "All inputs are required" });
+   }
+
+    //check boarding exists in database
+    const isboarding = await boardingSchema.findOne({ _id:boarding_id });
+
+    //handle http requests
+    if(isboarding){
+        boardingSchema.updateOne({ _id:boarding_id }, {
+            boardingName:boardingName,
+            boardingImage:boardingImage,
+            boardingemail:boardingemail,
+            boardingaddress:boardingaddress,
+            boardingphone:boardingphone,
+            openHoursStart:openHoursStart,
+            openHoursEnd:openHoursEnd
+        }, function (err, result) {
+            if (result) {
+                return res.status(200).json({ message: "boarding updated successfully!!" })
+            } else {
+                return res.status(400).json({ message: "something went wrong" })
+            }
+        })
+    }else{
+        return res.status(400).json({ message: "Pet boarding does not exsists!!" })
+    }
+}*/
 

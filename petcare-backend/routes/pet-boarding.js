@@ -16,10 +16,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/add/",Controller.addNewBoarding);
+router.post("/add/", upload.single('boardingImage'), Controller.addNewBoarding);
 router.delete("/delete/:id",Controller.deleteBoarding);
 router.get("/get/",Controller.getBoarding);
 router.get("/get/:id",Controller.getOneBoarding);
-router.put("/update/:id",Controller.updateBoarding)
+//router.put("/update/:id",Controller.updateBoarding)
 
 module.exports = router;
