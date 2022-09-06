@@ -7,16 +7,6 @@ const productSchema = require("../models/productModel");
 
 exports.addNewProduct = async(req,res)=>{
 
-    //const url = "http://localhost:3000/uploads/"
-
-   //check files of request
-   //if(!req.file){
-   //     return res.status(400).send({message:'Please upload a file'});
-   //} 
-
-   //create profile image url
-   //const imageUrl = url + req.file.originalname;
-
    //get product details
    const {productName , productImage , stocks , price , description} = req.body;
 
@@ -37,8 +27,7 @@ exports.addNewProduct = async(req,res)=>{
    //save new product
    await newProduct.save()
 
-   //save pushed products
-   //await serviceRelated.save()
+   
 
    //handle http responses
    .then(result=>{
@@ -95,23 +84,7 @@ exports.getOneProduct = (req,res)=>{
 })
 }
 
-exports.getAllProducts = catchAsyncErrors(async (req, res) => {
-    const resultPerPage = 8;
-    const productCount = await Product.countDocuments();
 
-    const apiFeature = new ApiFeatures(Product.find(), req.query)
-        .search()
-        .filter()
-        .pagination(resultPerPage);
-    
-    const products = await apiFeature.query;
-
-    res.status(200).json({
-        success: true,
-        products,
-        productCount,
-    });
-});
 
 
 
