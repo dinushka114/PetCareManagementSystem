@@ -90,16 +90,26 @@ exports.getOneBoarding = (req,res)=>{
 })
 }
 
-/*exports.updateBoarding = async(req,res) =>{
+exports.updateBoarding = async(req,res) =>{
+
+    const url = "http://localhost:3000/uploads/"
 
     //get baording id
     const boarding_id = req.params.id;
 
+     //check if the file is there
+     if(!req.file){
+        return res.status(400).send({ message: 'Pleade upload a boarding image'});
+    }
+
+     //create boarding url
+     const imageUrl = url + req.file.originalname;
+
    //get boarding details
-   const {boardingName , boardingImage , boardingemail, boardingaddress, boardingphone, openHoursStart,openHoursEnd} = req.body;
+   const {boardingName , boardingemail, boardingaddress, boardingphone, openHoursStart,openHoursEnd} = req.body;
 
    //validate inputs
-   if (!(boardingName && boardingImage && boardingemail && boardingaddress && boardingphone && openHoursStart && openHoursEnd)) {
+   if (!(boardingName && boardingemail && boardingaddress && boardingphone && openHoursStart && openHoursEnd)) {
     res.status(400).send({ message: "All inputs are required" });
    }
 
@@ -110,7 +120,7 @@ exports.getOneBoarding = (req,res)=>{
     if(isboarding){
         boardingSchema.updateOne({ _id:boarding_id }, {
             boardingName:boardingName,
-            boardingImage:boardingImage,
+            boardingImage:imageUrl,
             boardingemail:boardingemail,
             boardingaddress:boardingaddress,
             boardingphone:boardingphone,
@@ -126,5 +136,5 @@ exports.getOneBoarding = (req,res)=>{
     }else{
         return res.status(400).json({ message: "Pet boarding does not exsists!!" })
     }
-}*/
+}
 

@@ -56,8 +56,8 @@ const Report =() =>{
                     <th>Email</th>
                     <th>City</th>
                     <th>Phone No</th>
-                    <th>Open Hours Start</th>
-                    <th>Open Hours End</th>
+                    <th>Opening</th>
+                    <th>Closing</th>
                   </tr>
                 </thead>
                 <tbody>
