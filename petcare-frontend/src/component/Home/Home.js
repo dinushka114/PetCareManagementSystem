@@ -3,9 +3,9 @@ import Footer from '../layout/Footer/Footer'
 import Header from '../layout/Header/Header'
 import "./Home.css"
 import Product from './Product.js';
-import MetaData from '../layout/MetaData';
-import { getProduct } from '../../actions/productAction';
-import { useSelector, useDispatch } from 'react-redux';
+//import MetaData from '../layout/MetaData';
+//import { getProduct } from '../../actions/productAction';
+//import { useSelector, useDispatch } from 'react-redux';
 
 const product = {
     name: "Dog Grooming Brush",
@@ -17,15 +17,9 @@ const product = {
 
 const Home = () => {
 
-    const dispatch = useDispatch();
+    
 
-    const { loading, error, products, productsCount } = useSelector(
-        (state) => state.products
-    );
-
-    useEffect(() => {
-        dispatch(getProduct());
-    }, [dispatch]);
+    
 
   return ( 
     <div>
@@ -34,7 +28,7 @@ const Home = () => {
         <Fragment> 
             
 
-            <MetaData title = "PAWELL'S PET PRODUCTS" />
+            
 
         <div className = "banner">
             <p> Welcome to Pawell's Pet Products </p>
