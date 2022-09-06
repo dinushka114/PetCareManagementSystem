@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3001
 
 const indexRoutes = require("./routes/index");
 const petOwnerRoutes = require("./routes/pet-owner")
+const serviceRoutes = require("./routes/pet-service")
 
 const app = express();
 
@@ -20,8 +21,8 @@ app.use(cors())
 db_connection()
 
 app.use("/" , indexRoutes)
-app.use("/pet-owner"  ,petOwnerRoutes) 
-
+app.use("/pet-service" ,serviceRoutes)
+app.use("/pet-owner" , petOwnerRoutes)
 
 app.listen(PORT , ()=>{
     console.log(`Server is running on port ${PORT}`)

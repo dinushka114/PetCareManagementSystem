@@ -12,5 +12,4 @@ const db_connection = async()=>{
         console.log("Database connection error")
     })
 }
-
 module.exports = db_connection;

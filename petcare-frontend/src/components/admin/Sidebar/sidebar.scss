@@ -1,0 +1,111 @@
+.sidebar {
+    width: 25%;
+    border-right: 0.5px solid rgb(230, 227, 227);
+    min-height: 100vh;
+    min-width: 30vh;
+    background-color: #eeeeee;
+    
+    
+  
+    .top {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+  
+      .logo {
+        
+        font-weight: bold;
+        color: #f59f00;
+        margin-top:12px;
+        text-align: center;
+        font-size: 20px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+       
+    }
+    }
+  
+    hr {
+      height: 0;
+      border: 0.5px solid rgb(230, 227, 227);
+    }
+  
+    .center {
+      padding-left: 10px;
+  
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+  
+        .title {
+          font-size: 12px;
+          font-weight: bold;
+          color: rgb(151, 190, 8);
+          margin-top: 15px;
+          margin-bottom: 5px;
+          margin-left: 10px;
+        }
+
+        .bottom-title {
+          font-size: 12px;
+          font-weight: bold;
+          color: #999;
+          margin-top: 230px;
+          margin-bottom: 5px;
+          margin-left: 10px;
+        }
+  
+        li {
+          display: flex;
+          align-items: center;
+          padding: 8px;
+          cursor: pointer;
+  
+          &:hover {
+            background-color: #ffffff;
+            margin: 3px;
+          }
+  
+          .icon {
+            font-size: 30px;
+            color: #0dc506;
+            margin-left: 10px;
+          }
+  
+          span{
+              font-size: 15px;
+              font-weight: 600;
+              color:  rgb(99, 177, 35);;
+              margin-left: 10px;
+          }
+        }
+      }
+    }
+  
+    .bottom{
+        display: flex;
+        align-items: center;
+        margin: 10px;
+  
+        .colorOption{
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid #7451f8;
+            cursor: pointer;
+            margin: 5px;
+  
+            &:nth-child(1){
+                background-color: whitesmoke;
+            }
+            &:nth-child(2){
+                background-color: #333;
+            }
+            &:nth-child(3){
+                background-color: darkblue;
+            }
+        }
+    }
+  }
