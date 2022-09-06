@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { default: Product } = require("../../petcare-frontend/src/component/Home/Product");
+//const { default: Product } = require("../../petcare-frontend/src/component/Home/Product");
 const productSchema = require("../models/productModel");
 
 
