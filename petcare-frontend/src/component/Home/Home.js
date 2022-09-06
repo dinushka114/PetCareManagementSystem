@@ -24,51 +24,64 @@ const Home = () => {
 
     const getProductData = () => {
         axios.get('http://localhost:3000/productRoute/get-product')
-        .then(res => {
-            const allProductData = res.data.result;
-            setProductData(allProductData)
-        })
+            .then(res => {
+                const allProductData = res.data.result;
+                setProductData(allProductData)
+            })
     }
 
     useEffect(() => {
         getProductData()
     }, []);
 
-    
 
 
 
 
 
-    return ( 
-    <div>
-        <Header />
+
+    return (
+        <div>
+            <Header />
+
+            <MetaData title="PAWELL'S PET PRODUCTS" />
+            <div className="banner">
+                <p> Welcome to Pawell's Pet Products </p>
+                <h1> FIND AMAZING PRODUCTS BELOW </h1>
+                <a href="#container">
+                    <button>
+                        Scroll
+                    </button>
+                </a>
+            </div>
+
+            <h2 className = "homeHeading"> Featured Products </h2> 
+
+            <Cards>
+                <CardMedia>
+                    {
+                        productData.map((products) => {
+                            return (
+                                <div className='card' id='container'>
+                                    <div className='card-img-top' src={products.productImage} div/>
+                                    <div className='container2'> {products.productName} </div>
+                                    <div className='container2'> {products.price} </div>
+                                    <center><button onClick={() => { loadData(products._id) }} className='view-button'> View More </button></center>
+                                </div>
+                            )
+                        })
+                    }
 
 
-        <Cards> 
-            <CardMedia>
-                {
-                    productData.map((products) => {
-                        return(
-                            <div className = 'card'>
-                               <div className = 'card-img-top' src = {products.productImage} />
-                               <div className = 'container'> {products.productName} </div>
-                               <button onClick = {()=>{loadData(products._id)}} className='view-button'> View More </button>
-                            </div>
-                        )
-                    })
-                }
-            
-
-           
-
-        </CardMedia>
-        </Cards>
 
 
-        <Footer />
-    </div>
-  );
+                </CardMedia>
+            </Cards>
+
+
+            <Footer />
+        </div>
+    );
 };
 
 

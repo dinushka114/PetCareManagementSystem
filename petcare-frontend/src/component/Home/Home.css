@@ -101,7 +101,7 @@
     font-family: "Roboto";
     font-size: 1.2vmax;
     margin: 1vmax 0.5vmax;
-    margin-bottom: 0;
+    margin-bottom: 10;
   }
   
   .productCard > span {
@@ -136,3 +136,65 @@
       font: 300 1vmax "Roboto";
     }
   }
+
+  .card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.8s;
+    width: 20%;
+    float: left;
+    margin: 30px;
+    cursor: pointer;
+
+    
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transform: scale(1.05);
+    transition: transform .2s;
+  }
+
+  .container2 {
+    padding: 2px 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color:rgb(61, 61, 135);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 300;
+    
+  }
+
+
+
+.view-button {
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  height: 35px;
+  line-height: 35px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 35%;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow .2s;
+}
+
+.view-button:hover {
+  box-shadow: rgba(12, 6, 3, 0.5) 0 3px 8px;
+}
