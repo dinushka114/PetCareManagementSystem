@@ -1,12 +1,10 @@
 import React from 'react';
 import './insert.css';
 import image from '../../../images/update.jpg';
-import { Component } from 'react';
 
-export default class insertBoardingPlaces extends Component{
-    render(){
+const insertBoardingPlaces = () =>{
+
         return (
-            
             <div className="home">
             <div className="homeContainer">
                 <h1>Update Pet Boarding Places</h1>
@@ -44,7 +42,7 @@ export default class insertBoardingPlaces extends Component{
                             </div>
                             <div className='col-sm-6'>
                                 <div className="form-group">
-                                    <label htmlFor="boardingaddress">Pet boarding place address</label>
+                                    <label htmlFor="boardingaddress">Pet boarding place city</label>
                                     <input  name="boardingaddress" id=""  cols="10" rows="4" className='form-control'  type="text" required></input>
                                     <p className="text-danger p-1">   
                                     </p>
@@ -87,5 +85,6 @@ export default class insertBoardingPlaces extends Component{
             </div>
         </div>
         )
-    }
 }
+
+export default insertBoardingPlaces;

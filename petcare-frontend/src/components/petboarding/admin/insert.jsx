@@ -14,8 +14,13 @@ const InsertBoardingPlaces = () => {
     const [boardingphone,setboardingphone] = useState("");
     const [openHoursStart,setopenHoursStart] = useState("");
     const [openHoursEnd,setopenHoursEnd] = useState("");
+    const [selectedImage , setSelectedImage] = useState(null);
 
     const navigate = useNavigate();
+
+    const handleImageSelect = (event)=>{
+        setSelectedImage(event.target.files[0])
+    }
 
     function sendBoarding(e){
         e.preventDefault();
@@ -30,11 +35,24 @@ const InsertBoardingPlaces = () => {
             openHoursEnd
         }
 
-        axios.post("http://localhost:3000/pet-boarding/add",newBoarding).then(()=>{
+        const formData = new FormData();
+        formData.append('boardingName' , boardingName)
+        formData.append('boardingImage' , selectedImage)
+        formData.append('boardingemail' , boardingemail)
+        formData.append('boardingaddress' , boardingaddress)
+        formData.append('boardingphone' , boardingphone)
+        formData.append('openHoursStart' , openHoursStart)
+        formData.append('openHoursEnd' , openHoursEnd)
+        
+        console.log(formData)
+
+
+        axios.post("http://localhost:3000/pet-boarding/add",formData).then(()=>{
             Swal.fire("Boarding added");
             navigate('/');
         }).catch((err)=>{
-            alert(err)
+            alert(err);
+            console.log(err);
         })    
     }
 
@@ -43,7 +61,7 @@ const InsertBoardingPlaces = () => {
     <div className="home">
     <div className="homeContainer">
         <h1>Add New Pet Boarding Places</h1>
-            <form className='border border-success rounded' onSubmit={sendBoarding}>
+            <form className='border border-success rounded' encType='multipart/form-data' onSubmit={sendBoarding}>
                 <div className='p-4'>
                     <div className='col-sm-6'>
                         <div className="form-group">
@@ -53,9 +71,6 @@ const InsertBoardingPlaces = () => {
                                 onChange={(e)=>{
                                     setboardingName(e.target.value);
                                 }}/>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
                         </div>
                     </div>
                     
@@ -64,10 +79,8 @@ const InsertBoardingPlaces = () => {
                         <div className="form-group">
                             <div className="form-group">
                                 <label htmlFor="boardingImage">Pet boarding place image</label>
-                                <input type='file' accept="image/png, image/jpeg" name="boardingImage" id="boardingImage"  cols="10" rows="4" className='form-control'
-                                    onChange={(e)=>{
-                                        setboardingImage(e.target.value);
-                                    }}/>
+                                <input type='file' name="boardingImage" id="boardingImage"  cols="10" rows="4" className='form-control'
+                                    onChange={handleImageSelect}/>
                             </div>
                         </div>
                     </div>
@@ -75,7 +88,7 @@ const InsertBoardingPlaces = () => {
                         <div className="form-group">
                             <label htmlFor="boardingemail">Pet boarding place email</label>
                             <input  name="boardingemail" id="boardingemail"  cols="10" rows="4" className='form-control' 
-                                type="email" required
+                                type="email" required placeholder="petcare@gmail.com"
                                 onChange={(e)=>{
                                     setboardingemail(e.target.value);
                                 }}></input>
@@ -83,9 +96,9 @@ const InsertBoardingPlaces = () => {
                     </div>
                     <div className='col-sm-6'>
                         <div className="form-group">
-                            <label htmlFor="boardingaddress">Pet boarding place address</label>
+                            <label htmlFor="boardingaddress">Pet boarding place city</label>
                             <input  name="boardingaddress" id="boardingaddress"  cols="10" rows="4" className='form-control'
-                                type="text" required
+                                type="text" required placeholder="Nugegoda"
                             onChange={(e)=>{
                                 setboardingaddress(e.target.value);
                             }}></input>
@@ -95,7 +108,7 @@ const InsertBoardingPlaces = () => {
                         <div className="form-group">
                             <label htmlFor="boardingphone">Pet boarding place phone no</label>
                             <input type="text" name="boardingphone" id="boardingphone" cols="10" rows="4" className='form-control'
-                                pattern="[0][0-9]{9}" required
+                                pattern="[0][0-9]{9}" required placeholder="0110987654"
                             onChange={(e)=>{
                                 setboardingphone(e.target.value);
                             }}/>
