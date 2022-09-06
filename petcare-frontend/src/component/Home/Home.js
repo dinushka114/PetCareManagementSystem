@@ -3,6 +3,7 @@ import Footer from '../layout/Footer/Footer'
 import Header from '../layout/Header/Header'
 import "./Home.css"
 import Product from './Product.js';
+import MetaData from '../layout/MetaData';
 
 const product = {
     name: "Dog Grooming Brush",
@@ -18,6 +19,9 @@ const Home = () => {
         <Header />
 
         <Fragment> 
+
+            <MetaData title = "PAWELL'S PET PRODUCTS" />
+
         <div className = "banner">
             <p> Welcome to Pawell's Pet Products </p>
             <h1> FIND AMAZING PRODUCTS BELOW </h1>
