@@ -1,59 +1,58 @@
-import './sidebar.scss'
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import LogoutIcon from '@mui/icons-material/Logout';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import React from "react";
+import "./sidebar.css";
+import logo from "../../images/logo.jpg";
 import { Link } from "react-router-dom";
+import { TreeView, TreeItem } from "@material-ui/lab";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import PostAddIcon from "@material-ui/icons/PostAdd";
+import AddIcon from "@material-ui/icons/Add";
+import ImportExportIcon from "@material-ui/icons/ImportExport";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import PeopleIcon from "@material-ui/icons/People";
+import RateReviewIcon from "@material-ui/icons/RateReview";
 
 const Sidebar = () => {
-  return (
-<div className="sidebar">
-        <div className="top">
-            <span className="logo">Pet Accessories</span>
-        </div>
-        <hr />
-        <div className="center">
-            <ul>
-                <p className='title'>MAIN</p>
-                <li>
-                    <DashboardIcon className='icon'/>
-                    <Link to={"/"} style={{ textDecoration: "none" }}>
-                    <span>Dashboard</span>
-                    </Link>
-                </li>
-                <p className='title'>PRODUCTS</p>
-                <li>
-                    <AccountCircleIcon className='icon'/>
-                    <Link to={"/get-service"} style={{ textDecoration: "none" }}>
-                    <span>ALL</span>
-                    </Link>
-                </li>
-                <li>
-                    <AddCircleIcon className='icon'/>
-                    <Link to={"/add-service"} style={{ textDecoration: "none" }}>
-                    <span>CREATE</span>
-                    </Link>
-                </li>
-                <p className='title'>REPORTS</p>
-                <li>
-                    <AssessmentIcon className='icon'/>
-                    <Link to={"/transport-manage"} style={{ textDecoration: "none" }}/>
-                    <span>Report</span>
-                </li>
-                <p className='bottom-title'>LOGOUT</p>
-                <li>
-                    <LogoutIcon className='icon'/>
-                    <Link to={"/transport-manage"} style={{ textDecoration: "none" }}/>
-                    <span>Logout</span>
-                </li>
-            </ul>
-        </div>
-        <div className="bottom">
+    return (
+        <div className = "sidebar">
+            <Link to = "/">
+                <img src = {logo} alt='petproducts' /> 
+            </Link>
 
+            <Link to='/admin/dashboard'>
+                <p>
+                    <DashboardIcon /> Dashboard
+                </p>
+            </Link>
+
+            <Link to='/admin/all-products'>
+                <p>
+                    <PostAddIcon /> All 
+                </p>
+            </Link>
+            
+            <Link to='/admin/add-product'>
+                <p>
+                    <AddIcon /> Create
+                </p>
+            </Link>
+
+            <Link to='/admin/report'>
+                <p>
+                    <RateReviewIcon /> Report
+                </p>
+            </Link>
+        
+            
+          
         </div>
-    </div>
-  )
-}
+    );
+};
+        
+        
+            
+                
+                
+                    
 
 export default Sidebar;
