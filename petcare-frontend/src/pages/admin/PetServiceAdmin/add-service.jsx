@@ -17,6 +17,10 @@ export default function AddService(){
     const [openHoursEnd,setopenHoursEnd] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
 
+    const handleSearchArea = (e) =>{
+        console.log(e.target.value);
+      }
+
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0])
       }
@@ -49,6 +53,8 @@ export default function AddService(){
         }).catch((err)=>{
             console.log(err)
         })
+
+
     }
 
     return (
@@ -118,6 +124,9 @@ export default function AddService(){
                             <div className='row'>
                                 <div className='col-sm-6'>
                                     <input type="submit" name='submit' className='btn btn-primary' />
+                                </div>
+                                <div className='col-sm-2'>
+                                    <input type="reset" name='Clear' value='Reset' className='btn btn-success'></input>
                                 </div>
                             </div>
                         </div>

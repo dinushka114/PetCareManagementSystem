@@ -80,18 +80,19 @@ exports.getService = (req,res)=>{
     })
 }
 
-exports.getOneService = (req,res)=>{
+exports.getOneService =(req,res)=>{
 
     //get service id
    const service_id = req.params.id;
 
-   const services = serviceSchema.findOne({service_id} , function(err , services){
+   const services = serviceSchema.findOne({_id:service_id} , function(err , services){
     if(err){
         res.json({"err":err})
     }else{
         res.json({"result":services})
     }
 })
+
 }
 
 

@@ -1,8 +1,8 @@
+import './view.scss'
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState, } from "react";
 import axios from 'axios';
-import './table.scss'
 import Sidebar from "../../../components/admin/Sidebar/sidebar";
 import { Link } from "react-router-dom"
 const Swal = require('sweetalert2')
@@ -37,17 +37,16 @@ const Viewservice = () => {
 
     return(
         <TableContainer component={Paper} className="table">
-     
         <table  className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">service_name</th>
-              <th scope="col">service_image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Service Image</th>
               <th scope="col">description</th>
-              <th scope="col">open_hours_start</th>
-              <th scope="col">open_hours_end</th>
-              <th scope="col">Update</th>
-              <th scope="col">Delete</th>
+              <th scope="col">Opening</th>
+              <th scope="col">Closing</th>
+              <th colSpan={2}>Action</th>
+
             </tr>
           </thead>
           <tbody>
@@ -56,8 +55,8 @@ const Viewservice = () => {
                 return (
                   <tr>
                     <td>{services.serviceName}</td>
-                    <td> <img src={services.serviceImage} alt="" className="imgwidth"/> </td>
-                    <td>{services.description}</td>
+                    <td className='widthimage'> <img src={services.serviceImage} alt="" className="imgwidth" /> </td>
+                    <td className="width">{services.description.substring(0,150)}</td>
                     <td>{services.openHoursStart}</td>
                     <td>{services.openHoursEnd}</td>
                     <td><button className="btn btn-warning">Update</button></td>

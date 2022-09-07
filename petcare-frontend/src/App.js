@@ -5,6 +5,7 @@ import UserHome from './pages/user/servicesHome';
 import ServiceHome from './pages/admin/PetServiceAdmin/service'
 import AddService from './pages/admin/PetServiceAdmin/addServiceHome'
 import Card from './components/user/Card/Card'
+import MoreService from './pages/user/moreService'
 
 
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/get-service" element={<ServiceHome/>} />
         <Route path="/add-service" element={<AddService/>} />
         <Route path="/card" element={<Card/>} />
+        <Route path="/:id" element={<MoreService/>}></Route>
       </Routes>
     </BrowserRouter>
   );
