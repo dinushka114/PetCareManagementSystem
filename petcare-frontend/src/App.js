@@ -8,7 +8,7 @@ import Home from './component/Home/Home';
 import ProductDetails from './component/Product/ProductDetails.js';
 import Dashboard from './component/admin/Dashboard.js';
 import ProductList from './component/admin/ProductList';
-
+import NewProduct from './component/admin/NewProduct';
 
 
 function App() {
@@ -28,6 +28,7 @@ React.useEffect(() => {
     <Route path = '/:id' element = {<ProductDetails />}></Route>
     <Route path = '/admin/dashboard' element = {<Dashboard />}></Route>
     <Route path="/admin/all-products" element={<ProductList/>}></Route>
+    <Route path="/admin/add-product" element={<NewProduct/>}></Route>
     </Routes>
    </Router>
   );
