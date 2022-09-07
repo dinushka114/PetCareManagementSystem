@@ -10,7 +10,7 @@ const Sidebar = () => {
   return (
 <div className="sidebar">
         <div className="top">
-            <span className="logo">Pet Services</span>
+            <span className="logo">Pet Accessories</span>
         </div>
         <hr />
         <div className="center">
@@ -22,17 +22,17 @@ const Sidebar = () => {
                     <span>Dashboard</span>
                     </Link>
                 </li>
-                <p className='title'>SERVICES</p>
+                <p className='title'>PRODUCTS</p>
                 <li>
                     <AccountCircleIcon className='icon'/>
                     <Link to={"/get-service"} style={{ textDecoration: "none" }}>
-                    <span>View Services</span>
+                    <span>ALL</span>
                     </Link>
                 </li>
                 <li>
                     <AddCircleIcon className='icon'/>
                     <Link to={"/add-service"} style={{ textDecoration: "none" }}>
-                    <span>Add Service</span>
+                    <span>CREATE</span>
                     </Link>
                 </li>
                 <p className='title'>REPORTS</p>
