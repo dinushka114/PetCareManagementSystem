@@ -14,7 +14,13 @@ const ProductDetails = () => {
 
     const { id } = useParams();
 
-    const [productData, setProductData] = useState();
+    const [productData, setProductData] = useState({
+        productName: "",
+        productImage: "",
+        stocks: "",
+        price: "",
+        description: "",
+    });
 
 
 
@@ -28,9 +34,15 @@ const ProductDetails = () => {
     const getProduct = async (id) => {
         await axios.get("http://localhost:3000/productRoute/get-product/" + id)
             .then(res => {
-                const allProductData = res.data.result;
-                setProductData(allProductData)
-                console.log(allProductData)
+                // const allProductData = res.data.result;
+                setProductData({
+                    productName:res.data.result.productName,
+                    productImage:res.data.result.productImage,
+                    stocks:res.data.result.stocks,
+                    price:res.data.result.price,
+                    description:res.data.result.description,
+                })
+   
                 // setProductData({productImage:allProductData.productImage, price:allProductData.price})
             })
 
@@ -62,7 +74,7 @@ const ProductDetails = () => {
 
 
 
-                                <img  src={"https://th.bing.com/th/id/OIP.fOVbrKrST7dbdVTRGUG0VAHaF7?pid=ImgDet&rs=1"} />
+                                <img  src={productData.productImage} />
 
 
                             
@@ -112,7 +124,7 @@ const ProductDetails = () => {
 
             </Fragment>
         </div>
-
+        
     );
 };
 

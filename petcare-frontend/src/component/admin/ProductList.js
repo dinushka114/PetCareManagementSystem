@@ -3,9 +3,8 @@ import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState, } from "react";
 import axios from 'axios';
-import Sidebar from "../../../components/admin/Sidebar/sidebar";
 import { Link } from "react-router-dom"
-const Swal = require('sweetalert2')
+// const Swal = require('sweetalert2')
 
 
 const ProductList = () => {
@@ -25,7 +24,7 @@ const ProductList = () => {
           axios.delete("http://localhost:3000/productRoute/delete-product/"+id)
           .then(res=>{
             if(res.status===200){
-              Swal.fire("Product Deleted")
+            //   Swal.fire("Product Deleted")
               getProductData()
             }
           })

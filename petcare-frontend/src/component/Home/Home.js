@@ -47,12 +47,11 @@ const Home = () => {
             <MetaData title="PAWELL'S PET PRODUCTS" />
             <div className="banner">
                 <p> Welcome to Pawell's Pet Products </p>
+                
                 <h1> FIND AMAZING PRODUCTS BELOW </h1>
-                <a href="#container">
-                    <button>
-                        Scroll
-                    </button>
-                </a>
+                
+                <center><button onClick={() => { loadData('/admin/dashboard') }} className='spclBtn'> * </button></center>
+                
             </div>
 
             <h2 className = "homeHeading"> BEST SELLING PRODUCTS </h2> 
@@ -62,7 +61,7 @@ const Home = () => {
                     {
                         productData.map((products) => {
                             return (
-                                <div className='card'>
+                                <div className='card' key={products._id}>
                                     <img className = 'card-img-top' src = {products.productImage} />
                                     <div className='container2'> {products.productName} </div>
                                     <div className='container2'> {products.price} </div>
