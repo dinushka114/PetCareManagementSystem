@@ -52,8 +52,8 @@ const Home = () =>{
     <h1>Pet Boarding Places Admin View</h1>
       <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded">
         <div className="row ">
-          <div className="input-group mb-3">
-            <input type='text' placeholder="Search by city" style={{width: '64%',borderRadius: '4px',border: '2px solid #ccc',height:'130%'}}
+          <div className="input-group mb-3" >
+            <input type='text' placeholder="Search by city.." style={{width: '74%',borderRadius: '4px',border: '2px solid #ccc',height:'130%'}}
               onChange={handleSearch} width='40%'/>
           </div>
           <div className="row">

@@ -56,12 +56,16 @@ const InsertBoardingPlaces = () => {
         })    
     }
 
+    const cancelBoarding = () =>{
+        document.getElementById("boardingForm").reset();
+    }
+
   return (
     
     <div className="home">
     <div className="homeContainer">
-        <h1>Add New Pet Boarding Places</h1>
-            <form className='border border-success rounded' encType='multipart/form-data' onSubmit={sendBoarding}>
+        <h1>Add New Pet Boarding Place</h1>
+            <form className='border border-secondary rounded' encType='multipart/form-data' id="boardingForm">
                 <div className='p-4'>
                     <div className='col-sm-6'>
                         <div className="form-group">
@@ -74,7 +78,7 @@ const InsertBoardingPlaces = () => {
                         </div>
                     </div>
                     
-                    <img src={image} alt='add' style={{width:'45%',float:'right'}}></img>
+                    <img src={image} alt='add' style={{width:'45%',float:'right', borderRadius: '10px'}}></img>
                     <div className='col-sm-6'>
                         <div className="form-group">
                             <div className="form-group">
@@ -115,7 +119,7 @@ const InsertBoardingPlaces = () => {
                         </div>
                     </div>
                     <div className='row'>
-                            <div className='col-sm-6'>
+                            <div className='col-sm-4'>
                                 <div className="form-group">
                                     <label htmlFor="openHours">Open hours</label>
                                     <input type='time' name="openHoursStart" id="openHoursStart" cols="10" rows="4" className='form-control' placeholder='Start Time'
@@ -124,7 +128,7 @@ const InsertBoardingPlaces = () => {
                                     }} />
                                 </div>
                             </div> 
-                            <div className='col-sm-5'>
+                            <div className='col-sm-4'>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputPassword1"></label>
                                     <input type='time' name="openHoursEnd" id="openHoursEnd" cols="10" rows="4" className='form-control' placeholder='End Time'
@@ -137,10 +141,12 @@ const InsertBoardingPlaces = () => {
                        <br/>
                        <div className='row'>
                                 <div className='col-sm-2'>
-                                    <input type="submit" name='Save' value='Save' className='btn btn-success'></input> 
+                                    <input type="submit" name='Save' value='Save' className='btn btn-success'
+                                    onClick={sendBoarding}></input> 
                                 </div>
                                 <div className='col-sm-2'>
-                                    <input type="submit" name='Clear' value='Clear' className='btn btn-danger' ></input>
+                                    <input type="submit" name='Clear' value='Clear' className='btn btn-danger'
+                                    onClick={cancelBoarding}></input>
                                 </div>
                         </div>
                 </div>

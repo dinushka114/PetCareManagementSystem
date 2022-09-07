@@ -86,12 +86,16 @@ const UpdateBoardingPlaces = () =>{
             })    
         }
 
+        const cancelBoarding = () =>{
+            document.getElementById("boardingForm").reset();
+        }
+
         return (
             <div className="home">
             <div className="homeContainer">
-                <h1>Update Pet Boarding Places</h1>
+                <h1>Update Pet Boarding Place</h1>
                 
-                    <form className='border border-success rounded' onSubmit={updateBoarding}>
+                    <form className='border border-secondary rounded' id="boardingForm">
                 
                         <div className='p-4'>
                             <div className='col-sm-6'>
@@ -104,13 +108,13 @@ const UpdateBoardingPlaces = () =>{
                                 </div>
                             </div>
                             
-                            <img src={image} alt='add' style={{width:'45%',float:'right'}}></img>
+                            <img src={image} alt='update' style={{width:'45%',float:'right', borderRadius: '10px'}}></img>
                             <div className='col-sm-6'>
                                 <div className="form-group">
                                     <div className="form-group">
-                                        <label htmlFor="boardingimage">Pet boarding place image</label>
+                                        <label htmlFor="boardingimage">Pet boarding place image</label><br/>
+                                        <img src={id ? boardingImage: null} style={{ width: '150px', height: '20%'}} alt='boarding'/> <br/><br/>
                                         <input type='file' name="boardingimage" id=""  cols="10" rows="4" className='form-control'
-                                        // defaultValue={id ? boarding.boardingImage : null}
                                         onChange={handleImageSelect}></input>
                                     </div>
                                 </div>
@@ -149,7 +153,7 @@ const UpdateBoardingPlaces = () =>{
                                 </div>
                             </div>
                             <div className='row'>
-                                    <div className='col-sm-6'>
+                                    <div className='col-sm-3'>
                                         <div className="form-group">
                                             <label htmlFor="openHours">Open hours</label>
                                             <input type='time' name="openHoursStart" id="openHoursStart" cols="10" rows="4" className='form-control' placeholder='Start Time'
@@ -159,7 +163,7 @@ const UpdateBoardingPlaces = () =>{
                                             }} />
                                         </div>
                                     </div> 
-                                    <div className='col-sm-5'>
+                                    <div className='col-sm-3'>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputPassword1"></label>
                                             <input type='time' name="openHoursEnd" id="openHoursEnd" cols="10" rows="4" className='form-control' placeholder='End Time'
@@ -172,11 +176,13 @@ const UpdateBoardingPlaces = () =>{
                                     </div>  
                             <br/>
                             <div className='row'>
-                                        <div className='col-sm-2'>
-                                            <input type="submit" name='Save' value='Update' className='btn btn-success'></input> 
+                                        <div className='col-sm-1'>
+                                            <input type="submit" name='Save' value='Update' className='btn btn-success'
+                                            onClick={updateBoarding}></input> 
                                         </div>
                                         <div className='col-sm-2'>
-                                            <input type="submit" name='Save' value='Clear' className='btn btn-danger' ></input>
+                                            <input type="submit" name='Save' value='Clear' className='btn btn-danger'
+                                            onClick={cancelBoarding}></input>
                                         </div>
                                 </div>
                         </div>
