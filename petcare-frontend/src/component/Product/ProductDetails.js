@@ -5,6 +5,7 @@ import { ThemeContext } from '@emotion/react';
 import { Button, CardContent, CardMedia, ownerDocument, TableContainer, useEventCallback } from '@mui/material';
 import Cards from '@mui/material/Card';
 import Paper from "@mui/material/Paper";
+import './ProductDetails.css';
 
 const ProductDetails = () => {
 
@@ -52,10 +53,9 @@ const ProductDetails = () => {
 
 
                     <div className='card'>
-                        <img className='card-img-top' src={productData.productImage} />
-                        <div>{productData.price}</div>
-                        <div className="container"></div>
-                        <button onClick={() => { loadData() }} className='view-button'>View More</button>
+                        <img className = 'card-img-top' src = {productData.productImage} />
+                        <div className='container2'> {productData.price} </div>
+                        <button onClick={() => { loadData() }} className='view-button'>ADD TO CART</button>
                     </div>
 
 
