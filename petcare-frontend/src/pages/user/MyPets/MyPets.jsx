@@ -6,13 +6,27 @@ import Swal from 'sweetalert2'
 const MyPets = () => {
 
     const [pets, setPets] = useState([])
+    const [filteredData, setFilteredData] = useState(pets);
+    const [isLoading, setIsLoading] = useState(false)
 
     const id = JSON.parse(localStorage.getItem("user"))._id;
 
+    const handleSearch = (e) => {
+        let value = e.target.value.toLowerCase();
+        let result = [];
+        result = pets.filter((data) => {
+            return data.petName.search(value) != -1;
+        });
+        setFilteredData(result);
+    }
+
     const getPets = async (id) => {
+        setIsLoading(true)
         await axios.get("http://localhost:3000/pet-owner/pets-by-owner/" + id)
             .then(res => {
                 setPets(res.data.pets)
+                setFilteredData(res.data.pets)
+                setIsLoading(false)
             })
 
     }
@@ -47,7 +61,7 @@ const MyPets = () => {
         <div className='container-fluid'>
             <div className='row'>
                 <div className='col-sm-4'>
-                    <input type="text" className='form-control w-100' placeholder='search pet' />
+                    <input type="text" onChange={handleSearch} className='form-control w-100' placeholder='search pet' />
                 </div>
                 <div className='col-sm-4' >
                     <Link style={{ textDecoration: 'none' }} to={"/dashboard/new-pet"}> <button className='btn btn-success'><i class="fa fa-plus-circle" aria-hidden="true"></i> Add new pet</button> </Link>
@@ -67,7 +81,7 @@ const MyPets = () => {
                 </thead>
                 <tbody>
                     {
-                        pets.map((pet, index) => {
+                        isLoading ? "Loading" : filteredData.map((pet, index) => {
                             return (
                                 <tr key={pet._id}>
                                     <th scope="row">{index + 1}</th>
@@ -80,6 +94,7 @@ const MyPets = () => {
                             )
                         })
                     }
+
                 </tbody>
             </table>
 

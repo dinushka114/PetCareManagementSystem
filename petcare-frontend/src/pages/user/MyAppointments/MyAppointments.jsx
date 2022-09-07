@@ -5,13 +5,18 @@ import { Link } from 'react-router-dom';
 const MyAppointments = () => {
 
     const [appointments, setAppointments] = useState([])
+    const [filteredData, setFilteredData] = useState(appointments);
+    const [isLoading, setIsLoading] = useState(false)
 
     const id = JSON.parse(localStorage.getItem("user"))._id;
 
     const getAppointments = async (id) => {
+        setIsLoading(true)
         await axios.get("http://localhost:3000/pet-owner/my-appointments/" + id)
             .then(result => {
                 setAppointments(result.data.result)
+                setFilteredData(result.data.result)
+                setIsLoading(false)
             })
     }
 
@@ -20,11 +25,22 @@ const MyAppointments = () => {
 
     }, [])
 
+
+    const handleSearch = (e) => {
+        let value = e.target.value.toLowerCase();
+        let result = [];
+        result = appointments.filter((data) => {
+            return (data.service.serviceName.search(value) != -1 || data.petName.petName.search(value) != -1);
+        });
+
+        setFilteredData(result);
+    }
+
     return (
         <div className='container-fluid'>
             <div className='row'>
                 <div className='col-sm-4'>
-                    <input type="text" className='form-control w-100' placeholder='search appointment' />
+                    <input type="text" onChange={handleSearch} className='form-control w-100' placeholder='search appointment' />
                 </div>
 
             </div>
@@ -43,7 +59,7 @@ const MyAppointments = () => {
                 </thead>
                 <tbody>
                     {
-                        appointments.map((appointment , index) => {
+                        isLoading ? "Loading" : filteredData.map((appointment, index) => {
                             return (
                                 <tr key={appointment._id}>
                                     <th scope="row">{index + 1}</th>
