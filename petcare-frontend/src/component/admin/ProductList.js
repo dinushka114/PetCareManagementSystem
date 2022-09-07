@@ -39,6 +39,7 @@ const ProductList = () => {
         <table  className="table table-striped">
           <thead>
             <tr>
+              <th scope="col">Product ID</th>
               <th scope="col">Product Name</th>
               <th scope="col">Stocks</th>
               <th scope="col">Price</th>
@@ -52,6 +53,7 @@ const ProductList = () => {
               productData.map((products) => {
                 return (
                   <tr>
+                    <td>{products._id}</td>
                     <td>{products.productName}</td>
                     <td>{products.stocks}</td>
                     <td>{products.price}</td>
