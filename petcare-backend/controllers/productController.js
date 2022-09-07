@@ -77,7 +77,7 @@ exports.getOneProduct = (req,res)=>{
     //get product id
    const product_id = req.params.id;
 
-   const products = productSchema.findOne({product_id} , function(err , products){
+   const products = productSchema.findOne({_id:product_id} , function(err , products){
     if(err){
         res.json({"err":err})
     }else{
