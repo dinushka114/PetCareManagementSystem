@@ -11,10 +11,13 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
+import Footer from '../layout/Footer/Footer'
+import Header from '../layout/Header/Header'
 
 const Sidebar = () => {
     return (
         <div className = "sidebar">
+            <Header/>
             <Link to = "/">
                 <img src = {logo} alt='petproducts' /> 
             </Link>
