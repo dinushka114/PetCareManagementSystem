@@ -81,11 +81,11 @@ exports.getOneBoarding = (req,res)=>{
     //get boarding id
    const boarding_id = req.params.id;
 
-   const boardings = boardingSchema.findOne({boarding_id} , function(err , services){
+   const boardings = boardingSchema.findOne({_id:boarding_id} , function(err , result){
     if(err){
         res.json({"err":err})
     }else{
-        res.json({"result":boardings})
+        res.json({"result":result})
     }
 })
 }

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 import './home.css';
 import axios from 'axios';
 const Swal = require('sweetalert2');
@@ -82,8 +83,13 @@ const Home = () =>{
                     <td>{boardings.boardingphone}</td>
                     <td>{boardings.openHoursStart}</td>
                     <td>{boardings.openHoursEnd}</td>
-                    <td><button onClick={() => window.location.href=`/update/${boardings._id}`}
-                      className="btn btn-success">Update</button></td>
+                    <td>
+                      
+                        <Link to={`/update/${boardings._id}`}>
+                        <button className="btn btn-success">Update</button>
+                        </Link>
+
+                    </td>
                     <td><button onClick={()=>deleteBoarding(boardings._id)} className="btn btn-danger">Delete</button></td>
                   </tr>
                 )
