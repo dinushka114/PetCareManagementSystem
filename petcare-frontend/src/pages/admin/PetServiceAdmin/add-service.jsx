@@ -17,6 +17,7 @@ export default function AddService(){
     const [openHoursEnd,setopenHoursEnd] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
 
+
     const handleSearchArea = (e) =>{
         console.log(e.target.value);
       }
@@ -56,6 +57,10 @@ export default function AddService(){
 
 
     }
+
+
+
+
 
     return (
         <div className="home">

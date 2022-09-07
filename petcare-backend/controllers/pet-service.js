@@ -95,5 +95,51 @@ exports.getOneService =(req,res)=>{
 
 }
 
+exports.updateService = async(req,res) =>{
+
+    const url = "http://localhost:3000/uploads/"
+
+    //get baording id
+    const service_id = req.params.id;
+
+     //check if the file is there
+     if(!req.file){
+        return res.status(400).send({ message: 'Pleade upload a service image'});
+    }
+
+     //create boarding url
+     const imageUrl = url + req.file.originalname;
+
+   //get boarding details
+   const {serviceName , description, contactNo, openHoursStart, openHoursEnd} = req.body;
+
+   //validate inputs
+   if (!(serviceName && description && contactNo && openHoursStart && openHoursEnd)) {
+    res.status(400).send({ message: "All inputs are required" });
+   }
+
+    //check boarding exists in database
+    const isservice = await serviceSchema.findOne({ _id:service_id });
+
+    //handle http requests
+    if(isservice){
+        serviceSchema.updateOne({ _id:service_id }, {
+            serviceName:serviceName,
+            serviceImage:imageUrl,
+            description:description,
+            contactNo:contactNo,
+            openHoursStart:openHoursStart,
+            openHoursEnd:openHoursEnd
+        }, function (err, result) {
+            if (result) {
+                return res.status(200).json({ message: "service updated successfully!!" })
+            } else {
+                return res.status(400).json({ message: "something went wrong" })
+            }
+        })
+    }else{
+        return res.status(400).json({ message: "Pet service does not exsists!!" })
+    }
 
 
+}

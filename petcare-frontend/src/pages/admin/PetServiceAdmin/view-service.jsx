@@ -3,19 +3,37 @@ import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState, } from "react";
 import axios from 'axios';
+import SearchIcon from '@mui/icons-material/Search';
 import Sidebar from "../../../components/admin/Sidebar/sidebar";
 import { Link } from "react-router-dom"
-const Swal = require('sweetalert2')
+const Swal = require('sweetalert2');
 
 
 const Viewservice = () => {
     const [serviceData,setServiceData] = useState([]);
+    const [filteredData, setFilteredData] = useState(serviceData);
+    const [isLoading, setIsLoading] = useState(false)
 
-    const getServiceData = () => {
-        axios.get('http://localhost:3000/pet-service/get-service')
+    const handleSearch = (e) => {
+      let value = e.target.value;
+      let result = [];
+      
+      result = serviceData.filter((data) => {
+          return data.serviceName.search(value) != -1;
+          
+      });
+      
+      setFilteredData(result);
+  }
+
+    const getServiceData = async () => {
+      setIsLoading(true)
+        await axios.get('http://localhost:3000/pet-service/get-service')
             .then(res => {
                 const allServiceData = res.data.result;
-                setServiceData(allServiceData)       
+                setServiceData(allServiceData)   
+                setFilteredData(res.data.result)
+                setIsLoading(false)
             })
     }
 
@@ -32,14 +50,26 @@ const Viewservice = () => {
       }
 
     useEffect(()=>{
-        getServiceData()
+        getServiceData();
     },[]);
 
+
     return(
+      
         <TableContainer component={Paper} className="table">
+          <div className='border'>
+          <SearchIcon style={{marginLeft:"10px"}}></SearchIcon>
+          <input  className='no-outline' type="text" onChange={handleSearch}  placeholder='Search service'>
+          </input>
+          </div>
+          
+
+       
+       
         <table  className="table table-striped">
           <thead>
             <tr>
+              <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Service Image</th>
               <th scope="col">description</th>
@@ -51,9 +81,10 @@ const Viewservice = () => {
           </thead>
           <tbody>
             {
-              serviceData.map((services) => {
+               isLoading ? "Loading" : filteredData.map((services, index) => {
                 return (
-                  <tr>
+                  <tr key={services._id}>
+                    <th scope="row">{index + 1}</th>
                     <td>{services.serviceName}</td>
                     <td className='widthimage'> <img src={services.serviceImage} alt="" className="imgwidth" /> </td>
                     <td className="width">{services.description.substring(0,150)}</td>
