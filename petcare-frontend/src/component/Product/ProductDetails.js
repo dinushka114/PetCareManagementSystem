@@ -28,8 +28,7 @@ const ProductDetails = () => {
     //     //axios.get("http://localhost:3000/productRoute/get-product")
     //     window.location.href = `${id}`
     // }
-    //poddk inda amma katha krnwa balala ennam
-    //ha
+    
 
     const getProduct = async (id) => {
         await axios.get("http://localhost:3000/productRoute/get-product/" + id)
