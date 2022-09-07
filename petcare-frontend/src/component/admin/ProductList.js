@@ -4,7 +4,11 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState, } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom"
+import Sidebar from './Sidebar';
 // const Swal = require('sweetalert2')
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+
 
 
 const ProductList = () => {
@@ -35,8 +39,14 @@ const ProductList = () => {
     },[]);
 
     return(
+        <div className = "dashboard">
+            <Sidebar />
+         
         <TableContainer component={Paper} className="table">
-        <table  className="table table-striped">
+            <div className='productListContainer'>
+        <h1 id="productListHeading">ALL PRODUCTS</h1>
+        <table  className="table table-striped" id="products">
+            
           <thead>
             <tr>
               <th scope="col">Product ID</th>
@@ -58,15 +68,17 @@ const ProductList = () => {
                     <td>{products.stocks}</td>
                     <td>{products.price}</td>
                     <td className="width">{products.description.substring(0,150)}</td>
-                    <td><button className="btn btn-warning">Update</button></td>
-                    <td><button onClick={()=>deleteProduct(products._id)} className="btn btn-danger">Delete</button></td>
+                    <td><EditIcon className='edit' /></td> 
+                    <td><DeleteIcon className='delete' onClick={()=>deleteProduct(products._id)} /></td>
                   </tr>
                 )
               })
             }
           </tbody>
         </table>
+        </div>
       </TableContainer>
+      </div>
        
     );
 }

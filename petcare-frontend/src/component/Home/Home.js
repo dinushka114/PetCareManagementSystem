@@ -13,6 +13,7 @@ import { Button, CardContent, CardMedia, TableContainer, useEventCallback } from
 import CardHeader from '@mui/material/CardHeader';
 
 
+
 const Home = () => {
 
     const [productData, setProductData] = useState([]);
@@ -41,6 +42,7 @@ const Home = () => {
 
 
     return (
+        
         <div>
             <Header />
 
@@ -80,6 +82,7 @@ const Home = () => {
 
 
             <Footer />
+           
         </div>
     );
 };

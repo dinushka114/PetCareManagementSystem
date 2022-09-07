@@ -1,0 +1,130 @@
+#container{
+    width:60%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.table{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    float: right;
+}
+
+.table td {
+    border: 1px solid #ddd;
+    text-align: center;
+
+    
+}
+
+.table th {
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: rgb(170, 176, 227);
+
+    
+}
+
+.table tr:hover {background-color: rgb(233, 247, 241);}
+
+
+
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+
+  }
+
+  .table td{
+    text-align: justify;
+  }
+
+
+
+.centerhead{
+
+
+    margin-left: 20px;
+}
+
+.width{
+   width: 250px;
+}
+
+
+    .imgwidth{
+        
+        margin-right: 90px;
+
+
+    }
+
+    .widthimage{
+        margin-top: auto;
+        
+    }
+
+    .productListContainer {
+        width: 85%;
+        box-sizing: border-box;
+        background-color: rgb(255, 255, 255);
+        border-left: 1px solid rgba(0, 0, 0, 0.158);
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        
+        
+      }
+
+      #productListHeading {
+        font: 400 2rem "Roboto";
+        padding: 0.5vmax;
+        box-sizing: border-box;
+        color: rgba(0, 0, 0, 0.637);
+        transition: all 0.5s;
+        margin: 2rem;
+        text-align: center;
+      }
+
+      #products {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      #products td, #products th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      
+      #products tr:nth-child(even){background-color: #f2f2f2;}
+      
+      #products tr:hover {background-color: #ddd;}
+      
+      #products th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #093e8a;
+        color: white;
+      }
+
+      .edit {
+        color: #1e6bd8;
+        
+      }
+
+      .delete {
+        color: #e71b1b;
+        
+      }
+
+
+  
+
+
+
