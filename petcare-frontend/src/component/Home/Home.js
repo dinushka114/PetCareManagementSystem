@@ -55,15 +55,15 @@ const Home = () => {
                 </a>
             </div>
 
-            <h2 className = "homeHeading"> Featured Products </h2> 
+            <h2 className = "homeHeading"> BEST SELLING PRODUCTS </h2> 
 
             <Cards>
                 <CardMedia>
                     {
                         productData.map((products) => {
                             return (
-                                <div className='card' id='container'>
-                                    <div className='card-img-top' src={products.productImage} div/>
+                                <div className='card'>
+                                    <img className = 'card-img-top' src = {products.productImage} />
                                     <div className='container2'> {products.productName} </div>
                                     <div className='container2'> {products.price} </div>
                                     <center><button onClick={() => { loadData(products._id) }} className='view-button'> View More </button></center>
