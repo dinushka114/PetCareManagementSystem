@@ -40,11 +40,10 @@ const ProductList = () => {
         <table  className="table table-striped">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Service Image</th>
-              <th scope="col">description</th>
-              <th scope="col">Opening</th>
-              <th scope="col">Closing</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Stocks</th>
+              <th scope="col">Price</th>
+              <th scope="col">Description</th>
               <th colSpan={2}>Action</th>
 
             </tr>
@@ -55,10 +54,9 @@ const ProductList = () => {
                 return (
                   <tr>
                     <td>{products.productName}</td>
-                    <td className='widthimage'> <img src={products.productImage} alt="" className="imgwidth" /> </td>
-                    <td className="width">{products.description.substring(0,150)}</td>
                     <td>{products.stocks}</td>
                     <td>{products.price}</td>
+                    <td className="width">{products.description.substring(0,150)}</td>
                     <td><button className="btn btn-warning">Update</button></td>
                     <td><button onClick={()=>deleteProduct(products._id)} className="btn btn-danger">Delete</button></td>
                   </tr>
