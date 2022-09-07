@@ -53,6 +53,7 @@ const Home = () => {
                 <center><button onClick={() => { loadData('/admin/dashboard') }} className='spclBtn'> * </button></center>
                 
             </div>
+            hrine
 
             <h2 className = "homeHeading"> BEST SELLING PRODUCTS </h2> 
 

@@ -21,6 +21,7 @@ router.post("/add-product/",productController.addNewProduct);
 router.delete("/delete-product/:id",productController.deleteProduct);
 router.get("/get-product/",productController.getProduct);
 router.get("/get-product/:id",productController.getOneProduct);
+router.put("/update-product/:id", upload.single('productImage'), productController.updateProduct);
 
 
 

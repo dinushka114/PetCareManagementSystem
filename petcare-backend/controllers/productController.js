@@ -86,6 +86,53 @@ exports.getOneProduct = (req,res)=>{
 })
 }
 
+exports.updateProduct= async(req,res) =>{
+
+    const url = "http://localhost:3000/productRoute/update-product/"
+
+    //get product id
+    const product_id = req.params.id;
+
+     //check if the file is there
+    //  if(!req.file){
+    //     return res.status(400).send({ message: 'Pleade upload a product image'});
+    // }
+
+     //create product url
+     //const imageUrl = url + req.file.originalname;
+
+   //get product details
+   const {productName , productImage, stocks, price, description} = req.body;
+
+   //validate inputs
+   if (!(productName && productImage && stocks && price && description)) {
+    res.status(400).send({ message: "All inputs are required" });
+   }
+
+    //check products exists in database
+    const isProduct = await productSchema.findOne({ _id:product_id });
+
+    //handle http requests
+    if(isProduct){
+        productSchema.updateOne({ _id:product_id }, {
+            productName:productName,
+            productImage:productImage,
+            stocks:stocks,
+            price:price,
+            description:description
+            
+        }, function (err, result) {
+            if (result) {
+                return res.status(200).json({ message: "product updated successfully!!" })
+            } else {
+                return res.status(400).json({ message: "something went wrong" })
+            }
+        })
+    }else{
+        return res.status(400).json({ message: "product does not exsists!!" })
+    }
+}
+
 
 
 
