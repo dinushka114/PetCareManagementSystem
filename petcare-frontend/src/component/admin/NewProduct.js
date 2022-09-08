@@ -100,7 +100,7 @@ export default function NewProduct() {
                         
                         
                                     
-                                <input type="submit" name='Submit' className='submit' />
+                                <input type="submit" name='Submit' className='submit' onClick={sendProduct} />
                             
                     
                 </form>

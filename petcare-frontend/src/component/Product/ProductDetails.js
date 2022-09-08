@@ -51,8 +51,17 @@ const ProductDetails = () => {
     }
 
 
+    const [quantity, setQuantity] = useState(1);
 
+    const increaseQuantity = () => {
+        const qty = quantity + 1;
+        setQuantity(qty);
+    };
 
+    const decreaseQuantity = () => {
+        const qty = quantity - 1;
+        setQuantity(qty);
+    };
 
     useEffect(() => {
         getProduct(id);
@@ -91,9 +100,9 @@ const ProductDetails = () => {
 
                             <div className='detailsBlock-3-1'>
                                 <div className='detailsBlock-3-1-1'>
-                                    <button> - </button>
-                                    <input value="1" type="number" />
-                                    <button> + </button>
+                                    <button onClick={decreaseQuantity}> - </button>
+                                    <input  type="number" value={quantity} />
+                                    <button onClick={increaseQuantity}> + </button>
                                 </div> {" "}
                                 <button> ADD TO CART </button>
                             </div>
