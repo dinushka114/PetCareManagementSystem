@@ -68,7 +68,7 @@ const ProductList = () => {
                     <td>{products.stocks}</td>
                     <td>{products.price}</td>
                     <td className="width">{products.description.substring(0,150)}</td>
-                    <td><EditIcon className='edit' /></td> 
+                    <td><Link to = '/admin/update-product'><EditIcon className='edit' onClick={() => { ('/admin/dashboard') }} /></Link></td> 
                     <td><DeleteIcon className='delete' onClick={()=>deleteProduct(products._id)} /></td>
                   </tr>
                 )

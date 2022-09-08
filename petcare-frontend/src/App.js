@@ -9,6 +9,7 @@ import ProductDetails from './component/Product/ProductDetails.js';
 import Dashboard from './component/admin/Dashboard.js';
 import ProductList from './component/admin/ProductList';
 import NewProduct from './component/admin/NewProduct';
+import UpdateProduct from './component/admin/UpdateProduct';
 
 
 function App() {
@@ -29,6 +30,8 @@ React.useEffect(() => {
     <Route path = '/admin/dashboard' element = {<Dashboard />}></Route>
     <Route path="/admin/all-products" element={<ProductList/>}></Route>
     <Route path="/admin/add-product" element={<NewProduct/>}></Route>
+    <Route path="/admin/update-product" element={<UpdateProduct/>}></Route>
+
     </Routes>
    </Router>
   );
