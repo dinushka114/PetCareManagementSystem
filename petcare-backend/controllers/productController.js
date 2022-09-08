@@ -105,7 +105,7 @@ exports.updateProduct= async(req,res) =>{
 
      //check if the file is there
       if(!req.file){
-         return res.status(400).send({ message: 'Pleade upload a product image'});
+         return res.status(400).send({ message: 'Please upload a product image'});
      }
 
      //create product url
