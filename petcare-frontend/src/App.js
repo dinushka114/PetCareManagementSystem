@@ -30,7 +30,7 @@ React.useEffect(() => {
     <Route path = '/admin/dashboard' element = {<Dashboard />}></Route>
     <Route path="/admin/all-products" element={<ProductList/>}></Route>
     <Route path="/admin/add-product" element={<NewProduct/>}></Route>
-    <Route path="/admin/update-product" element={<UpdateProduct/>}></Route>
+    <Route path="/admin/update-product/:id" element={<UpdateProduct/>}></Route>
 
     </Routes>
    </Router>

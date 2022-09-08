@@ -1,60 +1,95 @@
-
-import React from 'react'
-import './newProduct.css'
-//import Sidebar from '../../../components/admin/Sidebar/sidebar'
-//import {useFormik} from "formik";
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { useState } from 'react';
-//import Swal from 'sweetalert2';
-import { Input } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import './newProduct.css';
+//import image from '../../../images/update.jpg';
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { useParams, useNavigate } from 'react-router-dom'
 import Sidebar from './Sidebar';
 
-export default function UpdateProduct() {
+const UpdateProduct = () =>{
+
+    const { id } = useParams();
+    const [product, setProduct] = useState({
+        productName: "",
+        productImage: "",
+        stocks: "",
+        price: "",
+        description: ""
+        
+    });
+
     const [productName, setproductName] = useState("");
     const [productImage, setproductImage] = useState("");
     const [stocks, setstock] = useState("");
     const [price, setprice] = useState("");
     const [description, setdescription] = useState("");
-    const [selectedFile, setSelectedFile] = useState(null);
-    const handleSearchArea = (e) => {
-        console.log(e.target.value);
+    const [selectedImage, setSelectedImage] = useState();
+
+    const navigate = useNavigate();
+
+    const handleImageSelect = (event)=>{
+        setSelectedImage(event.target.files[0])
     }
-    const handleFileSelect = (event) => {
-        setSelectedFile(event.target.files[0])
-    }
-    function sendProduct(e) {
-        e.preventDefault();
-        const newProduct = {
-            productName,
-            productImage,
-            stocks,
-            price,
-            description
-        }
-        const formData = new FormData();
-        formData.append('productName', productName)
-        formData.append('productImage', selectedFile)
-        formData.append('stocks', stocks)
-        formData.append('price', price)
-        formData.append('description', description)
-        console.log(formData)
-        axios.post("http://localhost:3000/productRoute/get-product", formData).then(() => {
-            // Swal.fire("product added")
-        }).catch((err) => {
-            console.log(err)
+
+    const getProductData = async(id) =>{
+        await axios.get("http://localhost:3000/productRoute/get-product/"+id)
+        .then(res=>{
+            // setBoarding({
+            //     boardingName: res.data.result.boardingName,
+            //     boardingImage: res.data.result.boardingImage,
+            //     boardingemail: res.data.result.boardingemail,
+            //     boardingaddress: res.data.result.boardingaddress,
+            //     boardingphone: res.data.result.boardingphone,
+            //     openHoursStart: res.data.result.openHoursStart,
+            //     openHoursEnd: res.data.result.openHoursEnd
+            // })
+            setproductName(res.data.result.productName);
+            setproductImage(res.data.result.productImage);
+            setstock(res.data.result.stocks);
+            setprice(res.data.result.price);
+            setdescription(res.data.result.description);
+            
         })
     }
 
+    useEffect(()=> {
+        if(id){
+            getProductData(id);
+        }
+    },[]);
 
+    const updateProduct = async(e) =>{
+        e.preventDefault();
 
-    return (
-        <div className = "dashboard">
+        //console.log("Hello")
+
+        const formData = new FormData()
+        formData.append('productName', productName)
+        formData.append('productImage', selectedImage)
+        formData.append('stocks', stocks)
+        formData.append('price', price)
+        formData.append('description', description)
+
+            await axios.put("http://localhost:3000/productRoute/update-product/"+id,
+            formData)
+            .then(() => {
+                Swal.fire("Product updated");
+                navigate('/');
+            }).catch((err)=>{
+                alert(err);
+                console.log(err);
+            })    
+        }
+
+        //innawada?
+
+        return (
+            <div className = "dashboard">
             <Sidebar />
         <div className='newProductContainer'>
             
                 <h1>UPDATE PRODUCT</h1>
-                <form onSubmit={sendProduct} encType='multipart/form-data' class='createProductForm'>
+                <form onSubmit={updateProduct} encType='multipart/form-data' class='createProductForm'>
                     
                         <table>
                             <div className>
@@ -94,19 +129,22 @@ export default function UpdateProduct() {
 
                                     <label for="img">Product Image</label>
                                    <center><input type='file' name="productImage" id="productImage" required className='dog' 
-                                        onChange={handleFileSelect}
+                                        onChange={handleImageSelect}
                                     /> </center> 
                             
                         
                         
                         
                                     
-                                <input type="submit" name='Submit' className='submit' onClick={sendProduct} />
+                                <input type="submit" name='Submit' className='submit' onClick={updateProduct} />
                             
                     </table>
                 </form>
             
         </div>
         </div>
-    )
+        
+        )
 }
+
+export default UpdateProduct;

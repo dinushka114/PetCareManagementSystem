@@ -6,18 +6,28 @@ const productSchema = require("../models/productModel");
 
 exports.addNewProduct = async(req,res)=>{
 
+    const url = "http://localhost:3000/uploads/"
+
+    //check files of request
+    if (!req.file) {
+        return res.status(400).send({ message: 'Please upload a profile image.' });
+    }
+
+    //create profile image url 
+    const imageUrl = url + req.file.originalname;
+
    //get product details
-   const {productName , productImage , stocks , price , description} = req.body;
+   const {productName , stocks , price , description} = req.body;
 
    //validate inputs
-   if (!(productName && productImage && stocks && price && description)) {
+   if (!(productName  && stocks && price && description)) {
     res.status(400).send({ message: "All inputs are required" });
    }
 
    //create new product
    const newProduct = new productSchema({
        productName:productName,
-       productImage:productImage,
+       productImage:imageUrl,
        stocks:stocks,
        price:price,
        description:description
@@ -30,10 +40,10 @@ exports.addNewProduct = async(req,res)=>{
 
    //handle http responses
    .then(result=>{
-       res.status(201).json({message:"New product added successfully!!"})
+      return res.status(201).json({message:"New product added successfully!!"})
    })
    .catch(err=>{
-       res.status(400).json({message:err})
+     return  res.status(400).json({message:err})
    })
 
 }
@@ -42,20 +52,20 @@ exports.addNewProduct = async(req,res)=>{
 
 exports.deleteProduct = (req,res)=>{
 
-   //get product id
-   const product_id = req.params.id;
-
-   productSchema.findOneAndDelete(product_id)
-   .then(()=>{
-       res.status(200).send({
-           status:"product deleted"
-       });
-   }).catch((err)=>{
-       console.log(err.message);
-       res.status(500).send({status:"Error with delete product",error :err.message});
-   })
-
-}
+    //get product id
+    const product_id = req.params.id;
+ 
+    productSchema.deleteOne({_id:product_id})
+    .then(()=>{
+        res.status(200).send({
+            status:"product deleted"
+        });
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status:"Error with delete product",error :err.message});
+    })
+ 
+ }
 
 exports.getProduct = (req,res)=>{
 
@@ -88,24 +98,24 @@ exports.getOneProduct = (req,res)=>{
 
 exports.updateProduct= async(req,res) =>{
 
-    const url = "http://localhost:3000/productRoute/update-product/"
+    const url = "http://localhost:3000/uploads"
 
     //get product id
     const product_id = req.params.id;
 
      //check if the file is there
-    //  if(!req.file){
-    //     return res.status(400).send({ message: 'Pleade upload a product image'});
-    // }
+      if(!req.file){
+         return res.status(400).send({ message: 'Pleade upload a product image'});
+     }
 
      //create product url
-     //const imageUrl = url + req.file.originalname;
+    const imageUrl = url + req.file.originalname;
 
    //get product details
-   const {productName , productImage, stocks, price, description} = req.body;
+   const {productName , stocks, price, description} = req.body;
 
    //validate inputs
-   if (!(productName && productImage && stocks && price && description)) {
+   if (!(productName && stocks && price && description)) {
     res.status(400).send({ message: "All inputs are required" });
    }
 
@@ -116,7 +126,7 @@ exports.updateProduct= async(req,res) =>{
     if(isProduct){
         productSchema.updateOne({ _id:product_id }, {
             productName:productName,
-            productImage:productImage,
+            productImage:imageUrl,
             stocks:stocks,
             price:price,
             description:description
