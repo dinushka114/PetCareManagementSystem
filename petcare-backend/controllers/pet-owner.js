@@ -234,7 +234,7 @@ exports.getPetById = async (req, res) => {
     if (pet) {
         return res.status(200).json({ pet })
     } else {
-        return res.status(400).json({ err })
+        return res.status(400).json({ err:"error" })
     }
 
 

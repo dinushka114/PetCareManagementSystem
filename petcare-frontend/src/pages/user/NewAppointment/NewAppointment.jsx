@@ -16,32 +16,49 @@ const NewAppointment = () => {
   const [pets, setPets] = useState([])
   const [services, setServices] = useState([])
 
+
+  const [petSelectError, setPetSelectError] = useState(false)
+  const [serviceSelectError, setServiceSelectError] = useState(false)
+
   const handleSelectPet = (e) => {
+    if (e.target.value.indexOf(" ") > 0) {
+      setPetSelectError(true)
+      return
+    }
     setPetName(e.target.value)
+    setPetSelectError(false)
   }
 
 
   const handleSelectService = (e) => {
+    if (e.target.value.indexOf(" ") > 0) {
+      setServiceSelectError(true)
+      return
+    }
     setService(e.target.value)
+    setServiceSelectError(false)
   }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post("http://localhost:3000/pet-owner/new-appointment/" + id, { pet: petName, service: service, date: date, time: time })
-      .then(result => {
-        Swal.fire({
-          icon: 'success',
-          title: 'done',
-          text: `${result.data.message}`,
+    if (!petSelectError && !serviceSelectError && time && date) {
+      await axios.post("http://localhost:3000/pet-owner/new-appointment/" + id, { pet: petName, service: service, date: date, time: time })
+        .then(result => {
+          Swal.fire({
+            icon: 'success',
+            title: 'done',
+            text: `${result.data.message}`,
+          })
         })
-      })
-      .catch(err => {
-        Swal.fire({
-          icon: 'error',
-          title: 'oops',
-          text: `${err.response.data.message}`,
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'oops',
+            text: `${err.response.data.message}`,
+          })
         })
-      })
+    }
 
   }
 
@@ -82,6 +99,10 @@ const NewAppointment = () => {
           </select>
         </div>
 
+        {
+          petSelectError ? <p className='text-danger'>Please select a pet</p> : null
+        }
+
         <div class="mb-3">
           <label for="pet name" class="form-label">Services</label>
           <select className='form-control' name="" id="" onChange={handleSelectService}>
@@ -94,6 +115,9 @@ const NewAppointment = () => {
           </select>
         </div>
 
+        {
+          serviceSelectError ? <p className='text-danger'>Please select a service</p> : null
+        }
 
         <div className='row'>
           <div className='col-sm-6'>
@@ -101,12 +125,20 @@ const NewAppointment = () => {
               <label for="pet name" class="form-label">Date</label>
               <input type="date" onChange={(e) => setDate(e.target.value)} className='form-control' />
             </div>
+
+            {
+              !date ? <p className='text-danger'>Please select a appointment date</p> : null
+            }
+
           </div>
           <div className='col-sm-6'>
             <div class="mb-3">
               <label for="pet name" class="form-label">Time</label>
               <input type="time" onChange={(e) => setTime(e.target.value)} className='form-control' />
             </div>
+            {
+              !time ? <p className='text-danger'>Please select a appointment time</p> : null
+            }
           </div>
         </div>
 

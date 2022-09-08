@@ -33,6 +33,7 @@ const DashBoard = () => {
             <Routes>
               <Route path={`/profile`} element={<Profile />}></Route>
               <Route path={`/new-appointment`} element={<NewAppointment />}></Route>
+              <Route path={`/new-appointment/:id`} element={<NewAppointment />}></Route>
               <Route path={`/my-appointments`} element={<MyAppointments />}></Route>
               <Route path={`/new-pet`} element={<NewPet />}></Route>
               <Route path={`/pets`} element={<MyPets />}></Route>

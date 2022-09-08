@@ -44,6 +44,7 @@ const MyAppointments = () => {
                 </div>
 
             </div>
+
             <table className='table mt-4'>
                 <thead>
                     <tr>
@@ -61,21 +62,39 @@ const MyAppointments = () => {
                     {
                         isLoading ? "Loading" : filteredData.map((appointment, index) => {
                             return (
-                                <tr key={appointment._id}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{appointment.service.serviceName}</td>
-                                    <td>{appointment.petName.petName}</td>
-                                    <td>{appointment.date}</td>
-                                    <td>{appointment.time}</td>
-                                    <td>{appointment.status}</td>
-                                    <td> <Link to={`/dashboard/new-pet/${appointment._id}`}><button className='btn btn-warning'>Update</button></Link> </td>
-                                    <td> <button className='btn btn-danger'>Delete</button> </td>
-                                </tr>
+                            <tr key={appointment._id}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{appointment.service.serviceName}</td>
+                                <td>{appointment.petName.petName}</td>
+                                <td>{appointment.date}</td>
+                                <td>{appointment.time}</td>
+                                <td>{appointment.status}</td>
+                                <td> <Link to={`/dashboard/new-appointment/${appointment._id}`}><button className='btn btn-warning'>Update</button></Link> </td>
+                                <td> <button className='btn btn-danger'>Delete</button> </td>
+                            </tr>
                             )
+                            // return (
+                            //     appointment.service ? <>
+                            //         <tr key={appointment._id}>
+                            //             <th scope="row">{index + 1}</th>
+                            //             <td>{appointment.service.serviceName}</td>
+                            //             <td>{appointment.petName.petName}</td>
+                            //             <td>{appointment.date}</td>
+                            //             <td>{appointment.time}</td>
+                            //             <td>{appointment.status}</td>
+                            //             <td> <Link to={`/dashboard/new-pet/${appointment._id}`}><button className='btn btn-warning'>Update</button></Link> </td>
+                            //             <td> <button className='btn btn-danger'>Delete</button> </td>
+                            //         </tr>
+                            //     </> : <p className='text-danger p-4'>Service data not found..</p>
+                            // )
                         })
                     }
+
                 </tbody>
             </table>
+
+
+
         </div>
     )
 }

@@ -28,102 +28,72 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState(false)
   const [confirmPasswordError, setConfirmPasswordError] = useState(false)
   const [passwordSameError, setPasswordSameError] = useState(false)
-  const [isValid, setIsValid] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!fullName || fullName.length <= 0) {
       setFullNameError(true)
-      setIsValid(false)
-      return
     } else {
       setFullNameError(false)
-      setIsValid(true)
     }
 
     if (!username || username.length <= 0) {
       setUsernameError(true)
-      setIsValid(false)
-      return
     } else {
       setUsernameError(false)
-      setIsValid(true)
     }
 
     if (!image || image.length <= 0) {
       setImageError(true)
-      setIsValid(false)
-      return
     } else {
       setImageError(false)
-      setIsValid(true)
     }
 
     if (!email || email.length <= 0) {
       setEmailError(true)
-      setIsValid(false)
-      return
     } else {
       setEmailError(false)
-      setIsValid(true)
     }
 
     if (!contact) {
       setContactError(true)
-      setIsValid(false)
-      return
     } else {
       setContactError(false)
-      setIsValid(true)
     }
 
     if (contact.length != 10 || isNaN(contact)) {
       setContactLengthError(true)
-      setIsValid(false)
-      return
     } else {
       setContactLengthError(false)
-      setIsValid(true)
+
     }
 
     if (!address || address.length <= 0) {
       setAddressError(true)
-      setIsValid(false)
-      return
     } else {
       setAddressError(false)
-      setIsValid(true)
     }
 
     if (!password || address.length <= 0) {
       setPasswordError(true)
-      setIsValid(false)
-      return
     } else {
       setPasswordError(false)
-      setIsValid(true)
     }
 
     if (!confirmpassword || confirmpassword.length <= 0) {
       setConfirmPasswordError(true)
-      setIsValid(false)
-      return
     } else {
       setConfirmPasswordError(false)
-      setIsValid(true)
     }
 
     if (password !== confirmpassword) {
       setPasswordSameError(true)
-      setIsValid(false)
-      return
     } else {
       setPasswordSameError(false)
-      setIsValid(true)
     }
 
-    if (isValid) {
+    if (!fullNameError && !usernameError && !imageError && !emailError && !contactError && !addressError && !passwordError && !confirmPasswordError && !passwordSameError) {
 
       const formData = new FormData()
       formData.append("fullName", fullName)
@@ -138,7 +108,7 @@ const Register = () => {
       await axios.post("http://localhost:3000/pet-owner/register", formData)
         .then(res => {
           console.log(res.data)
-          
+
           Swal.fire({
             icon: 'success',
             title: 'done',
