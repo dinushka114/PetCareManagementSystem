@@ -4,6 +4,7 @@ import image from '../../../images/add.jpg';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import {useNavigate} from 'react-router-dom';
+import validator from 'validator'
 
 const InsertBoardingPlaces = () => {
 
@@ -60,6 +61,19 @@ const InsertBoardingPlaces = () => {
         document.getElementById("boardingForm").reset();
     }
 
+    const [emailError, setEmailError] = useState('')
+    
+    const validateEmail = (e) => {
+        var email = e.target.value
+    
+        if (validator.isEmail(email)) {
+        setEmailError('Valid Email :)');
+        setboardingemail(email);
+        } else {
+        setEmailError('Enter valid Email :(')
+        }
+    }
+
   return (
     
     <div className="home">
@@ -76,7 +90,7 @@ const InsertBoardingPlaces = () => {
                                     setboardingName(e.target.value);
                                 }}/>
                         </div>
-                    </div>
+                    </div><br/>
                     
                     <img src={image} alt='add' style={{width:'45%',float:'right', borderRadius: '10px'}}></img>
                     <div className='col-sm-6'>
@@ -87,15 +101,16 @@ const InsertBoardingPlaces = () => {
                                     onChange={handleImageSelect}/>
                             </div>
                         </div>
-                    </div>
+                    </div><br/>
                     <div className='col-sm-6'>
                         <div className="form-group">
                             <label htmlFor="boardingemail">Pet boarding place email</label>
                             <input  name="boardingemail" id="boardingemail"  cols="10" rows="4" className='form-control' 
                                 type="email" required placeholder="petcare@gmail.com"
                                 onChange={(e)=>{
-                                    setboardingemail(e.target.value);
+                                    validateEmail(e);
                                 }}></input>
+                                <p style={{color: 'red'}}>{emailError}</p>
                         </div>
                     </div>
                     <div className='col-sm-6'>
@@ -107,19 +122,19 @@ const InsertBoardingPlaces = () => {
                                 setboardingaddress(e.target.value);
                             }}></input>
                         </div>
-                    </div>
+                    </div><br/>
                     <div className='col-sm-6'>
                         <div className="form-group">
                             <label htmlFor="boardingphone">Pet boarding place phone no</label>
-                            <input type="text" name="boardingphone" id="boardingphone" cols="10" rows="4" className='form-control'
-                                pattern="[0][0-9]{9}" required placeholder="0110987654"
+                            <input type="text" name="boardingphone" id="boardingphone" cols="10" rows="4" className='form-control' placeholder="0110987654"
+                                pattern="[0][0-9]{9}" required 
                             onChange={(e)=>{
                                 setboardingphone(e.target.value);
                             }}/>
                         </div>
-                    </div>
+                    </div><br/>
                     <div className='row'>
-                            <div className='col-sm-4'>
+                            <div className='col-sm-3'>
                                 <div className="form-group">
                                     <label htmlFor="openHours">Open hours</label>
                                     <input type='time' name="openHoursStart" id="openHoursStart" cols="10" rows="4" className='form-control' placeholder='Start Time'
@@ -128,7 +143,7 @@ const InsertBoardingPlaces = () => {
                                     }} />
                                 </div>
                             </div> 
-                            <div className='col-sm-4'>
+                            <div className='col-sm-3'>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputPassword1"></label>
                                     <input type='time' name="openHoursEnd" id="openHoursEnd" cols="10" rows="4" className='form-control' placeholder='End Time'
@@ -140,7 +155,7 @@ const InsertBoardingPlaces = () => {
                             </div>         
                        <br/>
                        <div className='row'>
-                                <div className='col-sm-2'>
+                                <div className='col-sm-1'>
                                     <input type="submit" name='Save' value='Save' className='btn btn-success'
                                     onClick={sendBoarding}></input> 
                                 </div>
