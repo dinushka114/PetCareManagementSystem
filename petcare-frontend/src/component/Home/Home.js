@@ -52,10 +52,12 @@ const Home = () => {
                 
                 <h1> FIND AMAZING PRODUCTS BELOW </h1>
                 
-                <center><button onClick={() => { loadData('/admin/dashboard') }} className='spclBtn'> * </button></center>
+                <center><button onClick={() => { loadData('/admin/all-products') }} className='spclBtn'> Admin </button></center>
+                
+                <center><button onClick={() => { loadData('/admin/dashboard') }} className='spclBtn2'> User </button></center>
                 
             </div>
-            hrine
+            
 
             <h2 className = "homeHeading"> BEST SELLING PRODUCTS </h2> 
 
