@@ -98,7 +98,7 @@ exports.getOneProduct = (req,res)=>{
 
 exports.updateProduct= async(req,res) =>{
 
-    const url = "http://localhost:3000/uploads"
+    const url = "http://localhost:3000/uploads/"
 
     //get product id
     const product_id = req.params.id;

@@ -37,38 +37,38 @@ const Dashboard = () => {
     }, []);
 
     return (
-    <div className='dashboard'>
-        <Sidebar />
+        <div className='dashboard'>
+            <Sidebar />
 
-        <div className='dashboardContainer'>
+            <div className='dashboardContainer'>
 
-            <h2 className = "homeHeading"> BEST SELLING PRODUCTS </h2> 
+                <h2 className="homeHeading"> BEST SELLING PRODUCTS </h2>
 
-            <Cards>
-                <CardMedia>
-                    {
-                        productData.map((products) => {
-                            return (
-                                <div className='card' key={products._id}>
-                                    <img className = 'card-img-top' src = {products.productImage} />
-                                    <div className='container2'> {products.productName} </div>
-                                    <div className='container2'> {products.price} </div>
-                                    <center><button onClick={() => { loadData(products._id) }} className='view-button'> View More </button></center>
-                                </div>
-                            )
-                        })
-                    }
-
-
+                <Cards>
+                    <CardMedia>
+                        {
+                            productData.map((products) => {
+                                return (
+                                    <div className='card' key={products._id}>
+                                        <img className='card-img-top' src={products.productImage} />
+                                        <div className='container2'> {products.productName} </div>
+                                        <div className='container2'> {products.price} </div>
+                                        <center><button onClick={() => { loadData(products._id) }} className='view-button'> View More </button></center>
+                                    </div>
+                                )
+                            })
+                        }
 
 
-                </CardMedia>
-            </Cards>
 
+
+                    </CardMedia>
+                </Cards>
+
+
+            </div>
 
         </div>
-
-    </div>
     );
 };
 

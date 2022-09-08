@@ -9,14 +9,7 @@ import Sidebar from './Sidebar';
 const UpdateProduct = () => {
 
     const { id } = useParams();
-    const [product, setProduct] = useState({
-        productName: "",
-        productImage: "",
-        stocks: "",
-        price: "",
-        description: ""
 
-    });
 
     const [productName, setproductName] = useState("");
     const [productImage, setproductImage] = useState("");
@@ -42,18 +35,22 @@ const UpdateProduct = () => {
                 setdescription(res.data.result.description);
 
             })
+            // .catch(err=>{
+            //     alert(err)
+            // })
     }
 
     useEffect(() => {
         if (id) {
             getProductData(id);
         }
+
     }, []);
 
     const updateProduct = async (e) => {
         e.preventDefault();
 
-        //console.log("Hello")
+        //console.log("Hello")  balnda dn hrid kyl image eka na neda na
 
         const formData = new FormData()
         formData.append('productName', productName)
@@ -81,12 +78,12 @@ const UpdateProduct = () => {
             <div className='newProductContainer'>
 
                 <h1>UPDATE PRODUCT</h1>
-                <form  encType='multipart/form-data' class='createProductForm'>
+                <form  encType='multipart/form-data' class='createProductForm' onSubmit={updateProduct}>
 
                     <table>
                         <div className>
                             <label for="productName">Product Name</label>
-                            <input name="productName" id="productName" className='cat' required
+                            <input name="productName" defaultValue={productName} id="productName" className='cat' required
                                 onChange={(e) => {
                                     setproductName(e.target.value);
                                 }} />
@@ -95,7 +92,7 @@ const UpdateProduct = () => {
 
                         <div>
                             <label for="price">Price</label>
-                            <input type='text' name="price" id="price" className='cat' required
+                            <input type='text' name="price" defaultValue={price} id="price" className='cat' required
                                 onChange={(e) => {
                                     setprice(e.target.value);
                                 }} />
@@ -103,7 +100,7 @@ const UpdateProduct = () => {
 
                         <div>
                             <label for="description">Description</label>
-                            <textarea name="description" id="description" rows="4" className='cat' required
+                            <textarea name="description" id="description" defaultValue={description} rows="4" className='cat' required
                                 onChange={(e) => {
                                     setdescription(e.target.value);
                                 }} />
@@ -111,7 +108,7 @@ const UpdateProduct = () => {
 
                         <div>
                             <label for="stocks">Stocks</label>
-                            <input type="text" name="number" pattern="\d{1,2}(?!\d)|100" title="Please enter numeric values only." id="stocks"
+                            <input type="text" name="number" defaultValue={stocks} pattern="\d{1,2}(?!\d)|100" title="Please enter numeric values only." id="stocks"
                                 className='cat' required
                                 onChange={(e) => {
                                     setstock(e.target.value);
@@ -120,7 +117,7 @@ const UpdateProduct = () => {
                         </div>
 
                         <label for="img">Product Image</label>
-                        <center><input type='file' name="productImage" id="productImage" required className='dog'
+                        <center><input type='file' name="productImage" id="productImage" required className='dog' defaultValue={productImage}
                             onChange={handleImageSelect}
                         /> </center>
 
@@ -128,7 +125,7 @@ const UpdateProduct = () => {
 
 
 
-                        <input type="submit" name='Submit' className='submit' onClick={updateProduct} />
+                        <input type="submit" name='Submit' className='submit'  />
 
                     </table>
                 </form>
