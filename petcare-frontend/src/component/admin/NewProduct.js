@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useState } from 'react';
 //import Swal from 'sweetalert2';
 import { Input } from '@mui/material';
+import Sidebar from './Sidebar';
 
 export default function NewProduct() {
     const [productName, setproductName] = useState("");
@@ -48,6 +49,8 @@ export default function NewProduct() {
 
 
     return (
+        <div className = "dashboard">
+            <Sidebar />
         <div className='newProductContainer'>
             
                 <h1>ADD PRODUCT</h1>
@@ -102,6 +105,7 @@ export default function NewProduct() {
                     
                 </form>
             
+        </div>
         </div>
     )
 }
