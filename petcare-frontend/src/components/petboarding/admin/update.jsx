@@ -123,7 +123,7 @@ const UpdateBoardingPlaces = () =>{
                                 <div className="form-group">
                                     <label htmlFor="boardingemail">Pet boarding place email</label>
                                     <input  name="boardingemail" id="boardingemail"  cols="10" rows="4" className='form-control' 
-                                    type="email" required 
+                                    type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                     defaultValue={id ? boardingemail : null}
                                     onChange={(e)=>{
                                         setboardingemail(e.target.value);
@@ -153,7 +153,7 @@ const UpdateBoardingPlaces = () =>{
                                 </div>
                             </div>
                             <div className='row'>
-                                    <div className='col-sm-3'>
+                                    <div className='col-sm-2'>
                                         <div className="form-group">
                                             <label htmlFor="openHours">Open hours</label>
                                             <input type='time' name="openHoursStart" id="openHoursStart" cols="10" rows="4" className='form-control' placeholder='Start Time'
@@ -163,7 +163,7 @@ const UpdateBoardingPlaces = () =>{
                                             }} />
                                         </div>
                                     </div> 
-                                    <div className='col-sm-3'>
+                                    <div className='col-sm-2'>
                                         <div className="form-group">
                                             <label htmlFor="exampleInputPassword1"></label>
                                             <input type='time' name="openHoursEnd" id="openHoursEnd" cols="10" rows="4" className='form-control' placeholder='End Time'
