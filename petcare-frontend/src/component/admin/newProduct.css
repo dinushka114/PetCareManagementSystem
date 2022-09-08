@@ -146,6 +146,16 @@
     box-sizing: border-box;
   }
 
+  .dog {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 0px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+
   .submit {
     width: 100%;
     background-color: #4CAF50;

@@ -56,10 +56,10 @@ export default function UpdateProduct() {
                 <h1>UPDATE PRODUCT</h1>
                 <form onSubmit={sendProduct} encType='multipart/form-data' class='createProductForm'>
                     
-                        
+                        <table>
                             <div className>
                                 <label for="productName">Product Name</label>
-                                <input name="productName" id="productName" className = 'cat'
+                                <input name="productName" id="productName" className = 'cat' required
                                     onChange={(e) => {
                                         setproductName(e.target.value);
                                     }} />
@@ -68,7 +68,7 @@ export default function UpdateProduct() {
 
                             <div>
                                     <label for="price">Price</label>
-                                    <input type='text' name="price" id="price" className = 'cat' 
+                                    <input type='text' name="price" id="price" className = 'cat' required 
                                         onChange={(e) => {
                                             setprice(e.target.value);
                                         }} />
@@ -76,7 +76,7 @@ export default function UpdateProduct() {
                         
                             <div>
                                 <label for="description">Description</label>
-                                <textarea name="description" id="description" rows="4" className = 'cat'
+                                <textarea name="description" id="description" rows="4" className = 'cat' required
                                     onChange={(e) => {
                                         setdescription(e.target.value);
                                     }} />
@@ -84,15 +84,16 @@ export default function UpdateProduct() {
                         
                             <div>
                                 <label for="stocks">Stocks</label>
-                                <input type="text" name="stocks" id="stocks" 
+                                <input type="text" name="number" pattern="\d{1,2}(?!\d)|100" title="Please enter numeric values only." id="stocks" 
+                                className = 'cat' required 
                                     onChange={(e) => {
                                         setstock(e.target.value);
                                     }} />
                            
                             </div>
 
-                                   
-                                   <center><input type='file' name="productImage" id="productImage" 
+                                    <label for="img">Product Image</label>
+                                   <center><input type='file' name="productImage" id="productImage" required className='dog' 
                                         onChange={handleFileSelect}
                                     /> </center> 
                             
@@ -100,9 +101,9 @@ export default function UpdateProduct() {
                         
                         
                                     
-                                <input type="submit" value='Update' className='submit' />
+                                <input type="submit" name='Submit' className='submit' onClick={sendProduct} />
                             
-                    
+                    </table>
                 </form>
             
         </div>

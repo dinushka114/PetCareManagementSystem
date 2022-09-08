@@ -48,7 +48,7 @@ const ProductList = () => {
         <table  className="table table-striped" id="products">
             
           <thead>
-            <tr>
+            <tr >
               <th scope="col">Product ID</th>
               <th scope="col">Product Name</th>
               <th scope="col">Stocks</th>
@@ -67,7 +67,7 @@ const ProductList = () => {
                     <td>{products.productName}</td>
                     <td>{products.stocks}</td>
                     <td>{products.price}</td>
-                    <td className="width">{products.description.substring(0,150)}</td>
+                    <td className="width"><textarea cols='45' rows='2'>{products.description.substring(0,150)}</textarea> </td>
                     <td><Link to = '/admin/update-product'><EditIcon className='edit' onClick={() => { ('/admin/dashboard') }} /></Link></td> 
                     <td><DeleteIcon className='delete' onClick={()=>deleteProduct(products._id)} /></td>
                   </tr>
