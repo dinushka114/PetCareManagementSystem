@@ -98,7 +98,7 @@ exports.getOneProduct = (req,res)=>{
 
 exports.updateProduct= async(req,res) =>{
 
-    const url = "http://localhost:3000/uploads/"
+    const url = "http://localhost:3000/uploads/" 
 
     //get product id
     const product_id = req.params.id;
@@ -107,7 +107,6 @@ exports.updateProduct= async(req,res) =>{
       if(!req.file){
          return res.status(400).send({ message: 'Please upload a product image'});
      }
-
      //create product url
     const imageUrl = url + req.file.originalname;
 

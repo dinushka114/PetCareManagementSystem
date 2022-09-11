@@ -117,7 +117,7 @@ const UpdateProduct = () => {
                         </div>
 
                         <label for="img">Product Image</label>
-                        <center><input type='file' name="productImage" id="productImage" required className='dog' defaultValue={productImage}
+                        <center><input type='file' name="productImage" id="productImage" required className='dog' 
                             onChange={handleImageSelect}
                         /> </center>
 
