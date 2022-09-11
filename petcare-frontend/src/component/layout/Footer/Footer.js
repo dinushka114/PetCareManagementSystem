@@ -18,9 +18,9 @@ const Footer = () => {
 
 
         <div className = "midFooter">
-            <h1> Pet Accessories. </h1>
+            <h1> The Ultimated Computer Store </h1>
             <p> High quality is our first priority </p>
-            <p> Copyrights 2021 &copy; MeSoori </p>
+            <p> Copyrights 2021 &copy; yasas_ramod </p>
         </div>
 
 

@@ -5,7 +5,7 @@ import { useEffect, useState, } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom"
 import Sidebar from './Sidebar';
-// const Swal = require('sweetalert2')
+import Swal from 'sweetalert2';
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -27,8 +27,9 @@ const ProductList = () => {
        
           axios.delete("http://localhost:3000/productRoute/delete-product/"+id)
           .then(res=>{
+            Swal.fire("Product Deleted Successfully!!");
             if(res.status===200){
-            //   Swal.fire("Product Deleted")
+             // Swal.fire("Product Deleted")
               getProductData()
             }
           })

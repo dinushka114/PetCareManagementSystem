@@ -46,9 +46,9 @@ const Home = () => {
         <div>
             <Header />
 
-            <MetaData title="PAWELL'S PET PRODUCTS" />
+            <MetaData title="TECHZONE" />
             <div className="banner">
-                <p> Welcome to Pawell's Pet Products </p>
+                <p> Welcome to TECHZONE  </p>
                 
                 <h1> FIND AMAZING PRODUCTS BELOW </h1>
                 
