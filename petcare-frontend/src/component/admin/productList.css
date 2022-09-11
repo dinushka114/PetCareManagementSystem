@@ -41,7 +41,7 @@
     padding-bottom: 12px;
     text-align: center;
     color: rgb(255, 255, 255);
-    background-color: rgb(101, 100, 125);
+    background-color: rgb(91, 88, 191);
 
   }
 
@@ -111,9 +111,8 @@
     }
 
     .edit{
-        color: rgb(0, 0, 0);
+        color: rgb(60, 0, 255);
     }
-
     .delete {
-        color: rgb(0, 0, 0);
+        color: rgb(233, 24, 24);
     }

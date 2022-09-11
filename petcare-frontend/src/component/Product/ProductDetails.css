@@ -258,7 +258,7 @@
 
 
    .ProductDetails {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(226, 213, 213);
     width: 100vw;
     max-width: 100%;
     padding: 15vmax;
@@ -274,7 +274,7 @@
     align-items: center;
     padding: 2vmax;
     box-sizing: border-box;
-    border: 1px solid rgb(200, 200, 200);
+    border: 1px solid rgb(176, 175, 175);
   }
   
   .ProductDetails > div:last-child {
@@ -351,7 +351,7 @@
     cursor: pointer;
     color: white;
     transition: all 0.5s;
-    background-color: rgb(32, 190, 56);
+    background-color: rgb(230, 77, 0);
     font: 500 0.7vmax "Roboto";
     border-radius: 20px;
     padding: 0.5vmax 2vmax;
