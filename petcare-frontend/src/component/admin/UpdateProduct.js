@@ -50,7 +50,7 @@ const UpdateProduct = () => {
     const updateProduct = async (e) => {
         e.preventDefault();
 
-        //console.log("Hello")  balnda dn hrid kyl image eka na neda na
+        
 
         const formData = new FormData()
         formData.append('productName', productName)
