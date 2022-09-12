@@ -12,6 +12,11 @@ import Carousel from 'react-material-ui-carousel';
 
 const ProductDetails = () => {
 
+    const loadData = (id) => {
+        //axios.get("http://localhost:3000/productRoute/get-product")
+        window.location.href = `${id}`
+    }
+
     const { id } = useParams();
 
     const [productData, setProductData] = useState({
@@ -28,20 +33,20 @@ const ProductDetails = () => {
     //     //axios.get("http://localhost:3000/productRoute/get-product")
     //     window.location.href = `${id}`
     // }
-    
+
 
     const getProduct = async (id) => {
         await axios.get("http://localhost:3000/productRoute/get-product/" + id)
             .then(res => {
                 // const allProductData = res.data.result;
                 setProductData({
-                    productName:res.data.result.productName,
-                    productImage:res.data.result.productImage,
-                    stocks:res.data.result.stocks,
-                    price:res.data.result.price,
-                    description:res.data.result.description,
+                    productName: res.data.result.productName,
+                    productImage: res.data.result.productImage,
+                    stocks: res.data.result.stocks,
+                    price: res.data.result.price,
+                    description: res.data.result.description,
                 })
-   
+
                 // setProductData({productImage:allProductData.productImage, price:allProductData.price})
             })
 
@@ -54,18 +59,26 @@ const ProductDetails = () => {
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => {
+        if (productData.stocks <= quantity) return;
+
         const qty = quantity + 1;
         setQuantity(qty);
     };
 
     const decreaseQuantity = () => {
+        if (1 >= quantity) return;
+
         const qty = quantity - 1;
         setQuantity(qty);
     };
 
+    const addToCartHandler = () => {
+        alert.success ("dd");
+    };
+
     useEffect(() => {
         getProduct(id);
-    },[])
+    }, [])
 
     return (
         <div>
@@ -78,14 +91,14 @@ const ProductDetails = () => {
 
                     <div>
                         {/* <Carousel> */}
-                            
 
 
 
-                                <img  src={productData.productImage} />
+
+                        <img src={productData.productImage} />
 
 
-                            
+
                         {/* </Carousel> */}
 
                     </div>
@@ -101,10 +114,14 @@ const ProductDetails = () => {
                             <div className='detailsBlock-3-1'>
                                 <div className='detailsBlock-3-1-1'>
                                     <button onClick={decreaseQuantity}> - </button>
-                                    <input  type="number" value={quantity} />
+                                    <input readOnly type="number" value={quantity} />
                                     <button onClick={increaseQuantity}> + </button>
                                 </div> {" "}
-                                <button> ADD TO CART </button>
+                                
+                                <button onClick={() => { loadData('/cart') }}> ADD TO CART </button>   
+
+                                
+                                
                             </div>
 
                             <p>
@@ -122,6 +139,8 @@ const ProductDetails = () => {
 
                         <button className='buyNow'> BUY IT NOW </button>
 
+                
+
 
 
                     </div>
@@ -132,7 +151,7 @@ const ProductDetails = () => {
 
             </Fragment>
         </div>
-        
+
     );
 };
 
