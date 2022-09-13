@@ -17,10 +17,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/add-product/",upload.single("productImage"), productController.addNewProduct);
-router.delete("/delete-product/:id",productController.deleteProduct);
-router.get("/get-product/",productController.getProduct);
-router.get("/get-product/:id",productController.getOneProduct);
+router.post("/add-product/", upload.single("productImage"), productController.addNewProduct);
+router.delete("/delete-product/:id", productController.deleteProduct);
+router.get("/get-product/", productController.getProduct);
+router.get("/get-product/:id", productController.getOneProduct);
 router.put("/update-product/:id", upload.single('productImage'), productController.updateProduct);
 
 

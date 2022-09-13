@@ -12,92 +12,66 @@ const Cart = () => {
 
 
 
+    const loadData = (id) => {
+        //axios.get("http://localhost:3000/productRoute/get-product")
+        window.location.href = `${id}`
+    }
+
     const { id } = useParams();
 
+    const [productData, setProductData] = useState({
+        productName: "",
+        productImage: "",
+        stocks: "",
+        price: "",
+        description: "",
+    });
 
-    const [productName, setproductName] = useState("");
-    const [productImage, setproductImage] = useState("");
-    const [stocks, setstock] = useState("");
-    const [price, setprice] = useState("");
-    const [description, setdescription] = useState("");
-    const [selectedImage, setSelectedImage] = useState();
 
-    const navigate = useNavigate();
 
-    const handleImageSelect = (event) => {
-        setSelectedImage(event.target.files[0])
-    }
+    // const loadData = (id) => {
+    //     //axios.get("http://localhost:3000/productRoute/get-product")
+    //     window.location.href = `${id}`
+    // }
 
-    const getProductData = async (id) => {
+
+    const getProduct = async (id) => {
         await axios.get("http://localhost:3000/productRoute/get-product/" + id)
             .then(res => {
+                // const allProductData = res.data.result;
+                setProductData({
+                    productName: res.data.result.productName,
+                    productImage: res.data.result.productImage,
+                    stocks: res.data.result.stocks,
+                    price: res.data.result.price,
+                    description: res.data.result.description,
+                })
 
-                setproductName(res.data.result.productName);
-                setproductImage(res.data.result.productImage);
-                setstock(res.data.result.stocks);
-                setprice(res.data.result.price);
-                setdescription(res.data.result.description);
-
+                // setProductData({productImage:allProductData.productImage, price:allProductData.price})
             })
-            // .catch(err=>{
-            //     alert(err)
-            // })
+
+            .catch(err => {
+                console.log(err)
+            })
     }
+
+
+    
 
     useEffect(() => {
-        if (id) {
-            getProductData(id);
-        }
-
-    }, []);
-
-    const updateProduct = async (e) => {
-        e.preventDefault();
-
-        //console.log("Hello")  balnda dn hrid kyl image eka na neda na
-
-        const formData = new FormData()
-        formData.append('productName', productName)
-        formData.append('productImage', selectedImage)
-        formData.append('stocks', stocks)
-        formData.append('price', price)
-        formData.append('description', description)
-
-        await axios.put("http://localhost:3000/productRoute/update-product/" + id,
-            formData)
-            .then(() => {
-                Swal.fire("Product Updated Successfully!!");
-                navigate('/');
-            }).catch((err) => {
-                alert(err);
-                console.log(err);
-            })
-    }
-
+        getProduct(id);
+    }, [])
 
 
     return (
         <div>
-            <Header />
 
-            <div className="cartPage">
-                <div className="cartHeader">
-                    <p>Product</p>
-                    <p>Quantity</p>
-                    <p>Subtotal</p>
-                </div>
-            </div>
-
-            <div className>
-                            <label for="productName">Product Name</label>
-                            <input name="productName" defaultValue={productName} id="productName" className='cat' required
-                                onChange={(e) => {
-                                    setproductName(e.target.value);
-                                }} />
-
-                        </div>
-
+            ddd
             
+            <img src={productData.productImage} />
+            <h2> {productData.productName} </h2>
+            <h2> {productData.price} </h2>
+            <h2> {productData.description} </h2>
 
            
 

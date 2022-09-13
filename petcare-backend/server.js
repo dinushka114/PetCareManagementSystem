@@ -15,17 +15,17 @@ const productRoutes = require("./routes/productRoute")
 const app = express();
 
 app.use(cors()) // Use this after the variable declaration
-app.use(express.static(path.join(__dirname, 'public')));    
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 db_connection()
 
-app.use("/" , indexRoutes)
-app.use("/productRoute" ,productRoutes)
+app.use("/", indexRoutes)
+app.use("/productRoute", productRoutes)
 
 
-app.listen(PORT , ()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
 /*

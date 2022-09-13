@@ -4,7 +4,6 @@ import Header from '../layout/Header/Header'
 import "./Home.css"
 import Product from './Product.js';
 import MetaData from '../layout/MetaData';
-import { getProduct } from '../../actions/productAction';
 import { useSelector, useDispatch } from 'react-redux';
 import Cards from '@mui/material/Card';
 import { Navigate } from 'react-router-dom';
