@@ -41,7 +41,6 @@ const test = {
 const Report = () => {
 
    
-
   return (
 
     <div className="dashboard">
@@ -86,6 +85,7 @@ const Report = () => {
   
 
   );
+    
 };
 
 export default Report;
