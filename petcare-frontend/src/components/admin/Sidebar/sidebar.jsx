@@ -44,8 +44,9 @@ const sidebar = () => {
                 <p className='bottom-title'>LOGOUT</p>
                 <li>
                     <LogoutIcon className='icon'/>
-                    <Link to={"/transport-manage"} style={{ textDecoration: "none" }}/>
+                    <Link to={"/"} style={{ textDecoration: "none" }}>
                     <span>Logout</span>
+                    </Link>
                 </li>
             </ul>
         </div>

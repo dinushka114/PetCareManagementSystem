@@ -57,7 +57,7 @@ const Viewservice = () => {
     return(
       
         <TableContainer component={Paper} className="table">
-          <div className='border'>
+          <div className='searchborder'>
           <SearchIcon style={{marginLeft:"10px"}}></SearchIcon>
           <input  className='no-outline' type="text" onChange={handleSearch}  placeholder='Search service'>
           </input>

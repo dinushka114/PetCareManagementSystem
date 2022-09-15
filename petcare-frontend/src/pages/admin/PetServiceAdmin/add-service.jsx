@@ -1,12 +1,13 @@
 import React from 'react'
 import './services.scss'
 import Sidebar from '../../../components/admin/Sidebar/sidebar'
-import {useFormik} from "formik";
+import { Formik, Form, Field } from "formik";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import {useState} from 'react';
 import Swal from 'sweetalert2';
 import { Input } from '@mui/material';
+import * as yup from "yup";
 
 export default function AddService(){
     const [serviceName,setserviceName] = useState("");
@@ -18,9 +19,18 @@ export default function AddService(){
     const [selectedFile, setSelectedFile] = useState(null);
 
 
-    const handleSearchArea = (e) =>{
-        console.log(e.target.value);
-      }
+    const initialValues = {
+        serviceName:"",
+        serviceImage:"",
+        description:"",
+        contactNo:"",
+        openHoursStart:"",
+        openHoursEnd:""
+    }
+
+
+
+
 
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0])
@@ -54,27 +64,49 @@ export default function AddService(){
         }).catch((err)=>{
             console.log(err)
         })
-
-
     }
 
 
+    const validationSchema = yup.object({
+        serviceName:yup.string().required("Service Name is required!"),
+        serviceImage:yup.string().required("Service Image is required!"),
+        description:yup.string().required("Description is required!"),
+        contactNo:yup.string().required("Contact No is required!"),
+        openHoursStart:yup.string().required("Open hours is required!"),
+        openHoursEnd:yup.string().required("End Hours is required!")
+    });
 
-
-
+return(
+    <Formik
+    validationSchema={validationSchema}
+    initialValues={initialValues}
+>
+    {(ServiceAddForm) => {
     return (
         <div className="home">
             <div className="homeContainer">
                 <h1>Add New Service</h1>
-                    <form onSubmit={sendService} className='border border-success rounded' encType='multipart/form-data'>
+                    <form  onSubmit={sendService} className='border border-success rounded' encType='multipart/form-data'>
                         <div className='p-4'>
                             <div className='col-sm-6'>
                                 <div className="form-group">
                                     <label htmlFor="serviceName">Service name</label>
                                     <input  name="serviceName" id="serviceName"  cols="10" rows="4" className='form-control' 
                                     onChange={(e)=>{
+                                        
+                                        
+                                        
                                         setserviceName(e.target.value);
-                                    }} />
+                                    }}
+                                 
+                                    //ServiceAddForm.handleChange();
+                                    />
+                                 
+                       
+                                                <p className="text-danger p-1">
+                                                    {ServiceAddForm.errors.serviceName}
+                                                </p>
+              
                                 </div>
                             </div>
                             <img src='https://media.istockphoto.com/vectors/veterinary-office-vector-illustration-vector-id1203744384?k=20&m=1203744384&s=612x612&w=0&h=yJaYAjPSonGdmoKOthsBdtx2mHpVl4O3e3MHlxWbRJ4='></img>
@@ -138,7 +170,9 @@ export default function AddService(){
                     </form>
             </div>
         </div>
-      )
+      )}}
+      </Formik>
+)
 }
 
-
+    
