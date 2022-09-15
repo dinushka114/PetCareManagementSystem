@@ -10,6 +10,8 @@ import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, CardContent, CardMedia, TableContainer, useEventCallback } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
+import { Link } from "react-router-dom"
+import EditIcon from "@material-ui/icons/Edit";
 
 const Dashboard = () => {
 
@@ -49,7 +51,8 @@ const Dashboard = () => {
                                         <img className='card-img-top' src={products.productImage} />
                                         <div className='container2'> {products.productName} </div>
                                         <div className='container2'> {products.price} </div>
-                                        <center><button onClick={() => { loadData(products._id) }} className='view-button'> View More </button></center>
+                                        <div className='container2'> {products.description} </div>
+                                        <center><button className='view-button'><Link to = {`/admin/update-product/${products._id}`}><EditIcon className='edit' /></Link></button></center>
                                     </div>
                                 )
                             })

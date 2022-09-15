@@ -11,6 +11,7 @@ import ProductList from './component/admin/ProductList';
 import NewProduct from './component/admin/NewProduct';
 import UpdateProduct from './component/admin/UpdateProduct';
 import Cart from "./component/Cart/Cart.js";
+import Report from './component/admin/Report.js';
 
 function App() {
   React.useEffect(() => {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/admin/add-product" element={<NewProduct />}></Route>
         <Route path="/admin/update-product/:id" element={<UpdateProduct />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/admin/report" element={<Report />}></Route>
 
       </Routes>
     </Router>

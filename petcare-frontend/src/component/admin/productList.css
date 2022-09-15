@@ -124,3 +124,8 @@
 .delete {
     color: rgb(233, 24, 24);
 }
+
+.image {
+    height: 70px;
+    width: 70px;
+   }

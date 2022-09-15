@@ -8,6 +8,7 @@ import Sidebar from './Sidebar';
 import Swal from 'sweetalert2';
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import React from 'react'
 
 
 
@@ -51,6 +52,7 @@ const ProductList = () => {
           <thead>
             <tr >
               <th scope="col">Product ID</th>
+              <th scope="col">Product Image</th>
               <th scope="col">Product Name</th>
               <th scope="col">Stocks</th>
               <th scope="col">Price</th>
@@ -64,13 +66,14 @@ const ProductList = () => {
               productData.map((products) => {
                 return (
                   <tr>
-                    <td>{products._id}</td>
-                    <td>{products.productName}</td>
-                    <td>{products.stocks}</td>
-                    <td>{products.price}</td>
-                    <td className="width"><textarea cols='45' rows='2'>{products.description.substring(0,150)}</textarea> </td>
-                    <td><Link to = {`/admin/update-product/${products._id}`}><EditIcon className='edit' /></Link></td> 
-                    <td><DeleteIcon className='delete' onClick={()=>deleteProduct(products._id)} /></td>
+                    <td><center>{products._id}</center></td>
+                    <td><center><img className = 'image' src = {products.productImage} /> </center> </td>
+                    <td><center>{products.productName}</center></td>
+                    <td><center>{products.stocks} </center></td>
+                    <td><center>{products.price}</center></td>
+                    <td className="width"><center><textarea cols='45' rows='2'>{products.description.substring(0,150)}</textarea></center> </td>
+                    <td><center><Link to = {`/admin/update-product/${products._id}`}><EditIcon className='edit' /></Link></center></td> 
+                    <td><center><DeleteIcon className='delete' onClick={()=>deleteProduct(products._id)} /></center></td>
                   </tr>
                 )
               })

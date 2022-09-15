@@ -66,7 +66,7 @@ const Cart = () => {
     return (
         <div>
 
-            ddd
+            
             
             <img src={productData.productImage} />
             <h2> {productData.productName} </h2>

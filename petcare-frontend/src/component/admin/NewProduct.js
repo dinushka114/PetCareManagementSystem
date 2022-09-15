@@ -38,7 +38,7 @@ const NewProduct = () => {
         console.log(formData)
         axios.post("http://localhost:3000/productRoute/add-product", formData).then(() => {
             Swal.fire("New Product Added Successfully!!");
-            navigate('/');
+            navigate('/admin/all-products');
         }).catch((err) => {
             alert(err);
             console.log(err);

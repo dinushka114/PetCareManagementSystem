@@ -63,7 +63,7 @@ const UpdateProduct = () => {
             formData)
             .then(() => {
                 Swal.fire("Product Updated Successfully!!");
-                navigate('/');
+                navigate('/admin/all-products');
             }).catch((err) => {
                 alert(err);
                 console.log(err);
@@ -126,6 +126,8 @@ const UpdateProduct = () => {
 
 
                         <input type="submit" name='Submit' className='submit'  />
+                        
+                        
 
                     </table>
                 </form>
