@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import './ProductDetails.css';
 import Carousel from 'react-material-ui-carousel';
 
+
 const ProductDetails = () => {
 
     const loadData = (id) => {
