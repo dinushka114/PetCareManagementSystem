@@ -90,7 +90,7 @@ const Report = () => {
     <div className="dashboard">
       <Sidebar />
       <div className='dashboardContainer'>
-        <div ref={componentRef} style={{ width: '100%', height: window.innerHeight }}>
+        <div ref={componentRef} style={{  width: '100%', height: window.innerHeight }}>
         <h1 id="productListHeading">PRODUCTS REPORT</h1>
           <div className='dashboardSummary'>
             <div>

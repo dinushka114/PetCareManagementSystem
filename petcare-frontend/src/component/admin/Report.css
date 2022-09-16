@@ -227,3 +227,38 @@
     height: 70px;
     width: 70px;
    }
+
+   .printBtn2 {
+    background-color: initial;
+    margin-bottom: 0%;
+    margin-left: 8%;
+    margin: 2%;
+    background-image: linear-gradient(-180deg, #000000, #000000);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #040202;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+    height: 35px;
+    line-height: 35px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 7%;
+    z-index: 9;
+    border: 0;
+    transition: box-shadow .2s;
+  }
+  
+  .printBtn2:hover {
+    box-shadow: rgba(12, 6, 3, 0.5) 0 3px 8px;
+  }
