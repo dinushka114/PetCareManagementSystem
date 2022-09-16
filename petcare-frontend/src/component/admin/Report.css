@@ -95,3 +95,135 @@
       font: 300 0.9rem "Roboto";
     }
   }
+
+  #productListHeading {
+    font: 400 2rem "Roboto";
+    padding: 0.5vmax;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.637);
+    transition: all 0.5s;
+    margin: 2rem;
+    text-align: center;
+}
+
+#container {
+    width: 60%;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    float: right;
+}
+
+.table td,
+.table th {
+    border: 1px solid #ddd;
+    text-align: center;
+
+
+}
+
+.table tr:hover {
+    background-color: rgb(233, 247, 241);
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tr:hover {
+    background-color: #ddd;
+}
+
+
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(91, 88, 191);
+
+}
+
+.table td {
+    text-align: justify;
+}
+
+
+
+.centerhead {
+
+
+    margin-left: 20px;
+}
+
+.width {
+    width: 250px;
+}
+
+
+.imgwidth {
+
+    margin-right: 90px;
+
+
+}
+
+.widthimage {
+    margin-top: auto;
+
+}
+
+
+
+.no-outline {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #eee;
+    border-style: none;
+    margin-left: 20px;
+
+
+
+}
+
+.no-outline:focus {
+    border-style: none;
+    border-radius: 40px;
+    outline: none;
+}
+
+.border {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #eee;
+    border-style: none;
+    border-radius: 40px;
+    padding-left: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding: 11px;
+    width: 30%;
+}
+
+.edit {
+    color: rgb(60, 0, 255);
+}
+
+.delete {
+    color: rgb(233, 24, 24);
+}
+
+.image {
+    height: 70px;
+    width: 70px;
+   }
