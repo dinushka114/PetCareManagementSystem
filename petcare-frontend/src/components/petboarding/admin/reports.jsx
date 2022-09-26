@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
+import jsPDF from 'jspdf';
+import "jspdf-autotable";
 
 const Report =() =>{
 
@@ -31,6 +33,42 @@ const Report =() =>{
     getBoardingData()
   },[]);
 
+  const exportPDF = () =>{
+
+    var place = searchedData.map(boardings =>[
+      boardings.boardingName,
+      boardings.boardingemail,
+      boardings.boardingaddress,
+      boardings.boardingphone,
+      boardings.openHoursStart,
+      boardings.openHoursEnd
+    ]);
+
+    var unit = "pt";
+    var size = "A3"; // size of the document
+    var orientation = "landscape"; 
+    var marginLeft = 40;
+    var doc = new jsPDF(orientation, unit, size);
+    var title = "Pet Boarding Places";
+    var headers = [["Name", "Email", "City", "PhoneNo", "Opening Hour", "Closing Hour"]];
+
+    let content ={
+      //theme
+      theme : 'grid',
+      headStyles: { halign: 'center' },
+      bodyStyles: { halign: 'center' },
+      startY: 50,
+      head: headers,
+      body: place
+    };
+
+    doc.rect(20, 20, doc.internal.pageSize.width - 40, doc.internal.pageSize.height - 40, 'S');
+    doc.setFontSize(20);
+    doc.text(title, marginLeft, 40);
+    require('jspdf-autotable');
+    doc.autoTable(content);
+    doc.save("Pet Boarding Place in " + `${place.boardingaddress}` + ".pdf");
+  }
 
   return (
     <>
@@ -43,7 +81,8 @@ const Report =() =>{
             <input type='text' className='form-control' placeholder="Search by city" style={{width: '64%',borderRadius: '4px',border: '2px solid #ccc',height:'100%'}}
               onChange={handleSearch}/> &nbsp;&nbsp;&nbsp;
               <div className='col-sm-2'>
-                   <input type="submit" name='Download' value='Download' className='btn btn-success'></input> 
+                   <input type="submit" name='Download' value='Download' className='btn btn-success'
+                   onClick={exportPDF}></input> 
                 </div>
           </div>
           

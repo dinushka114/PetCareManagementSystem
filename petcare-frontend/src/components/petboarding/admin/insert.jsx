@@ -74,6 +74,19 @@ const InsertBoardingPlaces = () => {
         }
     }
 
+    const [phoneError, setPhoneError] = useState('')
+    
+    const validatePhone = (e) => {
+        var phone = e.target.value
+
+        if( !(phone.match('[0][0-9]{9}')) ){
+            setPhoneError('Enter valid Phone-No :(')
+        }else{
+        setPhoneError('Valid Phone-No :)');
+        setboardingphone(phone);
+       }
+    }
+
   return (
     
     <div className="home">
@@ -129,8 +142,9 @@ const InsertBoardingPlaces = () => {
                             <input type="text" name="boardingphone" id="boardingphone" cols="10" rows="4" className='form-control' placeholder="0110987654"
                                 pattern="[0][0-9]{9}" required 
                             onChange={(e)=>{
-                                setboardingphone(e.target.value);
+                                validatePhone(e);
                             }}/>
+                            <p style={{color: 'red'}}>{phoneError}</p>
                         </div>
                     </div><br/>
                     <div className='row'>
