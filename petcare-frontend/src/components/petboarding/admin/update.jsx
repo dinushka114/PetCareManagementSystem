@@ -4,6 +4,7 @@ import image from '../../../images/update.jpg';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useParams, useNavigate } from 'react-router-dom'
+import validator from 'validator'
 
 const UpdateBoardingPlaces = () =>{
 
@@ -89,6 +90,31 @@ const UpdateBoardingPlaces = () =>{
         const cancelBoarding = () =>{
             document.getElementById("boardingForm").reset();
         }
+        const [emailError, setEmailError] = useState('')
+    
+    const validateEmail = (e) => {
+        var email = e.target.value
+    
+        if (validator.isEmail(email)) {
+        setEmailError('Valid Email :)');
+        setboardingemail(email);
+        } else {
+        setEmailError('Enter valid Email :(')
+        }
+    }
+
+    const [phoneError, setPhoneError] = useState('')
+    
+    const validatePhone = (e) => {
+        var phone = e.target.value
+
+        if( !(phone.match('[0][0-9]{9}')) ){
+            setPhoneError('Enter valid Phone-No :(')
+        }else{
+        setPhoneError('Valid Phone-No :)');
+        setboardingphone(phone);
+       }
+    }
 
         return (
             <div className="home">
@@ -126,8 +152,9 @@ const UpdateBoardingPlaces = () =>{
                                     type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                     defaultValue={id ? boardingemail : null}
                                     onChange={(e)=>{
-                                        setboardingemail(e.target.value);
+                                        validateEmail(e);
                                     }}></input>
+                                    <p style={{color: 'red'}}>{emailError}</p>
                                 </div>
                             </div>
                             <div className='col-sm-6'>
@@ -148,8 +175,9 @@ const UpdateBoardingPlaces = () =>{
                                     pattern="[0][0-9]{9}" required 
                                     defaultValue={id ? boardingphone : null}
                                     onChange={(e)=>{
-                                        setboardingphone(e.target.value);
-                            }}/>
+                                        validatePhone(e);
+                                    }}/>
+                                    <p style={{color: 'red'}}>{phoneError}</p>
                                 </div>
                             </div>
                             <div className='row'>
