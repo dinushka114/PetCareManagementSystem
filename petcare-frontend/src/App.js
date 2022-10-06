@@ -1,26 +1,30 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './pages/petboarding/admin/Dashboard';
-import Reports from './pages/petboarding/admin/Reports';
-import Update from './pages/petboarding/admin/UpdateBoarding';
-import AddNewBoarding from './pages/petboarding/admin/AddNewBoarding';
-import Client from './pages/petboarding/user/petBoardingPlaces';
+
+import { Routes, Route } from "react-router-dom"
+import MainDashboard from "./pages/user/DashBoard/DashBoard";
+import HomePage from "./pages/user/HomePage/HomePage";
+import Login from "./pages/user/Login/Login";
+import Register from "./pages/user/Register/Register";
+
+
 
 function App() {
+
   return (
-      <>
-        <Router>
-          <Routes>
-            <Route exact path='/' element={<Dashboard/>} />
-            <Route exact path='/add' element={<AddNewBoarding/>} />
-            <Route exact path='/report' element={<Reports/>} />
-            <Route exact path='/update/:id' element={<Update/>} />
-            <Route exact path='/boarding' element={<Client/>} />
-          </Routes>
-        </Router>
-      </>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/dashboard/*" element={<MainDashboard />} />
+      <Route exact path='/pet-boarding' element={<Dashboard />} />
+      <Route exact path='/add' element={<AddNewBoarding />} />
+      <Route exact path='/report' element={<Reports />} />
+      <Route exact path='/update/:id' element={<Update />} />
+      <Route exact path='/boarding' element={<Client />} />
+    </Routes>
+
   );
 }
 
+
 export default App;
+
