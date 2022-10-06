@@ -3,6 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/data-grid": "^4.0.0-alpha.37",
+    "@material-ui/icons": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.61",
+    "@reduxjs/toolkit": "^1.8.5",
+    
+    
+    "chart.js": "^3.9.1",
+    "overlay-navbar": "^1.2.3",
+    
+   
+    "react-chartjs-2": "^4.3.1",
+   
+    "react-helmet": "^6.1.0",
+   
+    "react-material-ui-carousel": "^3.4.2",
+    "react-rating-stars-component": "^2.2.0",
+    "react-redux": "^8.0.2",
+    
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
+    "sweetalert": "^2.1.2",
+    "sweetalert-react": "^0.4.11",
+    "sweetalert2-react": "^0.8.3",
+ 
+    "webfontloader": "^1.6.28",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@material/card": "^14.0.0",
@@ -66,8 +92,8 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://192.168.1.6:3000",
   "devDependencies": {
-    "sass": "^1.54.5",
-    "css-loader": "^6.7.1"
-  }
-}
+    "babel-plugin-react-require": "^3.1.3"
+  
+}}

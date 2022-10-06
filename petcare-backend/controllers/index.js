@@ -1,3 +1,3 @@
-exports.index = (req,res)=>{
+exports.index = (req, res) => {
     res.send("Index route")
 }
