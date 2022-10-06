@@ -1,0 +1,173 @@
+
+
+
+
+.header {
+
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(215, 35, 231);
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 70px;
+    display:flex;
+
+
+  }
+
+  .subHeader{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(136, 136, 136);
+    text-align:center;
+    margin-top: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: 70px;
+    margin-bottom: 40px;
+  }
+  
+
+
+.box{
+    display:block;
+    flex-direction: row;
+}
+
+
+.address{
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(201, 55, 99);
+    margin-left: 70px;
+    margin-top: 4px;
+    font-family:'Times New Roman', Times, serif;
+    display:flex;
+    flex-wrap: wrap;
+    flex: 1;
+
+    text-align: left;
+}
+
+
+.add{
+  display:flex;
+  float:right;
+    
+
+}
+
+.space1{
+    margin-left: 230px;
+    text-align: left;
+    color: rgb(241, 14, 154);
+}
+
+.space2{
+    margin-left: 230px;
+    text-align: left;
+    color: rgb(241, 14, 154);
+}
+
+.space3{
+    margin-left: 306px;
+    text-align: left;
+    color: rgb(241, 14, 154);
+}
+
+.components{
+    gap: 10px;
+}
+
+.reportheader{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(136, 136, 136);
+    margin-top: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 40px;
+
+
+  
+}
+
+.signature{
+    float:right;
+    margin-right: 80px;
+    margin-top: 50px;
+}
+
+.sign{
+   
+    
+    margin-top: 100px;
+    margin-left: 813px;
+}
+
+.print{
+    display: inline-block;
+    color: white;
+    border-radius: 10px;
+    margin-left: 40%;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    width:230px;
+    height:50px;
+    transition-duration: 0.4s;
+    background-color: rgb(112, 103, 238);
+    border:none
+
+    
+    
+}
+
+.print:hover{
+    background-color: #13e219; /* Green */
+    color: white;
+    border:none
+}
+
+
+.calenders{
+    display: flex;
+    flex-direction: row;
+    float:right;
+  }
+
+  .calenders2{
+    display: flex;
+    flex-direction: row;
+    max-width:100%;
+
+  }
+
+  .borders{
+
+    margin-top: 20px;
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(10, 201, 4);
+    border-radius: 20px;
+  }
+
+
+  .reportimg{
+    margin-left: 400px;
+    margin-bottom: 10px;
+    max-width: 50%;
+    max-height: 50%;
+  }
+
+  .float_start{
+
+    float:right;
+    max-width: 50%;
+    max-height: 50%;
+  }
+
+
+  .block{
+    display:inline-block
+  }

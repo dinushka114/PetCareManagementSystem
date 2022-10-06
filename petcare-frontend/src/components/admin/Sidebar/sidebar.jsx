@@ -38,8 +38,9 @@ const sidebar = () => {
                 <p className='title'>REPORTS</p>
                 <li>
                     <AssessmentIcon className='icon'/>
-                    <Link to={"/transport-manage"} style={{ textDecoration: "none" }}/>
+                    <Link to={"/reports"} style={{ textDecoration: "none" }}>
                     <span>Report</span>
+                    </Link>
                 </li>
                 <p className='bottom-title'>LOGOUT</p>
                 <li>

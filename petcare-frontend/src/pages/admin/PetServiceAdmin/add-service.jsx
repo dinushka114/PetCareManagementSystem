@@ -28,10 +28,6 @@ export default function AddService(){
         openHoursEnd:""
     }
 
-
-
-
-
     const handleFileSelect = (event) => {
         setSelectedFile(event.target.files[0])
       }
@@ -86,21 +82,20 @@ return(
         <div className="home">
             <div className="homeContainer">
                 <h1>Add New Service</h1>
-                    <form  onSubmit={sendService} className='border border-success rounded' encType='multipart/form-data'>
+                    <form  onSubmit={sendService} className='border border-success rounded was-validated' encType='multipart/form-data'>
                         <div className='p-4'>
                             <div className='col-sm-6'>
                                 <div className="form-group">
                                     <label htmlFor="serviceName">Service name</label>
-                                    <input  name="serviceName" id="serviceName"  cols="10" rows="4" className='form-control' 
+                                    <input  name="serviceName" id="serviceName"  cols="10" rows="4" className='form-control' required
                                     onChange={(e)=>{
-                                        
-                                        
-                                        
+
                                         setserviceName(e.target.value);
                                     }}
                                  
                                     //ServiceAddForm.handleChange();
                                     />
+                                     <div class="invalid-feedback">Please enter the service name</div>
                                  
                        
                                                 <p className="text-danger p-1">
@@ -114,47 +109,53 @@ return(
                                 <div className="form-group">
                                     <div className="form-group">
                                         <label htmlFor="serviceImage">Service image</label>
-                                        <input type='file'  name="serviceImage" id="serviceImage"  cols="10" rows="4" className='form-control'
+                                        <input type='file'  name="serviceImage" id="serviceImage"  cols="10" rows="4" className='form-control' required
                                        onChange={handleFileSelect}
                                        />
+                                    <div class="invalid-feedback">Please upload the service image</div>
                                     </div>
                                     </div>
                                 </div>
                             <div className='col-sm-6'>
                                     <div className="form-group">
                                     <label htmlFor="description">Description</label>
-                                    <textarea name="description" id="description"  rows="4" className='form-control'
+                                    <textarea name="description" id="description"  rows="4" className='form-control' required
                                     onChange={(e)=>{
                                         setdescription(e.target.value);
                                     }} />
+                                    <div class="invalid-feedback">Please enter the service description</div>
                                 </div>
                             </div>
                             <div className='col-sm-6'>
                                 <div className="form-group">
                                     <label htmlFor="contactNo">Contact no</label>
-                                    <input type="text" name="contactNo" id="contactNo" cols="10" rows="4" className='form-control'
+                                    <input type="text" name="contactNo" id="contactNo" cols="10" rows="4" className='form-control' required
+                                    pattern="[0][0-9]{9}" required 
                                     onChange={(e)=>{
                                         setcontactNo(e.target.value);
                                     }} />
+                                    <div class="invalid-feedback">Please enter valid contact number</div>
                                 </div>
                             </div>
                             <div className='row'>
                             <div className='col-sm-6'>
                                 <div className="form-group">
                                     <label htmlFor="openHours">Open hours</label>
-                                    <input type='time' name="openHoursStart" id="openHoursStart" cols="10" rows="4" className='form-control' placeholder='Start Time'
+                                    <input type='time' name="openHoursStart" id="openHoursStart" cols="10" rows="4" className='form-control' placeholder='Start Time' required
                                     onChange={(e)=>{
                                         setopenHoursStart(e.target.value);
                                     }} />
+                                    <div class="invalid-feedback">Please enter the starting time</div>
                                 </div>
                             </div> 
                             <div className='col-sm-5'>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputPassword1"></label>
-                                    <input type='time' name="openHoursEnd" id="openHoursEnd" cols="10" rows="4" className='form-control' placeholder='End Time'
+                                    <input type='time' name="openHoursEnd" id="openHoursEnd" cols="10" rows="4" className='form-control' placeholder='End Time' required
                                     onChange={(e)=>{
                                         setopenHoursEnd(e.target.value);
                                     }} />
+                                    <div class="invalid-feedback">Please enter the close time</div>
                                 </div>
                             </div>              
                             </div>         

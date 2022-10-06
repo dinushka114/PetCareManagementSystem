@@ -99,7 +99,7 @@ exports.updateService = async(req,res) =>{
 
     const url = "http://localhost:3000/uploads/"
 
-    //get baording id
+    //get service id
     const service_id = req.params.id;
 
      //check if the file is there
@@ -107,10 +107,10 @@ exports.updateService = async(req,res) =>{
         return res.status(400).send({ message: 'Pleade upload a service image'});
     }
 
-     //create boarding url
+     //create service url
      const imageUrl = url + req.file.originalname;
 
-   //get boarding details
+   //get service details
    const {serviceName , description, contactNo, openHoursStart, openHoursEnd} = req.body;
 
    //validate inputs
@@ -118,7 +118,7 @@ exports.updateService = async(req,res) =>{
     res.status(400).send({ message: "All inputs are required" });
    }
 
-    //check boarding exists in database
+    //check service exists in database
     const isservice = await serviceSchema.findOne({ _id:service_id });
 
     //handle http requests
@@ -140,6 +140,4 @@ exports.updateService = async(req,res) =>{
     }else{
         return res.status(400).json({ message: "Pet service does not exsists!!" })
     }
-
-
 }

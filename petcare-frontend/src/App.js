@@ -6,6 +6,8 @@ import ServiceHome from './pages/admin/PetServiceAdmin/service'
 import AddService from './pages/admin/PetServiceAdmin/addServiceHome'
 import Card from './components/user/Card/Card'
 import MoreService from './pages/user/moreService'
+import Report from './pages/admin/PetServiceAdmin/MainReport'
+import UpdateServiceHome from './pages/admin/PetServiceAdmin/updateServiceHome';
 
 
 
@@ -18,6 +20,8 @@ function App() {
         <Route path="/add-service" element={<AddService/>} />
         <Route path="/card" element={<Card/>} />
         <Route path="/:id" element={<MoreService/>}></Route>
+        <Route path="/reports" element={<Report/>}></Route>
+        <Route path="/update-service/:id" element={<UpdateServiceHome/>}></Route>
       </Routes>
     </BrowserRouter>
   );

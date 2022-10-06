@@ -57,11 +57,7 @@ const Viewservice = () => {
     return(
       
         <TableContainer component={Paper} className="table">
-          <div className='searchborder'>
-          <SearchIcon style={{marginLeft:"10px"}}></SearchIcon>
-          <input  className='no-outline' type="text" onChange={handleSearch}  placeholder='Search service'>
-          </input>
-          </div>
+       
           
 
        
@@ -76,8 +72,6 @@ const Viewservice = () => {
               <th scope="col">Contact</th>
               <th scope="col">Opening</th>
               <th scope="col">Closing</th>
-              <th colSpan={2}>Action</th>
-
             </tr>
           </thead>
           <tbody>
@@ -92,8 +86,6 @@ const Viewservice = () => {
                     <td className='widthcontact'>{services.contactNo}</td>
                     <td>{services.openHoursStart}</td>
                     <td>{services.openHoursEnd}</td>
-                    <td><Link to={`/update-service/${services._id}`}> <button className="btn btn-warning">Update</button></Link></td>
-                    <td><button onClick={()=>deleteService(services._id)} className="btn btn-danger">Delete</button></td>
                   </tr>
                 )
               })

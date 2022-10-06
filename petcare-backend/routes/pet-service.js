@@ -25,6 +25,7 @@ router.post("/add-service/", upload.single("serviceImage"), serviceController.ad
 router.delete("/delete-service/:id",serviceController.deleteService);
 router.get("/get-service/",serviceController.getService);
 router.get("/get-service/:id",serviceController.getOneService);
+router.put("/update-service/:id",upload.single('serviceImage'),serviceController.updateService)
 
 
 module.exports = router;
