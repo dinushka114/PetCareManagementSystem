@@ -80,19 +80,64 @@ exports.getService = (req,res)=>{
     })
 }
 
-exports.getOneService = (req,res)=>{
+exports.getOneService =(req,res)=>{
 
     //get service id
    const service_id = req.params.id;
 
-   const services = serviceSchema.findOne({service_id} , function(err , services){
+   const services = serviceSchema.findOne({_id:service_id} , function(err , services){
     if(err){
         res.json({"err":err})
     }else{
         res.json({"result":services})
     }
 })
+
 }
 
+exports.updateService = async(req,res) =>{
 
+    const url = "http://localhost:3000/uploads/"
 
+    //get service id
+    const service_id = req.params.id;
+
+     //check if the file is there
+     if(!req.file){
+        return res.status(400).send({ message: 'Pleade upload a service image'});
+    }
+
+     //create service url
+     const imageUrl = url + req.file.originalname;
+
+   //get service details
+   const {serviceName , description, contactNo, openHoursStart, openHoursEnd} = req.body;
+
+   //validate inputs
+   if (!(serviceName && description && contactNo && openHoursStart && openHoursEnd)) {
+    res.status(400).send({ message: "All inputs are required" });
+   }
+
+    //check service exists in database
+    const isservice = await serviceSchema.findOne({ _id:service_id });
+
+    //handle http requests
+    if(isservice){
+        serviceSchema.updateOne({ _id:service_id }, {
+            serviceName:serviceName,
+            serviceImage:imageUrl,
+            description:description,
+            contactNo:contactNo,
+            openHoursStart:openHoursStart,
+            openHoursEnd:openHoursEnd
+        }, function (err, result) {
+            if (result) {
+                return res.status(200).json({ message: "service updated successfully!!" })
+            } else {
+                return res.status(400).json({ message: "something went wrong" })
+            }
+        })
+    }else{
+        return res.status(400).json({ message: "Pet service does not exsists!!" })
+    }
+}
