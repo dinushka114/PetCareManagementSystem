@@ -23,6 +23,8 @@ db_connection()
 app.use("/" , indexRoutes)
 app.use("/pet-service" ,serviceRoutes)
 app.use("/pet-owner" , petOwnerRoutes)
+app.use("/pet-boarding" ,boardingRoutes)
+
 
 app.listen(PORT , ()=>{
     console.log(`Server is running on port ${PORT}`)

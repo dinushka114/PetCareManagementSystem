@@ -4,8 +4,23 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
-import './Navbar.css';
 import { IconContext } from 'react-icons';
+import './Navbar.css'
+
+const styles={
+  navbar:{
+    backgroundColor: '#3a3a3a',
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  menubars: {
+    marginLeft: '1rem',
+    fontSize: '1rem',
+    background: 'none'
+  }
+}
 
 function Navbar() {
 
@@ -16,15 +31,15 @@ function Navbar() {
   return (
     <>
         <IconContext.Provider value={{ color: '#fff' }}>
-      <div className='navbar'>
-        <Link to="#" className="menu-bars">
+      <div style={styles.navbar}>
+        <Link to="#" style={styles.menubars}>
             <FaIcons.FaBars onClick={showSidebar}/>
         </Link>
       </div>
 
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{backgroundColor:'#3a3a3a'}}>
       <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
+            <li className='navbar-toggle' style={{backgroundColor:'#3a3a3a'}}>
               <Link to='#' className='menu-bars'>
                 <AiIcons.AiOutlineClose />
               </Link>
