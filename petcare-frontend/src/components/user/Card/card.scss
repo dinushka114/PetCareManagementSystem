@@ -1,0 +1,110 @@
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.2s;
+    width: 20%;
+    float: left;
+    margin: 30px;
+    cursor: pointer;
+
+    .card-img-top{
+      width:170%;
+    }
+
+    
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transform: scale(1.02);
+    transition: transform .2s;
+  }
+
+  .container {
+    padding: 2px 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color:rgb(243, 0, 73);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    
+  }
+
+  .view-button{
+    transition: transform .2s;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 20px;
+    background-color: blue;
+    color: white;
+    width:60%;
+    padding: 7px;
+    
+  }
+
+  .view-button:hover{
+    background-color: rgb(6, 211, 6);
+    outline: none;
+    border: none;
+  }
+
+
+
+
+
+  .Header{
+    color: rgb(182, 179, 0);
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 500px;
+    margin-top: 15px;
+  }
+
+
+  
+  .Description{
+    margin-top: 15px;
+    margin-left: 500px;
+    margin-right: 60px;
+    font-size:18px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: justify;
+    text-indent: 50px;
+  }
+  
+  .OpenHours{
+    margin-top: 15px;
+    margin-left: 500px;
+    font-weight: 500;
+    color:rgb(194, 181, 2)
+  }
+
+  .OpenHoursStart{
+    margin-top: 5px;
+    margin-left: 500px;
+    font-weight: 500;
+  }
+
+  .ContactNo{
+ 
+    margin-left: 500px;
+    font-weight: 500;
+  }
+
+  .AppointmentBtn{
+    background-color: rgb(5, 201, 5);
+    color: aqua;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 500px;
+    width: 200px;
+  }
+
+  .AppointmentBtn:hover{
+    background-color: green;
+  }
+
