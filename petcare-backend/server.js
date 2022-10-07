@@ -2,9 +2,11 @@
 const express = require("express");
 const path = require("path")
 const bodyParser = require("body-parser");
+//const multer = require("multer");
 const db_connection = require("./database/index");
-const cors = require("cors")
 require('dotenv').config();
+var cors = require('cors')
+
 
 const PORT = process.env.PORT || 3001
 
@@ -12,22 +14,33 @@ const indexRoutes = require("./routes/index");
 const petOwnerRoutes = require("./routes/pet-owner")
 const serviceRoutes = require("./routes/pet-service")
 const boardingRoutes = require("./routes/pet-boarding")
+const productRoutes = require("./routes/productRoute")
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));    
+app.use(cors()) // Use this after the variable declaration
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors())
 
 db_connection()
 
-app.use("/" , indexRoutes)
+app.use("/", indexRoutes)
+app.use("/productRoute", productRoutes)
 app.use("/pet-service" ,serviceRoutes)
 app.use("/pet-owner" , petOwnerRoutes)
 app.use("/pet-boarding" ,boardingRoutes)
 
 
-app.listen(PORT , ()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
+/*
+const storage = multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,file.originalname)
+    }
+})
+
+const uploads = multer({storage:storage})
+*/
