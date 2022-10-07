@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SidebarData } from './CnavbarData';
 import './Cnavbar.css';
 import { IconContext } from 'react-icons';
+import { SidebarData } from '../../admin/sidebar/SidebarData';
 
 const styles={
   navbar:{
