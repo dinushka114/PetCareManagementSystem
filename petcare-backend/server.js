@@ -1,3 +1,4 @@
+
 const express = require("express");
 const path = require("path")
 const bodyParser = require("body-parser");
@@ -10,6 +11,9 @@ var cors = require('cors')
 const PORT = process.env.PORT || 3001
 
 const indexRoutes = require("./routes/index");
+const petOwnerRoutes = require("./routes/pet-owner")
+const serviceRoutes = require("./routes/pet-service")
+const boardingRoutes = require("./routes/pet-boarding")
 const productRoutes = require("./routes/productRoute")
 
 const app = express();
@@ -23,6 +27,9 @@ db_connection()
 
 app.use("/", indexRoutes)
 app.use("/productRoute", productRoutes)
+app.use("/pet-service" ,serviceRoutes)
+app.use("/pet-owner" , petOwnerRoutes)
+app.use("/pet-boarding" ,boardingRoutes)
 
 
 app.listen(PORT, () => {

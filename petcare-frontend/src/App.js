@@ -9,11 +9,17 @@ import MoreService from './pages/user/moreService'
 import Report from './pages/admin/PetServiceAdmin/MainReport'
 import UpdateServiceHome from './pages/admin/PetServiceAdmin/updateServiceHome';
 
-import { Routes, Route } from "react-router-dom"
+
 import MainDashboard from "./pages/user/DashBoard/DashBoard";
+
 import HomePage from "./pages/user/HomePage/HomePage";
 import Login from "./pages/user/Login/Login";
 import Register from "./pages/user/Register/Register";
+import Dashboard from "./pages/petboarding/admin/Dashboard";
+import AddNewBoarding from "./pages/petboarding/admin/AddNewBoarding";
+import Reports from './pages/petboarding/admin/Reports';
+import Update from './pages/petboarding/admin/UpdateBoarding';
+import Client from './pages/petboarding/user/petBoardingPlaces';
 import Home from './component/Home/Home';
 import ProductDetails from './component/Product/ProductDetails.js';
 import Dashboard from './component/admin/Dashboard.js';
@@ -42,7 +48,7 @@ function App() {
         <Route path="/get-service" element={<ServiceHome/>} />
         <Route path="/add-service" element={<AddService/>} />
         <Route path="/card" element={<Card/>} />
-        <Route path="/:id" element={<MoreService/>}></Route>
+        <Route path="/service/:id" element={<MoreService/>}></Route>
         <Route path="/reports" element={<Report/>}></Route>
         <Route path="/update-service/:id" element={<UpdateServiceHome/>}></Route>
         
