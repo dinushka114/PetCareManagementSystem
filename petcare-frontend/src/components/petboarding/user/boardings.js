@@ -33,7 +33,7 @@ const Boardings = () => {
   },[]);
 
  return(
-   <div className="container" style={{float:'right',width: '84%', marginLeft: '15px'}}>
+   <div className="container" style={{float:'right',width: '81%', marginLeft: '15px'}}>
       <h1>Pet Boarding Places</h1>
       <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded">
         <div className="row ">

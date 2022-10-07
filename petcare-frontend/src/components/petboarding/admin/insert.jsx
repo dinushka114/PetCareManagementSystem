@@ -50,7 +50,7 @@ const InsertBoardingPlaces = () => {
 
         axios.post("http://localhost:3000/pet-boarding/add",formData).then(()=>{
             Swal.fire("Boarding added");
-            navigate('/');
+            navigate('/pet-boarding');
         }).catch((err)=>{
             alert(err);
             console.log(err);
@@ -89,7 +89,7 @@ const InsertBoardingPlaces = () => {
 
   return (
     
-    <div className="home">
+    <div className="home" style={{float:'right',width: '95%', marginLeft: '10px'}}>
     <div className="homeContainer">
         <h1>Add New Pet Boarding Place</h1>
             <form className='border border-secondary rounded' encType='multipart/form-data' id="boardingForm">

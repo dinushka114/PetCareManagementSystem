@@ -80,7 +80,7 @@ const UpdateBoardingPlaces = () =>{
             formData)
             .then(() => {
                 Swal.fire("Boarding updated");
-                navigate('/');
+                navigate('/pet-boarding');
             }).catch((err)=>{
                 alert(err);
                 console.log(err);
@@ -117,7 +117,7 @@ const UpdateBoardingPlaces = () =>{
     }
 
         return (
-            <div className="home">
+            <div className="home" style={{float:'right',width: '95%', marginLeft: '10px'}}>
             <div className="homeContainer">
                 <h1>Update Pet Boarding Place</h1>
                 

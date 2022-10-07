@@ -1,7 +1,4 @@
-
 import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
@@ -15,33 +12,23 @@ const styles={
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
-  menubars: {
-    marginLeft: '1rem',
-    fontSize: '1rem',
-    background: 'none'
-  }
 }
 
 function Navbar() {
 
-    const [sidebar, setSidebar] = useState(false);
+    const [sidebar, setSidebar] = useState(true);
 
-    const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <>
         <IconContext.Provider value={{ color: '#fff' }}>
-      <div style={styles.navbar}>
-        <Link to="#" style={styles.menubars}>
-            <FaIcons.FaBars onClick={showSidebar}/>
-        </Link>
-      </div>
+      <div style={styles.navbar}></div>
 
       <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{backgroundColor:'#3a3a3a'}}>
-      <ul className='nav-menu-items' onClick={showSidebar}>
+      <ul className='nav-menu-items'>
             <li className='navbar-toggle' style={{backgroundColor:'#3a3a3a'}}>
               <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
+  
               </Link>
             </li>
             {SidebarData.map((item, index) => {
