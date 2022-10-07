@@ -1,3 +1,4 @@
+
 const express = require("express");
 const path = require("path")
 const bodyParser = require("body-parser");
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3001
 const indexRoutes = require("./routes/index");
 const petOwnerRoutes = require("./routes/pet-owner")
 const serviceRoutes = require("./routes/pet-service")
+const boardingRoutes = require("./routes/pet-boarding")
 
 const app = express();
 

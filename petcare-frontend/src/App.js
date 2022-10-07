@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { BrowserRouter, Route, Routes , Link } from "react-router-dom";
 import UserHome from './pages/user/servicesHome';
@@ -9,11 +9,17 @@ import MoreService from './pages/user/moreService'
 import Report from './pages/admin/PetServiceAdmin/MainReport'
 import UpdateServiceHome from './pages/admin/PetServiceAdmin/updateServiceHome';
 
-import { Routes, Route } from "react-router-dom"
+
 import MainDashboard from "./pages/user/DashBoard/DashBoard";
+
 import HomePage from "./pages/user/HomePage/HomePage";
 import Login from "./pages/user/Login/Login";
 import Register from "./pages/user/Register/Register";
+import Dashboard from "./pages/petboarding/admin/Dashboard";
+import AddNewBoarding from "./pages/petboarding/admin/AddNewBoarding";
+import Reports from './pages/petboarding/admin/Reports';
+import Update from './pages/petboarding/admin/UpdateBoarding';
+import Client from './pages/petboarding/user/petBoardingPlaces';
 
 
 
