@@ -34,7 +34,7 @@ function App() {
         <Route path="/get-service" element={<ServiceHome/>} />
         <Route path="/add-service" element={<AddService/>} />
         <Route path="/card" element={<Card/>} />
-        <Route path="/:id" element={<MoreService/>}></Route>
+        <Route path="/service/:id" element={<MoreService/>}></Route>
         <Route path="/reports" element={<Report/>}></Route>
         <Route path="/update-service/:id" element={<UpdateServiceHome/>}></Route>
     </Routes>
