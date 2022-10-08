@@ -105,7 +105,7 @@ const InsertBoardingPlaces = () => {
                         </div>
                     </div><br/>
                     
-                    {/* <img src={image} alt='add' style={{width:'45%',float:'right', borderRadius: '10px'}}></img> */}
+                    <img src={image} alt='add' style={{width:'45%',float:'right', borderRadius: '10px'}}></img>
                     <div className='col-sm-6'>
                         <div className="form-group">
                             <div className="form-group">

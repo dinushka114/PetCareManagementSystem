@@ -134,7 +134,7 @@ const UpdateBoardingPlaces = () =>{
                                 </div>
                             </div>
                             
-                            {/* <img src={image} alt='update' style={{width:'45%',float:'right', borderRadius: '10px'}}></img> */}
+                            <img src={image} alt='update' style={{width:'45%',float:'right', borderRadius: '10px'}}></img>
                             <div className='col-sm-6'>
                                 <div className="form-group">
                                     <div className="form-group">
