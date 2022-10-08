@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SidebarData } from './CnavbarData';
 import './Cnavbar.css';
 import { IconContext } from 'react-icons';
+import { SidebarData } from '../../admin/sidebar/SidebarData';
 
-const styles={
-  navbar:{
+const styles = {
+  navbar: {
     backgroundColor: '#3a3a3a',
     height: '50px',
     display: 'flex',
@@ -16,16 +16,16 @@ const styles={
 
 function Navbar() {
 
-    const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar] = useState(true);
 
   return (
     <>
-        <IconContext.Provider value={{ color: '#fff' }}>
-      <div style={styles.navbar}></div>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div style={styles.navbar}></div>
 
-      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{backgroundColor:'#3a3a3a'}}>
-      <ul className='nav-menu-items'>
-            <li className='navbar-toggle' style={{backgroundColor:'#3a3a3a'}}>
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'} style={{ backgroundColor: '#3a3a3a' }}>
+          <ul className='nav-menu-items'>
+            <li className='navbar-toggle' style={{ backgroundColor: '#3a3a3a' }}>
               <Link to='#' className='menu-bars'>
               </Link>
             </li>
@@ -40,10 +40,10 @@ function Navbar() {
               );
             })}
           </ul>
-      </nav>
-    
+        </nav>
+
       </IconContext.Provider>
-      
+
     </>
   )
 }

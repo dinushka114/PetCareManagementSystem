@@ -9,12 +9,8 @@
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@reduxjs/toolkit": "^1.8.5",
     "chart.js": "^3.9.1",
+    "jspdf-autotable": "^3.5.25",
     "overlay-navbar": "^1.2.3",
-    "react-chartjs-2": "^4.3.1",
-    "react-helmet": "^6.1.0",
-    "react-material-ui-carousel": "^3.4.2",
-    "react-rating-stars-component": "^2.2.0",
-    "react-redux": "^8.0.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "sweetalert": "^2.1.2",
@@ -44,22 +40,19 @@
     "react-action-bar": "^1.0.7",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0",
-    "react-to-print": "^2.14.7",
-    "stream": "^0.0.2",
-    "@fortawesome/fontawesome-svg-core": "^6.2.0",
-    "@fortawesome/free-solid-svg-icons": "^6.2.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "jspdf-autotable": "^3.5.25",
-    "react-file-base64": "^1.0.3",
-    "react-hook-form": "^7.34.2",
+    "react-chartjs-2": "^4.3.1",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
-    "react-phone-number-input": "^3.2.11",
-    "react-scripts": "5.0.1",
-    "sweetalert2": "^11.4.29",
-    "universal": "^0.1.1",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-rating-stars-component": "^2.2.0",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "^5.0.1",
+    "react-to-print": "^2.14.7",
+    "redux": "^4.2.0",
+    "sass": "^1.55.0",
+    "sweetalert2": "^11.4.38",
     "validator": "^13.7.0",
-    "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
   "scripts": {
@@ -86,8 +79,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.1.6:3000",
   "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "babel-plugin-react-require": "^3.1.3"
-  
-}}
+  }
+}
