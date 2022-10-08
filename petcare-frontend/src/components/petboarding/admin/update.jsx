@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './insert.css';
-// import image from '../../../images/update.jpg';
+import image from '../../../images/update.jpg';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useParams, useNavigate } from 'react-router-dom'
