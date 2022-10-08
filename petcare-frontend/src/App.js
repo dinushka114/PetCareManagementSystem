@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BoardingAdminHome from './pages/petboarding/admin/Dashboard';
 import BoardingReports from './pages/petboarding/admin/Reports';
 import BoardingUpdate from './pages/petboarding/admin/UpdateBoarding';
-import AddNewBoarding from './pages/petboarding/admin/AddNewBoarding';
 import BoardingClient from './pages/petboarding/user/petBoardingPlaces';
 import UserHome from './pages/user/servicesHome';
 import ServiceHome from './pages/admin/PetServiceAdmin/service'
@@ -17,13 +16,15 @@ import Login from "./pages/user/Login/Login";
 import Register from "./pages/user/Register/Register";
 import Home from './component/Home/Home';
 import ProductDetails from './component/Product/ProductDetails.js';
-import Dashboard from './component/admin/Dashboard.js';
+// import Dashboard from './component/admin/Dashboard.js';
 import ProductList from './component/admin/ProductList';
 import NewProduct from './component/admin/NewProduct';
 import UpdateProduct from './component/admin/UpdateProduct';
 import Cart from "./component/Cart/Cart.js";
 import ProductReport from './component/admin/Report.js';
 
+import AddNewBoarding from './pages/petboarding/admin/UpdateBoarding';
+import Dashboard from './component/admin/Dashboard'
 
 
 function App() {

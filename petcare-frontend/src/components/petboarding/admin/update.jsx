@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './insert.css';
-import image from '../../../images/update.jpg';
+// import image from '../../../images/update.jpg';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -134,7 +134,7 @@ const UpdateBoardingPlaces = () =>{
                                 </div>
                             </div>
                             
-                            <img src={image} alt='update' style={{width:'45%',float:'right', borderRadius: '10px'}}></img>
+                            {/* <img src={image} alt='update' style={{width:'45%',float:'right', borderRadius: '10px'}}></img> */}
                             <div className='col-sm-6'>
                                 <div className="form-group">
                                     <div className="form-group">

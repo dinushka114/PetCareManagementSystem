@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './insert.css';
-import image from '../../../images/add.jpg';
+// import image from '../../../images/add.jpg';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import {useNavigate} from 'react-router-dom';
@@ -105,7 +105,7 @@ const InsertBoardingPlaces = () => {
                         </div>
                     </div><br/>
                     
-                    <img src={image} alt='add' style={{width:'45%',float:'right', borderRadius: '10px'}}></img>
+                    {/* <img src={image} alt='add' style={{width:'45%',float:'right', borderRadius: '10px'}}></img> */}
                     <div className='col-sm-6'>
                         <div className="form-group">
                             <div className="form-group">
