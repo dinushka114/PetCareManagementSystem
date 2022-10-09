@@ -48,11 +48,11 @@ function App() {
         <Route path="/get-service" element={<ServiceHome />} />
         <Route path="/add-service" element={<AddService />} />
         <Route path="/card" element={<Card />} />
-        <Route path="/service/:id" element={<MoreService />}></Route>
+        <Route path="/pet-services/:id" element={<MoreService />}></Route>
         <Route path="/reports" element={<Report />}></Route>
         <Route path="/update-service/:id" element={<UpdateServiceHome />}></Route>
 
-        <Route path='/:id' element={<ProductDetails />}></Route>
+        <Route path='/product/:id' element={<ProductDetails />}></Route>
         <Route path='/admin/dashboard' element={<Dashboard />}></Route>
         <Route path="/admin/all-products" element={<ProductList />}></Route>
         <Route path="/admin/add-product" element={<NewProduct />}></Route>

@@ -150,6 +150,11 @@
     border-width: 1px;
     color: rgb(10, 201, 4);
     border-radius: 20px;
+
+    .block{
+
+
+    }
   }
 
 
@@ -169,5 +174,29 @@
 
 
   .block{
-    display:inline-block
+    display:inline-block;
+    width: 100%;
+  }
+
+
+  .companylogo{
+    
+    width: 100vh;
+    height:auto;
+    float:right;
+    margin-right: 20px;
+ 
+  }
+
+
+  .letterhead{
+    margin-left: 20px;
+  }
+ 
+
+  .peticon{
+    
+    color: black;
+    font-size: 200px;
+    float: right;
   }

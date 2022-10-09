@@ -57,12 +57,11 @@ const Viewservice = () => {
     return(
       
         <TableContainer component={Paper} className="table">
-       
-          
+        
 
        
        
-        <table  className="table table-striped">
+        <table  className="table">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -72,6 +71,7 @@ const Viewservice = () => {
               <th scope="col">Contact</th>
               <th scope="col">Opening</th>
               <th scope="col">Closing</th>
+
             </tr>
           </thead>
           <tbody>
@@ -81,11 +81,12 @@ const Viewservice = () => {
                   <tr key={services._id}>
                     <th scope="row">{index + 1}</th>
                     <td>{services.serviceName}</td>
-                    <td className='widthimage'> <img src={services.serviceImage} alt="" className="imgwidth" /> </td>
-                    <td className="width">{services.description.substring(0,150)}</td>
+                    <img src={services.serviceImage} alt="" className="imgwidth" />
+                    <td className="widthdescription">{services.description.substring(0,20)}</td>
                     <td className='widthcontact'>{services.contactNo}</td>
                     <td>{services.openHoursStart}</td>
                     <td>{services.openHoursEnd}</td>
+                   
                   </tr>
                 )
               })

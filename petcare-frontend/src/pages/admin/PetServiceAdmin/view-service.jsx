@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 const Swal = require('sweetalert2');
 
 
+
 const Viewservice = () => {
     const [serviceData,setServiceData] = useState([]);
     const [filteredData, setFilteredData] = useState(serviceData);
@@ -48,6 +49,7 @@ const Viewservice = () => {
             }
           })
       }
+      
 
     useEffect(()=>{
         getServiceData();
@@ -66,7 +68,7 @@ const Viewservice = () => {
 
        
        
-        <table  className="table table-striped">
+        <table  className="table">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -88,7 +90,7 @@ const Viewservice = () => {
                     <th scope="row">{index + 1}</th>
                     <td>{services.serviceName}</td>
                     <td className='widthimage'> <img src={services.serviceImage} alt="" className="imgwidth" /> </td>
-                    <td className="width">{services.description.substring(0,150)}</td>
+                    <td className="widthdescription">{services.description.substring(0,20)}</td>
                     <td className='widthcontact'>{services.contactNo}</td>
                     <td>{services.openHoursStart}</td>
                     <td>{services.openHoursEnd}</td>
