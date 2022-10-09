@@ -109,4 +109,17 @@ const Home = () =>{
   
 }
 
+// .homeContainer{
+//   width:80%;
+//   margin-left: 18%;
+//   margin-right: 15px;
+// }
+
+
+const homeContainerStyles = {
+  width:'80%',
+  marginLeft:'18%',
+  marginRight:'15px'
+}
+
 export default Home;

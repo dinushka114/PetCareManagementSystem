@@ -8,31 +8,35 @@ import Img from './MoreService/cover.png'
 
 const Home = () => {
 
-  const [serviceData,setServiceData] = useState([]);
+  const [serviceData, setServiceData] = useState([]);
 
   const getServiceData = () => {
-      axios.get('http://localhost:3000/pet-service/get-service')
-          .then(res => {
-              const allServiceData = res.data.result;
-              setServiceData(allServiceData)       
-          })
+    axios.get('http://localhost:3000/pet-service/get-service')
+      .then(res => {
+        const allServiceData = res.data.result;
+        setServiceData(allServiceData)
+      })
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getServiceData()
-},[]);
+  }, []);
 
 
   return (
     <div>
-        <img className='main-image' src={Img}></img>
-        <div className='centered'></div>
-        <h1>Best Services For Your Pets</h1>
-        <p className='heading-description'>At Fetch, we serve pets of every type, age, and phase of life because we truly love animals. We show it with every belly rub, long walk, scratch behind the ear, and treat we give. We’d love to be your trusted sidekick for a healthy and happy pet because we know we can deliver trusted, quality care and a professional, stress-free experience for you.</p>       
-        <h1>Our Services For You</h1>
-        <Card/>
+      <img className='main-image' src={Img}></img>
+      <div className='centered'></div>
+      <h1 style={heading}>Best Services For Your Pets</h1>
+      <p className='heading-description'>At Fetch, we serve pets of every type, age, and phase of life because we truly love animals. We show it with every belly rub, long walk, scratch behind the ear, and treat we give. We’d love to be your trusted sidekick for a healthy and happy pet because we know we can deliver trusted, quality care and a professional, stress-free experience for you.</p>
+      <h1 style={heading}>Our Services For You</h1>
+      <Card />
     </div>
   )
+}
+
+const heading = {
+  color: 'rgb(121, 75, 121)'
 }
 
 export default Home

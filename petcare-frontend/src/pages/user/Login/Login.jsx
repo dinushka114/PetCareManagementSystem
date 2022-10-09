@@ -34,24 +34,26 @@ const Login = () => {
 
   return (
     <div className='container mt-4'>
-      <h1>Login</h1>
+      <div class="ol-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto mt-2">
+        <h1 >Login</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" onChange={(e) => setEmail(e.target.value)} id="exampleInputEmail1" aria-describedby="emailHelp" />
+        <form onSubmit={handleSubmit}>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" onChange={(e) => setEmail(e.target.value)} id="exampleInputEmail1" aria-describedby="emailHelp" />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" onChange={(e) => setPassword(e.target.value)} id="exampleInputPassword1" />
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+
+
+        <div className='mt-4'>
+          <Link to={"/register"}>don't have an account?click here to register</Link>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" onChange={(e) => setPassword(e.target.value)} id="exampleInputPassword1" />
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-      </form>
-
-
-      <div className='mt-4'>
-        <Link to={"/register"}>don't have an account?click here to register</Link>
       </div>
     </div>
 

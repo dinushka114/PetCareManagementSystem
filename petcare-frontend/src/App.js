@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BoardingAdminHome from './pages/petboarding/admin/Dashboard';
 import BoardingReports from './pages/petboarding/admin/Reports';

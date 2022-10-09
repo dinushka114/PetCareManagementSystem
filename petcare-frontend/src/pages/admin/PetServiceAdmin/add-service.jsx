@@ -1,5 +1,5 @@
 import React from 'react'
-import './services.scss'
+// import './services.scss'
 import Sidebar from '../../../components/admin/Sidebar/sidebar'
 import { Formik, Form, Field } from "formik";
 import { useParams } from 'react-router-dom';

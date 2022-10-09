@@ -39,7 +39,7 @@ const Card = () => {
                 return(
                     <div className='card'>
                         <img  src={services.serviceImage}/> 
-                        <div className="container">{services.serviceName}</div>
+                        <div className="container" style={containerStyles}>{services.serviceName}</div>
                         <button onClick={()=>{loadData(services._id)}} className='view-button'>View More</button> 
                     </div>
                
@@ -49,6 +49,30 @@ const Card = () => {
         </CardMedia>
     </Cards>
     )
+}
+
+// .container {
+//     padding: 2px 16px;
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+//     text-align: center;
+//     color:rgb(243, 0, 73);
+//     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+//     font-weight: 500;
+//     font-size: 20px;
+    
+//   }
+
+const containerStyles = {
+    padding:'2px 16px',
+    marginTop:'20px',
+    marginBottom:'20px',
+    textAlign:'center',
+    color:'rgb(243 , 0 , 73)',
+    // fontFamily:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+    fontWeight:'500',
+    fontSize:'20px'
+
 }
 
 export default Card;

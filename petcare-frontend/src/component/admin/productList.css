@@ -102,20 +102,7 @@
     outline: none;
 }
 
-.border {
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    background-color: #eee;
-    border-style: none;
-    border-radius: 40px;
-    padding-left: 10px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding: 11px;
-    width: 30%;
-}
+
 
 .edit {
     color: rgb(60, 0, 255);

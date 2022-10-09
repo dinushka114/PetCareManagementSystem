@@ -91,4 +91,22 @@ const Home = () => {
 };
 
 
+// .container {
+//     display: flex;
+//     margin: 2vmax auto;
+//     width: 80vw;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     max-width: 100%;
+//   }
+
+const containerStyles = {
+    display:'flex',
+    margin:'2vmax auto',
+    width:'80vw',
+    flexWrap:'wrap',
+    justifyContent:'center',
+    maxWidth:'100%'
+}
+
 export default Home;

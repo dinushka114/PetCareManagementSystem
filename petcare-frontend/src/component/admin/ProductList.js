@@ -142,4 +142,23 @@ const ProductList = () => {
   );
 };
 
+
+
+
+const productListStyles = {
+  borderTopStyle:'hidden',
+  borderRightStyle:'hidden',
+  borderLeftStyle:'hidden',
+  borderBottomStyle:'hidden',
+  backgroundColor:'#eee',
+  borderStyle:'none',
+  borderRadius:'40px',
+  paddingLeft:'10px',
+  marginLeft:'20px',
+  marginBottom:'20px',
+  padding:'11px',
+  width:'30%'
+
+}
+
 export default ProductList;

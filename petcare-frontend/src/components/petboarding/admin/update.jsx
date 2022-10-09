@@ -119,7 +119,7 @@ const UpdateBoardingPlaces = () =>{
         return (
             <div className="home" style={{float:'right',width: '95%', marginLeft: '10px'}}>
             <div className="homeContainer">
-                <h1>Update Pet Boarding Place</h1>
+                <h1 style={headerStyles}>Update Pet Boarding Place</h1>
                 
                     <form className='border border-secondary rounded' id="boardingForm">
                 
@@ -204,7 +204,7 @@ const UpdateBoardingPlaces = () =>{
                                     </div>  
                             <br/>
                             <div className='row'>
-                                        <div className='col-sm-1'>
+                                        <div className='col-sm-1' style={{marginRight:'20px'}}>
                                             <input type="submit" name='Save' value='Update' className='btn btn-success'
                                             onClick={updateBoarding}></input> 
                                         </div>
@@ -220,6 +220,15 @@ const UpdateBoardingPlaces = () =>{
         </div>
         
         )
+}
+
+
+const headerStyles = {
+    textAlign:'center',
+    marginTop:'30px',
+    marginBottom:'50px',
+    fontFamily:'lucida grande',
+    fontSize:'40px'
 }
 
 export default UpdateBoardingPlaces;

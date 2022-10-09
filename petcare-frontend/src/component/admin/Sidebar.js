@@ -16,7 +16,7 @@ import Header from '../layout/Header/Header'
 
 const Sidebar = () => {
     return (
-        <div className = "sidebar">
+        <div style={sideBarStyles}>
             <Header/>
             <Link to = "/">
                 <img src = {logo} alt='petproducts' /> 
@@ -53,9 +53,29 @@ const Sidebar = () => {
 };
         
         
-            
+    
+// .sidebar {
+//     background-color: rgb(255, 255, 255);
+//     display: flex;
+//     flex-direction: column;
+//     padding: 4rem 0;
+//   }
                 
-                
+const sideBarStyles = {
+    backgroundColor:'rgb(255, 255, 255)',
+    display:'flex',
+    flexDirection:'column',
+    padding:'4rem 0'
+}    
+
+
+// .sidebar a {
+//     text-decoration: none;
+//     color: rgba(0, 0, 0, 0.493);
+//     font: 200 1rem "Roboto";
+//     padding: 2rem;
+//     transition: all 0.5s;
+//   }
                     
 
 export default Sidebar;
