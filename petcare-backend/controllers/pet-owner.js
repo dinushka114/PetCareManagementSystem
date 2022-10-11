@@ -242,6 +242,33 @@ exports.getPetById = async (req, res) => {
 
 
 exports.updatePet = async (req, res) => {
+    const owner = req.params.owner_id;
+    const pet_id = req.params.id;
+    const {petName , breed, age} =req.body;
+
+    // if(!(owner && pet_id && petName && breed && age)){
+    //     return res.status(400).send({ message: "All inputs are required" });
+    // }
+
+    const petForUpdate = await petSchema.findById(pet_id);
+
+    if(petForUpdate){
+        petSchema.updateOne({_id:pet_id},{
+            petName:petName,
+            breed:breed,
+            age:age
+        },function(err,  result){
+            if(result){
+                return res.status(200).json({ message: "pet updated successfully!!" })
+            }else{
+                return res.status(400).json({ message: "something went wrong!!" })
+            }
+        })
+    }else{
+        return res.status(404).json({ message: "Pet does not exists!!" })
+    }
+
+    
 
 }
 

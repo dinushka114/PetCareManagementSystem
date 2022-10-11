@@ -8,6 +8,7 @@ import MyPets from '../MyPets/MyPets'
 import NewAppointment from '../NewAppointment/NewAppointment'
 import NewPet from '../NewPet/NewPet'
 import Profile from '../Profile/Profile'
+import Report from '../Report/Report'
 
 
 const DashBoard = () => {
@@ -38,6 +39,7 @@ const DashBoard = () => {
               <Route path={`/new-pet`} element={<NewPet />}></Route>
               <Route path={`/pets`} element={<MyPets />}></Route>
               <Route path={`/new-pet/:id`} element={<NewPet />}></Route>
+              <Route path={`/reports`} element={<Report />}></Route>
             </Routes>
 
           </div>

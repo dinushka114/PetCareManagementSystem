@@ -25,6 +25,8 @@ router.get('/get-pet-owner/:id' , petOwnerController.getPetOwner)
 //route middleware eka mama ain kra eka dnna one passe
 router.post("/add-pet/:id"  , petOwnerController.addNewPet);
 
+router.put("/update-pet/:id/:owner_id" , petOwnerController.updatePet);
+
 router.delete("/delete-pet/:id/:owner_id" , petOwnerController.deletePet);
 
 router.get("/pets-by-owner/:owner_id" , petOwnerController.getPetsByOwner)

@@ -21,6 +21,8 @@ const SideBar = () => {
         <Link style={{ textDecoration: 'none' }} to={'/dashboard/new-appointment'}><a className="list-group-item list-group-item-action list-group-item-light p-3">Add New Appointment</a></Link>
         <Link style={{ textDecoration: 'none' }} to={'/dashboard/my-appointments'}><a className="list-group-item list-group-item-action list-group-item-light p-3">My Appointments</a></Link>
         <Link style={{ textDecoration: 'none' }} to={'/dashboard/pets'}><a className="list-group-item list-group-item-action list-group-item-light p-3">My Pets</a></Link>
+        <Link style={{ textDecoration: 'none' }} to={'/dashboard/reports'}><a className="list-group-item list-group-item-action list-group-item-light p-3">Reports</a></Link>
+       
         <div style={{ margin: '5px' }}>
           <button className='btn btn-danger' onClick={() => signOut()} style={{ position: 'absolute', bottom: '5px' }}>Sign out</button>
         </div>

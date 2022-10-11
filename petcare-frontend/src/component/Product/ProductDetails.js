@@ -60,17 +60,16 @@ const ProductDetails = () => {
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => {
-        if (productData.stocks <= quantity) return;
+        // if (productData.stocks <= quantity) return;
 
-        const qty = quantity + 1;
-        setQuantity(qty);
+        // const qty = quantity + 1;
+        // setQuantity(qty);
+
+        console.log("increasing")
     };
 
     const decreaseQuantity = () => {
-        if (1 >= quantity) return;
-
-        const qty = quantity - 1;
-        setQuantity(qty);
+        console.log("decreasing")
     };
 
     const addToCartHandler = () => {
@@ -93,12 +92,7 @@ const ProductDetails = () => {
                     <div>
                         {/* <Carousel> */}
 
-
-
-
                         <img src={productData.productImage} />
-
-
 
                         {/* </Carousel> */}
 

@@ -54,7 +54,7 @@ const Home = () => {
                 
                 <center><button onClick={() => { loadData('/admin/all-products') }} className='spclBtn'> Admin </button></center>
                 
-                <center><button onClick={() => { loadData('/admin/dashboard') }} className='spclBtn2'> User </button></center>
+                {/* <center><button onClick={() => { loadData('/admin/dashboard') }} className='spclBtn2'> User </button></center> */}
                 
             </div>
             

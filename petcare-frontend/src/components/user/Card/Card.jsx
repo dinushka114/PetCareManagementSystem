@@ -15,7 +15,7 @@ const Card = () => {
 
     const loadData = (id) =>{
         // axios.get("http://localhost:3000/pet-service/get-service/") 
-        window.location.href=`${id}`
+        window.location.href=`service/${id}`
     }
 
     const getServiceData = () => {

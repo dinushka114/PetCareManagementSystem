@@ -93,13 +93,13 @@ const ProductList = () => {
 
               <thead>
                 <tr >
-                  <th scope="col">Product ID</th>
-                  <th scope="col">Product Image</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Stocks</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Description</th>
-                  <th colSpan={2}>Action</th>
+                  <th style={productListStyles} scope="col">Product ID</th>
+                  <th style={productListStyles} scope="col">Product Image</th>
+                  <th style={productListStyles} scope="col">Product Name</th>
+                  <th style={productListStyles} scope="col">Stocks</th>
+                  <th style={productListStyles} scope="col">Price</th>
+                  <th style={productListStyles} scope="col">Description</th>
+                  <th style={productListStyles} colSpan={2}>Action</th>
 
                 </tr>
               </thead>

@@ -15,6 +15,17 @@ const NewPet = () => {
     })
 
 
+    const [petName, setPetName] = useState('')
+    const [petBreed, setPetBreed] = useState('')
+    const [petAge, setPetAge] = useState('')
+
+    const [petNameError, setPetNameError] = useState(false)
+    const [petBreedError, setPetBreedError] = useState(false)
+    const [petAgeError, setPetAgeError] = useState(false)
+    const [petAgeValid, setPetAgeValid] = useState(true)
+
+    const [isValid , setIsValid] = useState(false)
+
     const addNewPet = async () => {
         await axios.post("http://localhost:3000/pet-owner/add-pet/" + JSON.parse(localStorage.getItem("user"))._id,
             {
@@ -56,41 +67,80 @@ const NewPet = () => {
             })
     }
 
-    const updatePet = async (id) => {
-        // await axios.put()
+    const updatePet = async () => {
+        await axios.put("http://localhost:3000/pet-owner/update-pet/" +id+"/" + JSON.parse(localStorage.getItem("user"))._id,
+        {
+            petName: pet.name,
+            breed: pet.breed,
+            age: pet.age
+        })
+        .then(res => {
+            Swal.fire({
+                icon: 'success',
+                title: 'done',
+                text: `${res.data.message}`,
+            })
+        })
+        .catch(err => {
+            Swal.fire({
+                icon: 'error',
+                title: 'done',
+                text: `${err.response.data.message}`,
+            })
+        })
     }
 
     useEffect(() => {
-
         if (id) {
             getPetData(id)
         }
     }, [])
 
 
-    const [petName, setPetName] = useState('')
-    const [petBreed, setPetBreed] = useState('')
-    const [petAge, setPetAge] = useState('')
 
-    const [petNameError, setPetNameError] = useState(false)
-    const [petBreedError, setPetBreedError] = useState(false)
-    const [petAgeError, setPetAgeError] = useState(false)
-    const [petAgeValid, setPetAgeValid] = useState(true)
-
-    const [isValid , setIsValid] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (id) {
-            if (!pet.name || pet.name.trim().length == 0 && !pet.breed || pet.breed.trim().length==0 && !pet.age) {
-                setIsValid(false)
-            } else{
-                setIsValid(true)
-            }
 
-            console.log(isValid)
+            updatePet()
 
+            // if (!pet.name || pet.name.trim().length == 0) {
+            //     setPetNameError(true)
+            // } else {
+            //     setPetNameError(false)
+
+            // }
+
+            // if (!pet.breed || pet.breed.trim().length == 0) {
+            //     setPetBreedError(true)
+            // } else {
+            //     setPetBreedError(false)
+
+            // }
+
+            // if (!pet.age || pet.age.trim().length == 0) {
+            //     setPetAgeError(true)
+            // } else {
+            //     setPetAgeError(false)
+
+            // }
+
+            // if (!isNaN(pet.age)) {
+            //     setPetAgeValid(true)
+
+            // } else {
+            //     setPetAgeValid(false)
+
+            // }
+
+            // if (!petNameError && !petBreedError && !petAgeError) {
+            //     updatePet()
+            
+            // }
+
+          
         } else {
             if (!petName || petName.trim().length == 0) {
                 setPetNameError(true)
@@ -127,11 +177,6 @@ const NewPet = () => {
 
             }
         }
-
-
-
-
-
     }
 
 
@@ -142,7 +187,7 @@ const NewPet = () => {
                     <form onSubmit={handleSubmit}>
                         <div class="mb-3">
                             <label for="pet name" class="form-label">Pet Name</label>
-                            <input type="text" defaultValue={id ? pet.name : null} class="form-control" id="pet name" onChange={(e) => {setPetName(e.target.value); setPet({name:e.target.value})}} />
+                            <input type="text" defaultValue={id ? pet.name : null}   class="form-control" id="pet name" onChange={(e) => {setPetName(e.target.value); setPet({name:e.target.value})}} />
                         </div>
                         {
                             petNameError ? <p className='text-danger'>Pet name is required</p> : null
