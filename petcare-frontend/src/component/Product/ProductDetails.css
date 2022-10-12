@@ -287,7 +287,7 @@
   
   .detailsBlock-1 > h2 {
     color: rgb(54, 54, 54);
-    font: 600 1.6vmax "Roboto";
+    font: 1500 1.6vmax "Roboto";
   }
   
   .detailsBlock-1 > p {
@@ -311,13 +311,14 @@
   }
   
   .detailsBlock-3 {
-    width: 70%;
+    width: 50%;
   }
   
   .detailsBlock-3 > h1 {
     color: rgba(17, 17, 17, 0.795);
     font: 400 1.8vmax "Franklin Gothic Medium";
     margin: 1vmax 0;
+    margin-right:100%;
   }
   .detailsBlock-3-1 {
     display: flex;
@@ -327,10 +328,10 @@
   .detailsBlock-3-1-1 > button {
     border: none;
     background-color: rgba(0, 0, 0, 0.616);
-    padding: 0.5vmax;
+    padding: 0.1vmax;
     cursor: pointer;
     color: white;
-    transition: all 0.5s;
+    transition: all 0.3s;
   }
   .detailsBlock-3-1-1 > button:hover {
     background-color: rgba(0, 0, 0, 0.767);
@@ -339,7 +340,7 @@
   .detailsBlock-3-1-1 > input {
     border: none;
     padding: 0.5vmax;
-    width: 1vmax;
+    width: 2vmax;
     text-align: center;
     outline: none;
     font: 400 0.8vmax "Roboto";
@@ -350,13 +351,14 @@
     border: none;
     cursor: pointer;
     color: white;
-    transition: all 0.5s;
+    transition: all 0.9s;
     background-color: rgb(230, 77, 0);
     font: 500 0.7vmax "Roboto";
     border-radius: 20px;
-    padding: 0.5vmax 2vmax;
+    padding: 0.6vmax 2vmax;
     margin: 1vmax;
     outline: none;
+    width: 80%;
   }
   
   .detailsBlock-3-1 > button:last-child:hover {
