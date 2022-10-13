@@ -6,6 +6,10 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
+<<<<<<< Updated upstream
+=======
+import Sidebar from './Sidebar';
+>>>>>>> Stashed changes
 const Swal = require('sweetalert2');
 
 
@@ -55,8 +59,18 @@ const ProductList = () =>{
 
   return (
 
+<<<<<<< Updated upstream
     <TableContainer component={Paper} className="table">
     <>
+=======
+    <div className="dashboard">
+
+    <Sidebar />
+    
+      
+    <>
+    
+>>>>>>> Stashed changes
   
     <div className="container" style={{float:'right',width: '81%', marginLeft: '10px'}}>
     <h1>All Pet Accessories</h1>
@@ -107,7 +121,14 @@ const ProductList = () =>{
     </div>
     <br/>
     </>
+<<<<<<< Updated upstream
     </TableContainer>
+=======
+    
+
+    </div>
+
+>>>>>>> Stashed changes
   );
 
   
