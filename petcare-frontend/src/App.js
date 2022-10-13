@@ -21,8 +21,18 @@ import ProductList from './component/admin/ProductList';
 import NewProduct from './component/admin/NewProduct';
 import UpdateProduct from './component/admin/UpdateProduct';
 import Cart from "./component/Cart/Cart.js";
+<<<<<<< Updated upstream
 import Report from './component/admin/Report.js';
 
+=======
+import ProductReport from './component/admin/Report.js';
+import AddNewBoarding from './pages/petboarding/admin/UpdateBoarding';
+import Dashboard from './component/admin/Dashboard'
+
+
+
+function App() {
+>>>>>>> Stashed changes
 
 import InsertBoardingPlaces from './components/petboarding/admin/insert';
 import Client from './pages/petboarding/user/petBoardingPlaces';

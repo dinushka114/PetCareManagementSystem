@@ -1,145 +1,116 @@
-import React, { useRef } from 'react'
-import { useReactToPrint } from 'react-to-print'
-import './productList.css'
-import TableContainer from "@mui/material/TableContainer";
-import Paper from "@mui/material/Paper";
-import { useEffect, useState, } from "react";
+import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
+import './productList.css';
 import axios from 'axios';
-import { Link } from "react-router-dom"
-import Sidebar from './Sidebar';
-import Swal from 'sweetalert2';
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import SearchIcon from '@mui/icons-material/Search';
+import TableContainer from "@mui/material/TableContainer";
+import Paper from "@mui/material/Paper";
+const Swal = require('sweetalert2');
 
 
-const ProductList = () => {
 
 
-  //search
-  const [productData, setProductData] = useState([]);
-  const [filteredData, setFilteredData] = useState(productData);
-  const [isLoading, setIsLoading] = useState(false)
+const ProductList = () =>{
 
-  const handleSearch = (e) => {
-    let value = e.target.value;
-    let result = [];
+  const [productData,setproductData] = useState([]);
+  const [searchedData , setSearchedData] = useState(productData);
 
-    result = productData.filter((data) => {
-      return data.productName.search(value) != -1;
-
+  const handleSearch = (e) =>{
+    // console.log(e.target.value);
+    const value = e.target.value;
+    let res = [];
+    res = productData.filter(data=>{
+      return data.productName.toLowerCase().includes(value.toLowerCase());
     });
 
-    setFilteredData(result);
+    setSearchedData(res)
   }
-
-
-  //print
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    documentTitle: 'product-data',
-    onAfterPrint: () => alert('Print Success')
-  });
-
-  //const [productData, setProductData] = useState([]);
 
   const getProductData = () => {
     axios.get('http://localhost:3000/productRoute/get-product')
-      .then(res => {
-        const allProductData = res.data.result;
-        setProductData(allProductData)
-      })
+            .then(res => {
+                const allProductData = res.data.result;
+                setproductData(allProductData)     
+                setSearchedData(allProductData)
+            })
   }
 
-  const deleteProduct = (id) => {
+  const deleteProduct = (id)=>{
+    var answer = window.confirm("Are you sure you want to delete?")
+      if(answer){
+        axios.delete("http://localhost:3000/productRoute/delete-product/"+id)
+        .then(res=>{
+          if(res.status===200){
+            Swal.fire("Product Deleted")
+            getProductData()
+          }
+        })
+      }
+    }
 
-
-    axios.delete("http://localhost:3000/productRoute/delete-product/" + id)
-      .then(res => {
-        Swal.fire("Product Deleted Successfully!!");
-        if (res.status === 200) {
-          // Swal.fire("Product Deleted")
-          getProductData()
-        }
-      })
-  }
-
-  useEffect(() => {
-    getProductData()
-  }, []);
+    useEffect(()=>{
+      getProductData()
+    },[]);
 
   return (
 
-    <div className="dashboard">
-
-      <Sidebar />
-
-
-
-
-
-
-
-      <TableContainer component={Paper} className="table">
-        <div className='productListContainer'>
-          <h1 id="productListHeading">ALL PRODUCTS</h1>
-          <input type='' className='search-product' placeholder='Search Product' />
-
-          <button onClick={handlePrint} className='printBtn'>Print</button>
-
-          <div ref={componentRef} style={{ width: '100%', height: window.innerHeight }}>
-            <table className="table table-striped" id="products">
-
-              <thead>
-                <tr >
-                  <th scope="col">Product ID</th>
-                  <th scope="col">Product Image</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Stocks</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Description</th>
-                  <th colSpan={2}>Action</th>
-
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  productData.map((products) => {
-                    return (
-                      <tr>
-                        <td><center>{products._id}</center></td>
-                        <td><center><img className='image' src={products.productImage} /> </center> </td>
-                        <td><center>{products.productName}</center></td>
-                        <td><center>{products.stocks} </center></td>
-                        <td><center>{products.price}</center></td>
-                        <td className="width"><center><textarea cols='45' rows='2'>{products.description.substring(0, 150)}</textarea></center> </td>
-                        <td><center><Link to={`/admin/update-product/${products._id}`}><EditIcon className='edit' /></Link></center></td>
-                        <td><center><DeleteIcon className='delete' onClick={() => deleteProduct(products._id)} /></center></td>
-                      </tr>
-                    )
-                  })
-                }
-              </tbody>
-            </table>
+    <TableContainer component={Paper} className="table">
+    <>
+  
+    <div className="container" style={{float:'right',width: '81%', marginLeft: '10px'}}>
+    <h1>All Pet Accessories</h1>
+      <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded">
+        <div className="row ">
+          <div className="input-group mb-3" >
+            <input type='text' placeholder="Search by product name.." style={{width: '74%',borderRadius: '4px',border: '2px solid #ccc',height:'130%'}}
+              onChange={handleSearch} width='40%'/>
           </div>
-        </div >
-      </TableContainer>
-
-
+          <div className="row">
+            <div className="table-responsive ">
+              <table className='table table-striped table-hover table-bordered'>
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Product Image</th>
+                    <th>Stocks</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    
+                    <th colSpan="2">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {
+                searchedData.map((products) => {
+                return (
+                  <tr key={products._id}>
+                    <td>{products.productName}</td>
+                    <td> <img src={products.productImage} alt="image" className="image"/> </td>
+                    <td>{products.stocks}</td>
+                    <td>{products.price}</td>
+                    <td>{products.description}</td>
+                    
+                    
+                    <td><center><Link to={`/admin/update-product/${products._id}`}><EditIcon className='edit' /></Link></center></td>
+                        <td><center><DeleteIcon className='delete' onClick={() => deleteProduct(products._id)} /></center></td>
+                  </tr>
+                )
+              })
+            }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
+    <br/>
+    </>
+    </TableContainer>
   );
-};
+
+  
+}
 
 export default ProductList;
