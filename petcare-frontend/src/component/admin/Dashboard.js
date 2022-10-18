@@ -12,6 +12,8 @@ import { Button, CardContent, CardMedia, TableContainer, useEventCallback } from
 import CardHeader from '@mui/material/CardHeader';
 import { Link } from "react-router-dom"
 import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Swal from 'sweetalert2';
 
 const Dashboard = () => {
 
@@ -29,6 +31,19 @@ const Dashboard = () => {
                 setProductData(allProductData)
             })
     }
+
+    const deleteProduct = (id) => {
+
+
+        axios.delete("http://localhost:3000/productRoute/delete-product/" + id)
+          .then(res => {
+            Swal.fire("Product Deleted Successfully!!");
+            if (res.status === 200) {
+              // Swal.fire("Product Deleted")
+              getProductData()
+            }
+          })
+      }
 
     useEffect(() => {
         getProductData()
@@ -52,7 +67,15 @@ const Dashboard = () => {
                                         <div className='container2'> {products.productName} </div>
                                         <div className='container2'> {products.price} </div>
                                         <div className='container2'> {products.description} </div>
-                                        <center><button className='view-button'><Link to = {`/admin/update-product/${products._id}`}><EditIcon className='edit' /></Link></button></center>
+
+                                        <center><button onClick={() => { loadData(products._id) }} className='view-button'> View More </button></center>
+
+                                        <center><button className='dashboard-button'>
+                                            <Link to = {`/admin/update-product/${products._id}`}><EditIcon className='edit' /></Link>
+                                            <DeleteIcon className='delete' onClick={() => deleteProduct(products._id)} />
+
+                                        </button></center>
+                                        
                                     </div>
                                 )
                             })

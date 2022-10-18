@@ -29,6 +29,8 @@ import ProductReport from './component/admin/Report.js';
 import AddNewBoarding from './pages/petboarding/admin/UpdateBoarding';
 import Dashboard from './component/admin/Dashboard'
 
+import Adminproductdetails from './component/admin/Adminproductdetails.js';
+
 
 
 function App() {
@@ -68,8 +70,15 @@ function App() {
         <Route path="/admin/add-product" element={<NewProduct />}></Route>
         <Route path="/admin/update-product/:id" element={<UpdateProduct />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+<<<<<<< Updated upstream
         <Route path="/admin/report" element={<Report />}></Route>
         
+=======
+        <Route path="/admin/report" element={<ProductReport />}></Route>
+
+        <Route path="/admin/:id" element={<Adminproductdetails />}></Route>
+
+>>>>>>> Stashed changes
     </Routes>
 
   );

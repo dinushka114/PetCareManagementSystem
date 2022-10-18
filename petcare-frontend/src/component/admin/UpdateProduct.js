@@ -63,7 +63,7 @@ const UpdateProduct = () => {
             formData)
             .then(() => {
                 Swal.fire("Product Updated Successfully!!");
-                navigate('/admin/all-products');
+                navigate('/admin/dashboard');
             }).catch((err) => {
                 alert(err);
                 console.log(err);
