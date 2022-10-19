@@ -234,7 +234,7 @@ exports.getPetById = async (req, res) => {
     if (pet) {
         return res.status(200).json({ pet })
     } else {
-        return res.status(400).json({ err:"error" })
+        return res.status(400).json({ err: "error" })
     }
 
 
@@ -244,7 +244,7 @@ exports.getPetById = async (req, res) => {
 exports.updatePet = async (req, res) => {
     const owner = req.params.owner_id;
     const pet_id = req.params.id;
-    const {petName , breed, age} =req.body;
+    const { petName, breed, age } = req.body;
 
     // if(!(owner && pet_id && petName && breed && age)){
     //     return res.status(400).send({ message: "All inputs are required" });
@@ -252,23 +252,23 @@ exports.updatePet = async (req, res) => {
 
     const petForUpdate = await petSchema.findById(pet_id);
 
-    if(petForUpdate){
-        petSchema.updateOne({_id:pet_id},{
-            petName:petName,
-            breed:breed,
-            age:age
-        },function(err,  result){
-            if(result){
+    if (petForUpdate) {
+        petSchema.updateOne({ _id: pet_id }, {
+            petName: petName,
+            breed: breed,
+            age: age
+        }, function (err, result) {
+            if (result) {
                 return res.status(200).json({ message: "pet updated successfully!!" })
-            }else{
+            } else {
                 return res.status(400).json({ message: "something went wrong!!" })
             }
         })
-    }else{
+    } else {
         return res.status(404).json({ message: "Pet does not exists!!" })
     }
 
-    
+
 
 }
 
@@ -301,7 +301,7 @@ exports.deletePet = async (req, res) => {
         await petSchema.deleteOne({ _id: id });
         return res.status(200).json({ message: "Pet deleted sucessfully!" })
     } else {
-        return res.status(400).json({ message: "Pet does not exsists" })
+        return res.status(404).json({ message: "Pet does not exsists" })
     }
 
 }
@@ -338,6 +338,22 @@ exports.makeAppointment = async (req, res) => {
             return res.status(400).json({ message: "somwthing went wrong", err: err })
         })
 
+
+}
+
+
+exports.deleteAppointment = async (req, res) => {
+    //get appointment id
+    const id = req.params.id;
+
+    const toDeleteAppointment = await appointmentSchema.findById(id)
+
+    if(toDeleteAppointment){
+        await appointmentSchema.deleteOne({_id:id})
+        return res.status(200).json({msg:"delete sucessfully"})
+    }else{
+        return res.status(404).json({ message: "Pet does not exsists" })
+    }
 
 }
 

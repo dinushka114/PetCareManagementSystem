@@ -39,4 +39,6 @@ router.post("/new-appointment/:id" , petOwnerController.makeAppointment)
 
 router.get("/my-appointments/:id" , petOwnerController.getMyAppointments)
 
+router.delete("/delete-appointment/:id" , petOwnerController.deleteAppointment)
+
 module.exports = router;

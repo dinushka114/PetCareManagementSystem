@@ -36,6 +36,18 @@ const MyAppointments = () => {
         setFilteredData(result);
     }
 
+    const deleteAppointment = async (id) => {
+        if (window.confirm("Are you sure")) {
+            await axios.delete("http://localhost:3000/pet-owner/delete-appointment/" + id)
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }
+
     return (
         <div className='container-fluid'>
             <div className='row'>
@@ -62,16 +74,16 @@ const MyAppointments = () => {
                     {
                         isLoading ? "Loading" : filteredData.map((appointment, index) => {
                             return (
-                            <tr key={appointment._id}>
-                                <th scope="row">{index + 1}</th>
-                                <td>{appointment.service.serviceName}</td>
-                                <td>{appointment.petName.petName}</td>
-                                <td>{appointment.date}</td>
-                                <td>{appointment.time}</td>
-                                <td>{appointment.status}</td>
-                                <td> <Link to={`/dashboard/new-appointment/${appointment._id}`}><button className='btn btn-warning'>Update</button></Link> </td>
-                                <td> <button className='btn btn-danger'>Delete</button> </td>
-                            </tr>
+                                <tr key={appointment._id}>
+                                    <th scope="row">{index + 1}</th>
+                                    <td>{appointment.service.serviceName}</td>
+                                    <td>{appointment.petName.petName}</td>
+                                    <td>{appointment.date}</td>
+                                    <td>{appointment.time}</td>
+                                    <td>{appointment.status}</td>
+                                    <td> <Link to={`/dashboard/new-appointment/${appointment._id}`}><button className='btn btn-warning'>Update</button></Link> </td>
+                                    <td> <button onClick={() => deleteAppointment(appointment._id)} className='btn btn-danger'>Delete</button> </td>
+                                </tr>
                             )
                             // return (
                             //     appointment.service ? <>
