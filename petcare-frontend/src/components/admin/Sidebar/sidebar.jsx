@@ -19,7 +19,7 @@ const sidebar = () => {
                     <p className='title'>MAIN</p>
                     <li>
                         <DashboardIcon className='icon' />
-                        <Link to={"/"} style={{ textDecoration: "none" }}>
+                        <Link to={"/pet-services"} style={{ textDecoration: "none" }}>
                             <span>Dashboard</span>
                         </Link>
                     </li>
@@ -46,7 +46,7 @@ const sidebar = () => {
                     <p className='bottom-title'>LOGOUT</p>
                     <li>
                         <LogoutIcon className='icon' />
-                        <Link to={"/"} style={{ textDecoration: "none" }}>
+                        <Link to={"/pet-services"} style={{ textDecoration: "none" }}>
                             <span>Logout</span>
                         </Link>
                     </li>

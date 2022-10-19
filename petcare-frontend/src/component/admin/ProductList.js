@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import './productList.css'
+//import './productList.css'
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState, } from "react";

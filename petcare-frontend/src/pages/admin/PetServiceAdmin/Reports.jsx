@@ -5,6 +5,8 @@ import './reports.scss'
 import Service from '../PetServiceAdmin/view-reportService'
 //import Vehicle from '../vehicle/View_vehicle'
 import Img from './logo.jpg'
+import PetsIcon from '@mui/icons-material/Pets';
+import { Icon } from '@mui/material';
 
 
 const Reports = () => {  
@@ -19,18 +21,21 @@ const Reports = () => {
   return (<>
 
       <div ref={componentRef}>
-
+ 
+              <hr></hr>
           <div className='borders'>
-            <div className='block'>
-          
+            <div className='letterhead'>
               <h3 className='header'>Puppy Pet Care Service</h3>     
               <h3 className='subHeader'>Best services for your pets</h3>
               <h3 className='address'>No 12 , Setsiri Place,<span className='space1'>Contact : 070-4318718 </span>  </h3>
-              <h3 className='address'>Sri lanka <span className='space3'>              Email: puppy@gmail.com </span> </h3>
-              
+              <h3 className='address'>Sri lanka <span className='space3'> 
+              Email: puppy@gmail.com </span> </h3>
               <hr></hr>
-              <h1 className='reportheader'>Service Report</h1>
+            </div>
 
+              
+              <h1 className='reportheader'>Service Report</h1>
+              
               <div className='home'>
 
                   <div className='homeContainer'>
@@ -39,7 +44,7 @@ const Reports = () => {
 
                   </div>
               </div>    
-            </div>
+            
 
 
           </div>
