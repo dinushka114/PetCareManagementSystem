@@ -65,10 +65,30 @@ const Report = () => {
 
         var tds = parentTr.querySelectorAll('td');
 
+        console.log(tds)
+
         html += "<h1 style='text-align:center;text-decoration:underline'>Pet Report</h1>"
 
-        
+        html += `<table width='100%' border='1'>
 
+            <tr>
+                <td colspan='3'>Pet Care,<br>New Kandy Road, <br> Malabe</td>
+            </tr>
+            <tr>
+                <th>Pet Name</th>
+                <th>Breed</th>
+                <th>Age</th>
+            </tr>
+            <tr style="text-align:center">
+                <td>${tds[0].outerText}</td>
+                <td>${tds[1].outerText}</td>
+                <td>${tds[2].outerText}</td>
+            </tr>
+
+        </table>`
+
+        html +="<p>Thanks for visiting us..</p>"
+    
         html += "</html>";
 
         var printWin = window.open('', '', 'left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status  =0');
