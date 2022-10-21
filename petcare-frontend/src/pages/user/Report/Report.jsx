@@ -72,17 +72,19 @@ const Report = () => {
         html += `<table width='100%' border='1'>
 
             <tr>
-                <td colspan='3'>Pet Care,<br>New Kandy Road, <br> Malabe</td>
+                <td colspan='4'>Pet Care,<br>New Kandy Road, <br> Malabe</td>
             </tr>
             <tr>
                 <th>Pet Name</th>
                 <th>Breed</th>
                 <th>Age</th>
+                <th>Health Rate</th>
             </tr>
             <tr style="text-align:center">
                 <td>${tds[0].outerText}</td>
                 <td>${tds[1].outerText}</td>
                 <td>${tds[2].outerText}</td>
+                <td>${Math.floor(Math.random() * 101)}%</td>
             </tr>
 
         </table>`
