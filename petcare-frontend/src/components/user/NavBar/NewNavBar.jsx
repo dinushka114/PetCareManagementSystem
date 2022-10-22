@@ -12,12 +12,12 @@ function ColorSchemesExample() {
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link className='px-4' href="#home">Home</Nav.Link>
-            <Nav.Link className='px-4' href="#">Services</Nav.Link>
+            <Nav.Link className='px-4' href="/pet-services">Services</Nav.Link>
             <Nav.Link className='px-4' href="#pricing">Products</Nav.Link>
           </Nav>
           <Nav>
             
-            <Nav.Link className='px-4' eventKey={2} href="#memes">
+            <Nav.Link className='px-4' eventKey={2} href="/get-service">
               My dashboard
             </Nav.Link>
           </Nav>
