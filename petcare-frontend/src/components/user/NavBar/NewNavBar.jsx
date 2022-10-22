@@ -20,6 +20,7 @@ function ColorSchemesExample() {
             <Nav.Link className='px-4' eventKey={2} href="/get-service">
               My dashboard
             </Nav.Link>
+            <Nav.Link className='px-4' href="#pricing">Log out</Nav.Link>
           </Nav>
         </Container>
         
