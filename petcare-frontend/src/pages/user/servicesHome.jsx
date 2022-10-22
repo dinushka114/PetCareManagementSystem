@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useEffect, useState, } from "react";
 import Card from '../../components/user/Card/Card'
 import Img from './MoreService/cover.png'
+import NewNavBar from '../../components/user/NavBar/NewNavBar'
 
 const Home = () => {
 
@@ -25,6 +26,7 @@ const Home = () => {
 
   return (
     <div>
+      <NewNavBar></NewNavBar>
         <img className='main-image' src={Img}></img>
         <div className='centered'></div>
         <h1>Best Services For Your Pets</h1>

@@ -20,7 +20,7 @@ const sidebar = () => {
                     <li>
                         <DashboardIcon className='icon' />
                         <Link to={"/pet-services"} style={{ textDecoration: "none" }}>
-                            <span>Dashboard</span>
+                            <span>Service Home</span>
                         </Link>
                     </li>
                     <p className='title'>SERVICES</p>
